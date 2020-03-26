@@ -15,8 +15,5 @@ public class Main {
 		System.out.println("khosoo");
 		System.out.println("khosoo");
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> branch 'master' of https://github.com/GoofyOctopus/Icefield.git
+
