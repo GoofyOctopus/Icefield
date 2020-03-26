@@ -1,7 +1,9 @@
 package model;
 
 public class UnstableIceberg extends Iceberg{
+	
 	private int capacity;
+	
 	public int getCapacity() {
 		return capacity;
 	}
