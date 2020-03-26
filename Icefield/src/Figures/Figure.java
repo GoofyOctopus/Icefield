@@ -1,6 +1,8 @@
 package Figures;
 
 import model.Dircetion;
+import model.IItem;
+import model.Item;
 
 public abstract class Figure {
 	boolean isDrowning;
@@ -27,7 +29,11 @@ public abstract class Figure {
 		
 	}
 	
-	void retrieveItem(Item i) {
+	void retrieveItem(IItem i) {
 		
 	}
+	
+	void abstract useSkill
+	
+	
 }
