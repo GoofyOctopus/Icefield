@@ -1,6 +1,7 @@
 package model;
 
 import Figures.Figure;
+import Item.IItem;
 
 import java.util.List;
 
@@ -60,6 +61,5 @@ public class Iceberg {
 	public void removeItem(IItem item)
 	{
 		items.remove(item);
-	}
-	
+	}	
 }
