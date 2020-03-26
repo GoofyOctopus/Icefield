@@ -1,6 +1,5 @@
 package Item;
 
-public class Food 
+public class Food extends Item
 {
-
 }
