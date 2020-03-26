@@ -1,5 +1,5 @@
 package Item;
 
-public class Shovel {
+public class Shovel extends Item{
 
 }

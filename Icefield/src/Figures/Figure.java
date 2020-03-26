@@ -1,15 +1,14 @@
 package Figures;
 
-import model.Dircetion;
-import model.IItem;
-import model.Item;
+import Item.IItem;
+import model.Direction;
 
 public abstract class Figure {
 	boolean isDrowning;
 	int roundOfDrowning;
 	boolean isWearingDivingSuit;
 	
-	void step(Dircetion d) {
+	void step(Direction d) {
 		
 	}
 	
@@ -33,7 +32,7 @@ public abstract class Figure {
 		
 	}
 	
-	void abstract useSkill
-	
-	
+	void useSkill() {
+		
+	}
 }

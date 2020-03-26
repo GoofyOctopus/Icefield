@@ -1,5 +1,5 @@
 package Item;
 
-public class Flare {
+public class Flare extends Item{
 
 }
