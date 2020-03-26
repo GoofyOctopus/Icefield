@@ -5,7 +5,7 @@ import Item.IItem;
 
 import java.util.List;
 
-public class Iceberg {
+public abstract class Iceberg {
 	private int snowUnit;
 	private boolean igloos;
 	private List<Iceberg> borderingIceberg;
