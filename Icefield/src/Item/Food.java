@@ -1,6 +1,6 @@
-package model;
+package Item;
 
 public class Food 
 {
-	
+	food
 }
