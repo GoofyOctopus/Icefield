@@ -1,6 +1,6 @@
 package model;
 
-public class StableIceberg {
+public class StableIceberg extends Iceberg{
 
 	
 }
