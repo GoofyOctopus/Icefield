@@ -12,5 +12,4 @@ public class Main {
 		System.out.println("Done by the bombe!");
 		System.out.println("khosoo");
 	}
-
 }
