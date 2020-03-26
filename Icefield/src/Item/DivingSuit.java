@@ -1,4 +1,4 @@
-package model;
+package Item;
 
 public class DivingSuit {
 
