@@ -11,11 +11,8 @@ public class Main {
 		System.out.println("Hello world!");
 		System.out.println("Done by the bombe!");
 		System.out.println("khosoo");
-
 		System.out.println("khosoo");
 		System.out.println("khosoo");
 		System.out.println("khosoo");
-	
-
 	}
 }
