@@ -1,5 +1,7 @@
 package model;
 
+import Figures.Figure;
+
 public class Game {
     public int numberOfFigures;
     public int roundCounter;
