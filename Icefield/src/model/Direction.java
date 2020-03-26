@@ -1,8 +1,5 @@
 package model;
 
 public enum Direction {
-	RIGHT,
-	LEGT,
-	UP,
-	DOWN
+	UP, DOWN, RIGHT, LEFT;
 }
