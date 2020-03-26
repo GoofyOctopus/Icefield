@@ -1,5 +1,15 @@
 package model;
 
 public class Game {
-    fa,flafmalf
+    public int numberOfFigures;
+    public int roundCounter;
+    private int numberOfMoves;
+
+    public void startGame(){}
+    public void chooseFigure(){}
+    public void checkFlareGun(){}
+    public void winGame(){}
+    public void makeMove(Figure currPl){}
+    public void nextPlayer(){}
+    public void endGame(){}
 }
