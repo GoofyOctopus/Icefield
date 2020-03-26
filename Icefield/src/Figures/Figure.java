@@ -1,13 +1,14 @@
 package Figures;
 
-import model.Dircetion;
+import model.Direction;
+import Item.IItem;
 
 public abstract class Figure {
 	boolean isDrowning;
 	int roundOfDrowning;
 	boolean isWearingDivingSuit;
 	
-	void step(Dircetion d) {
+	void step(Direction d) {
 		
 	}
 	
@@ -27,7 +28,7 @@ public abstract class Figure {
 		
 	}
 	
-	void retrieveItem(Item i) {
+	void retrieveItem(IItem i) {
 		
 	}
 }
