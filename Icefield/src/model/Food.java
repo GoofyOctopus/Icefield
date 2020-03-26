@@ -1,5 +1,6 @@
 package model;
 
-public class Food {
+public class Food 
+{
 
 }
