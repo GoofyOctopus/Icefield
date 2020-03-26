@@ -14,8 +14,6 @@ public class Main {
 		System.out.println("khosoo");
 		System.out.println("khosoo");
 		System.out.println("khosoo");
-		System.out.println("khosoo");
-		System.out.println("khosoo");
-		System.out.println("khosoo");
+
 	}
 }
