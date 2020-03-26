@@ -1,5 +1,5 @@
 package model;
-
+import Figures.Figure;
 public class UnstableIceberg extends Iceberg{
 	
 	private int capacity;
