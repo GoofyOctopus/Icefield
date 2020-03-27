@@ -69,13 +69,20 @@ public class Game {
     		System.out.println("Invalid arguments");
     	}
     }
-    
+    /*
+     * Checks if flare gun is collected and
+     * if all the figures are on the same iceberg
+     * */
     public void checkFlareGun(){
     	System.out.println("CheckFlareGun function has been called");
     }
     public void winGame(){
     	System.out.println("WinGame function has been called");
     }
+    /*
+     * Current player makes move. It can step,remove snow, eat,
+     * use shovel, rope, diving suit, flare gun or grab 
+     * an item.*/
     public void makeMove(Figure currPl){
     	System.out.println("MakeMove functino has been called");
     }
@@ -86,6 +93,10 @@ public class Game {
     public void nextPlayer(Figure currPl){
     	System.out.println("NextPlayer function has been called");
     }
+    /*
+     * Ends the game if anybody's heat went to 0 or anyone drowned
+     * into the water
+     * */
     public void endGame(){
     	System.out.println("EndGame dunction has been called");
     }
