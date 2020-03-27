@@ -65,11 +65,12 @@ public abstract class Iceberg {
 	 */
 	public void remove(Figure f) { System.out.println("remove(Figure f) method is called"); figures.remove(f); }
 	/*
-	 * setNeighbor(Direction d, Iceberg i) is called in cases of 
+	 * setBorderingIceberg(Direction d, Iceberg i) is called in cases of 
 	 * creating icebergs that don't have a list of neighboring 
 	 * icebergs, and that is to avoid loops.
+	 * The name of the method is changed for consistency
 	 */
-	public void setNeighbor(Direction d, Iceberg i)
+	public void setBorderingIceberg(Direction d, Iceberg i)
 	{
 		System.out.println("setNeighbor(Direction d, Iceberg i) method is called");
 		int index = d.ordinal();
@@ -97,14 +98,44 @@ public abstract class Iceberg {
 	 */
 	public void increaseSnow() { System.out.println("increaseSnow() mehtod is called"); snowUnit++; }
 	/*
-	 * hasIgloos() method is called to check whether this iceberg
+	 * isIgloos() method is called to check whether this iceberg
 	 * has igloos or not
+	 * method name is changed for consistency
 	 */
-	public boolean hasIgloos() { System.out.println("hasIgloos() method is called"); return igloos; }
+	public boolean isIgloos() { System.out.println("hasIgloos() method is called"); return igloos; }
 	/*
 	 * removeItem(IItem item) method removes a passed item from
 	 * the list of items, and that happens when a player retrieve
 	 * it or when an iceberg drown
 	 */
-	public void removeItem(IItem item) { System.out.println("removeItem(IItem item) is called"); items.remove(item); }	
+	public void removeItem(IItem item) { System.out.println("removeItem(IItem item) is called"); items.remove(item); }
+	/*
+	 * The following methods are just getters and setters,
+	 * they were not represented in the class diagram for
+	 * clarity
+	 */
+	/*
+	 * getItems() is called when we want to write the items
+	 * in the iceberg on the screen(in the future)
+	 */
+	public List<IItem> getItems() { System.out.println("getItems() method is called");return items; }
+	/*
+	 * setItems(List<IItem> items) method is called at the
+	 * beginning of the game, when setting it up
+	 */
+	public void setItems(List<IItem> items)
+	{
+		System.out.println("setItems(List<IItem> items) method is called"); 
+		this.items = items; 
+	}
+	/*
+	 * setIgloos(boolean igloos) method is called when an
+	 * Eskimo uses their skill
+	 */
+	public void setIgloos(boolean igloos) 
+	{ 
+		System.out.println("setIgloos(boolean igloos) method is called"); 
+		this.igloos = igloos;
+	}
+	
 }
