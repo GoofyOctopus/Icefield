@@ -59,7 +59,7 @@ public abstract class Iceberg {
 	 */
 	public void accept(Figure f) { System.out.println("accept(Figure f) method is called"); figures.add(f); }
 	/*
-	 * remove(Figure f) method is called when the figure is accepted
+	 * accept(Figure f) method is called when the figure is accepted
 	 * in another iceberg, where the previous iceberg is asked to
 	 * remove that figure from the list(moved from)
 	 */
