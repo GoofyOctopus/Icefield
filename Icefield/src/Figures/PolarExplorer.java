@@ -1,5 +1,5 @@
 package Figures;
 
-public class PolarExplorer {
+public class PolarExplorer extends Figure{
 
 }
