@@ -12,7 +12,6 @@ public abstract class Figure {
 	int bodyHeatUnit;
 	boolean isWearingDivingSuit;
 	Iceberg iceberg;
-	Iceberg neighboringIceberg;
 	ArrayList<IItem> inventory;
 	
 	public Figure(Iceberg iceberg) {
@@ -22,39 +21,40 @@ public abstract class Figure {
 		this.iceberg = iceberg;
 		this.inventory = new ArrayList<IItem>();
 	}
-	void step(Direction d) {
+	public void step(Direction d) {
 		iceberg.remove(this);
 		iceberg.getNeighbor(d).accept(this);
 	}
-	
-	void die() {
-		
+	/*
+	public void die() {
+		Game.endGame();        Not needed because endgame is being called from game itself but not from figure.
 	}
-	
-	void decreaseHeatUnit() {
+	*/
+	public void decreaseHeatUnit() {
 		bodyHeatUnit--;
 	}
 	
-	void increaseHeatUnit() {
+	public void increaseHeatUnit() {
 		bodyHeatUnit++;
 	}
 	
-	void removeSnow() {
+	public void removeSnow() {
 		iceberg.decreaseSnow(1);
 	}
 	
-	void retrieveItem(IItem i) {
-		
+	public void retrieveItem(IItem i) {
+		////
 	}
 	
-	void help(Iceberg i1) {
+	public void help(Iceberg i1) {
 		iceberg.remove(this);
 		i1.accept(this);
+		roundOfDrowning = 0;
 	}
 	
-	void drown() {
-		isDrowning = true;
+	public void drown() {
+		isDrowning = true; // Have to make endgame more clear!!!!!!!!!!!!!!
 	}
 	
-	abstract int useSkill(Direction d);
+	public abstract int useSkill();
 }
