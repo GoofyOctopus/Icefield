@@ -10,8 +10,4 @@ public class Eskimo extends Figure {
 		bodyHeatUnit = 5;
 	}
 
-	@Override
-	int useSkill(Direction d) {
-		return 0;
-	}
 }
