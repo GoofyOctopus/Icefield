@@ -56,5 +56,4 @@ public abstract class Figure {
 		isDrowning = true;
 	}
 	
-	abstract int useSkill(Direction d);
 }
