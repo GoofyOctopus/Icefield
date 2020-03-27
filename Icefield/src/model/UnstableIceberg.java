@@ -23,10 +23,7 @@ public class UnstableIceberg extends Iceberg{
 	public void accept(Figure f) 
 	{ 
 		figures.add(f);
-		System.out.println("accept(Figure f) method is called"); 
-		/* accept(Figure f) method is called when the figure is accepted
-		 * in another iceberg, where the previous iceberg is asked to
-		 * remove that figure from the list(moved from)*/
+		System.out.println("accept(Figure f) method is called");
 	}
 		
 	public void collapse()
