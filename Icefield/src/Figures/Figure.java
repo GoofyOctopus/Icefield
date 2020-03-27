@@ -14,6 +14,30 @@ public abstract class Figure {
 	Iceberg iceberg;
 	ArrayList<IItem> inventory;
 	
+	public int getBodyHeatUnit() {
+		return bodyHeatUnit;
+	}
+	public void setBodyHeatUnit(int bodyHeatUnit) {
+		this.bodyHeatUnit = bodyHeatUnit;
+	}
+	public ArrayList<IItem> getInventory() {
+		return inventory;
+	}
+	public void setInventory(ArrayList<IItem> inventory) {
+		this.inventory = inventory;
+	}
+	public Iceberg getIceberg() {
+		return iceberg;
+	}
+	public void setDrowning(boolean isDrowning) {
+		this.isDrowning = isDrowning;
+	}
+	public void setRoundOfDrowning(int roundOfDrowning) {
+		this.roundOfDrowning = roundOfDrowning;
+	}
+	public void setWearingDivingSuit(boolean isWearingDivingSuit) {
+		this.isWearingDivingSuit = isWearingDivingSuit;
+	}
 	public boolean isDrowning() {
 		return isDrowning;
 	}
@@ -23,6 +47,10 @@ public abstract class Figure {
 	public boolean isWearingDivingSuit() {
 		return isWearingDivingSuit;
 	}
+	
+	
+	
+	
 	public Figure(Iceberg iceberg) {
 		this.isDrowning = false;
 		this.roundOfDrowning = 0;
