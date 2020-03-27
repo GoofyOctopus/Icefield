@@ -7,8 +7,12 @@ public class UnstableIceberg extends Iceberg{
 	
 	private List<Figure> figures;
 	private List<IItem> items;
+
 	private int capacity;
 	
+
+	public UnstableIceberg() { super(); }
+
 	public UnstableIceberg(List<Iceberg> neighbouringIcebergs) 
 	{
 		super(neighbouringIcebergs);
