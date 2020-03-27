@@ -1,7 +1,7 @@
 package model;
 
 import java.util.List;
-
+/*Erdene*/
 public class StableIceberg extends Iceberg{
 
 	public StableIceberg(List<Iceberg> neighbouringIcebergs) {
