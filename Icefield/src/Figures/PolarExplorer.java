@@ -11,8 +11,8 @@ public class PolarExplorer extends Figure{
 	}
 
 	@Override
-	int useSkill(Direction d) {
-		return 0; //////////////////////////////
+	public int useSkill(Direction d) {
+		
 	}
 	
 
