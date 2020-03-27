@@ -14,6 +14,15 @@ public abstract class Figure {
 	Iceberg iceberg;
 	ArrayList<IItem> inventory;
 	
+	public boolean isDrowning() {
+		return isDrowning;
+	}
+	public int getRoundOfDrowning() {
+		return roundOfDrowning;
+	}
+	public boolean isWearingDivingSuit() {
+		return isWearingDivingSuit;
+	}
 	public Figure(Iceberg iceberg) {
 		this.isDrowning = false;
 		this.roundOfDrowning = 0;
