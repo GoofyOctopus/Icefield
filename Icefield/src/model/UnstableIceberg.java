@@ -24,7 +24,8 @@ public class UnstableIceberg extends Iceberg{
 		System.out.println("getCapacity() method is called"); 
 		return capacity;
 	}
-	/* adds the figure to the iceberg
+	/*
+	 *  Adds the figure to the iceberg
 	 * checks the capacity 
 	 * and if it exceeds the number of figures, collapse() method will be called
 	 */
@@ -40,8 +41,8 @@ public class UnstableIceberg extends Iceberg{
 		
 	}
 	
-	/*collapse() method is called If the capacity is exceeded
-	 * it causes all the figures fall into water 
+	/*
+	 * Makes all the figures fall into water 
 	 * and items to be destroyed.
 	 */
 	public void collapse()
