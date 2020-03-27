@@ -27,9 +27,13 @@ public abstract class Figure {
 		this.isDrowning = false;
 		this.roundOfDrowning = 0;
 		this.isWearingDivingSuit = false;
-		this.iceberg = iceberg;
 		this.inventory = new ArrayList<IItem>();
 	}
+	
+	public void setIceberg(Iceberg i) {
+		iceberg = i;
+	}
+	
 	public void step(Direction d) {
 		iceberg.remove(this);
 		iceberg.getNeighbor(d).accept(this);
@@ -65,5 +69,4 @@ public abstract class Figure {
 		isDrowning = true; // Have to make endgame more clear!!!!!!!!!!!!!!
 	}
 	
-	public abstract int useSkill();
 }

@@ -10,10 +10,4 @@ public class PolarExplorer extends Figure{
 		bodyHeatUnit = 4;
 	}
 
-	@Override
-	public int useSkill(Direction d) {
-		
-	}
-	
-
 }
