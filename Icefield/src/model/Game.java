@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import Figures.Eskimo;
@@ -24,6 +25,12 @@ public class Game {
      * */
     private enum Move{
     	W,S,D,A, UR, USH, RS, EF, UD, UF, RI,US;
+    }
+    /*
+     * Enum for items to easily compare user input
+     * */
+    private enum Items{
+    	ROPE, SHOVEL, FOOD, SUIT, FLARE, GUN, CHARGE;
     }
     /*
      * Constructor which sets everything ready for the game
@@ -72,12 +79,12 @@ public class Game {
     		answer = in.next();
     		if(answer.toLowerCase().equals("e")) {
     	    	System.out.println("You have chosen Eskimo");
-//    			Eskimo es = new Eskimo();
-//    			return es;
+    			Eskimo es = new Eskimo();
+    			return es;
     		}else if(answer.toLowerCase().equals("p")) {
     			System.out.println("You have chosen Polar Explorer");
-//    			PolarExplorer pe = new PolarExplorer();
-//    			return pe;
+    			PolarExplorer pe = new PolarExplorer();
+    			return pe;
     		}
     		System.out.println("Invalid arguments");
     	}
@@ -116,13 +123,27 @@ public class Game {
     }
     
     /*
-     * Checks if item is in current player's inventory
+     * There are two scenarios:
+     * 1.Use = true, checks if item is in current player's inventory
      * and uses.
+     * 2.Use = false, Checks if item is on the iceberg and player can retrieve
      **/
-    public void checkItem(Figure currPl, Item i) {
-    	ArrayList<IItem> items = currPl.getInventory();
+    public void checkItem(Figure currPl, IItem i, boolean use) {
+    	List<IItem> items;
+    	if(use)
+    		items = currPl.getInventory();
+    	else
+    		items = currPl.getIceberg().getItems();
+    	
     	for(int j = 0; j < items.size(); j++) {
-    		//if(items.get(j) == i) items.get(j).useItem();???????????????????????????????????
+    		Item c = (Item)items.get(j);
+    		if(c.equals(i)) {
+    			if(use)
+    				c.useItem();
+    			else
+    				currPl.retrieveItem(c);
+    		}
+    			
     	}
     }
     
@@ -132,8 +153,10 @@ public class Game {
      * an item.
      * Returns false - if game finished, true - otherwise
      * */
-    public boolean makeMove(Figure currPl, Move move){
+    public boolean makeMove(Figure currPl, Move move) throws Exception{
     	System.out.println("MakeMove functino has been called");
+    	Scanner in = new Scanner(System.in);
+    	String answer;
     	switch(move) {
 	    case W:
 	        currPl.step(Direction.UP);
@@ -151,22 +174,55 @@ public class Game {
 	        currPl.removeSnow();
 	        break;
 	    case RI:
-	    	//currPl.retrieveItem();??????????????????????????????????????????????????????
+	    	System.out.println("Please, choose an item");
+	    	answer = in.next().toUpperCase();
+	    	Items it = Items.valueOf(answer);
+	    	switch(it) {
+	    	case ROPE:
+		    	checkItem(currPl, new Rope(), false);
+		    	break;
+		    case SHOVEL:
+		    	checkItem(currPl, new Shovel(), false);
+		    	break;
+		    case FOOD:
+		    	checkItem(currPl, new Food(),false);
+		    	break;
+		    case SUIT:
+		    	checkItem(currPl, new DivingSuit(),false);
+		    	break;
+		    case FLARE:
+		    	checkItem(currPl, new Flare(),false);
+		    	break;
+		    case GUN:
+		    	checkItem(currPl, new Gun(),false);
+		    	break;
+		    default:
+		    	checkItem(currPl, new Charge(),false);
+		    	break;
+	    	}
 	    	break;
 	    case UR:
-	    	checkItem(currPl, new Rope());
+	    	checkItem(currPl, new Rope(), true);
 	    	break;
 	    case USH:
-	    	checkItem(currPl, new Shovel());
+	    	checkItem(currPl, new Shovel(), true);
 	    	break;
 	    case EF:
-	    	checkItem(currPl, new Food());
+	    	checkItem(currPl, new Food(),true);
 	    	break;
 	    case UD:
-	    	checkItem(currPl, new DivingSuit());
+	    	checkItem(currPl, new DivingSuit(),true);
 	    	break;
 	    case US:
-	    	//currPl.useSkill();???????????????????????????????????????????????????????
+	    	if(currPl instanceof PolarExplorer) {
+		    	System.out.println("Please, enter the direction");
+		    	answer = in.next();
+		    	Direction d = Direction.valueOf(answer);
+		    	currPl.useSkill(d);
+	    	}else {
+	    		currPl.useSkill();
+	    	}
+	    	break;
 	    default:
 	    	//Players won
 	    	if(checkFlareGun())

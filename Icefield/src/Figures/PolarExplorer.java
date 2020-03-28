@@ -9,7 +9,7 @@ import model.UnstableIceberg;
 
 public class PolarExplorer extends Figure{
 
-	public PolarExplorer(Iceberg iceberg) {
+	public PolarExplorer() {
 		super();
 		bodyHeatUnit = 4;
 	}
