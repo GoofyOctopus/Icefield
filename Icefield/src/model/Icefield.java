@@ -44,7 +44,7 @@ public class Icefield {
 					icebergs[i-1][j].setBorderingIceberg(Direction.RIGHT, icebergs[i][j]);
 				}
 			}
-		}
+		} 
 		
 	}
 	/*
