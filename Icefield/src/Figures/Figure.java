@@ -36,6 +36,7 @@ public abstract class Figure{
 	 * iceberg which its currently on and call the acceot method of 
 	 * iceberg which it intends to move to.
 	 */
+	
 	public void step(Direction d) {
 		System.out.println("step(Direction) method is called");
 		iceberg.remove(this);

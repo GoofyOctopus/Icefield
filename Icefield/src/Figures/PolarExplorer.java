@@ -4,7 +4,6 @@
 package Figures;
 
 import model.Direction;
-import model.Iceberg;
 import model.UnstableIceberg;
 
 public class PolarExplorer extends Figure{

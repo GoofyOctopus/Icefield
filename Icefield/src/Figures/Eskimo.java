@@ -1,5 +1,5 @@
 /*
- *  Khosoo
+ *  khosoo
  */
 
 package Figures;
