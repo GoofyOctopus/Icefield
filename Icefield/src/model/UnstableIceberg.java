@@ -10,15 +10,14 @@ public class UnstableIceberg extends Iceberg{
 	private List<IItem> items;
 	private int capacity;
 	Random random;
-	public UnstableIceberg() { super(); }
-	public UnstableIceberg(List<Iceberg> neighbouringIcebergs) 
-	{
-
-		super(neighbouringIcebergs);
+	public UnstableIceberg(int x, int y) 
+	{ 
+		super(x,y);
 		random = new Random();
 		capacity = random.nextInt(3);
 		System.out.println("UnstableIceberg(List<Iceberg> neighbouringIcebergs) constructor is called");
 	}
+
 	//Returns how many figure it can hold.
 	public int getCapacity() {
 		System.out.println("getCapacity() method is called"); 

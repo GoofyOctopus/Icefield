@@ -27,9 +27,9 @@ public class Icefield {
 			for(int j = 0; j < 10; j++)
 			{
 				if(((i%2==0)&&(j%2==0))||((i==0)||(i==9)||(j==0)||(j==9)))
-					icebergs[i][j]= new UnstableIceberg();
+					icebergs[i][j]= new UnstableIceberg(i,j);
 				else
-					icebergs[i][j]= new StableIceberg();
+					icebergs[i][j]= new StableIceberg(i,j);
 			}
 		}
 	}

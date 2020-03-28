@@ -10,31 +10,25 @@ import java.util.List;
  */
 public abstract class Iceberg {
 	private int snowUnit;
-	private boolean igloos;
+	private boolean hasigloos;
 	private List<Iceberg> borderingIceberg;
 	private List<Figure> figures;
 	private List<IItem> items;
+	private int x; //new location attribute
+	private int y; //new location attribute
 	
 	/*
-	 * Two constructors, one for when we send the neighboring icebergs
-	 * and another default constructor, as it is not possible to instantiate
-	 * all icebergs with knowing the neighboring icebergs of each (loop of
-	 * dependencies). Instead, some are going to be instantiated without 
-	 * knowing their neighbors, but later they are going to be added in the list
+	 * Default constructor, sets most attributes, other attributes
+	 * are supposed to be initialized later using other methods
 	 */
-	public Iceberg()
+	public Iceberg(int x, int y)
 	{
 		System.out.println("Default Iceberg constructor is called");
 		this.snowUnit = 1;
-		this.igloos = false;
+		this.hasigloos = false;
 		this.borderingIceberg = null;
-	}
-	public Iceberg(List<Iceberg> borderingIceberg)
-	{
-		System.out.println("Non-default Iceberg contructor is called");
-		this.snowUnit = 1;
-		this.igloos = false;
-		this.borderingIceberg = borderingIceberg;
+		this.x=x;
+		this.y=y;
 	}
 	/*
 	 * getNeighbor(Direction direction) method is used when a figure
@@ -102,7 +96,7 @@ public abstract class Iceberg {
 	 * has igloos or not
 	 * method name is changed for consistency
 	 */
-	public boolean isIgloos() { System.out.println("hasIgloos() method is called"); return igloos; }
+	public boolean ishasIgloos() { System.out.println("ishasIgloos() method is called"); return hasigloos; }
 	/*
 	 * removeItem(IItem item) method removes a passed item from
 	 * the list of items, and that happens when a player retrieve
@@ -129,13 +123,16 @@ public abstract class Iceberg {
 		this.items = items; 
 	}
 	/*
-	 * setIgloos(boolean igloos) method is called when an
+	 * setIgloos(boolean hasigloos) method is called when an
 	 * Eskimo uses their skill
 	 */
-	public void setIgloos(boolean igloos) 
+	public void sethasIgloos(boolean hasigloos) 
 	{ 
-		System.out.println("setIgloos(boolean igloos) method is called"); 
-		this.igloos = igloos;
+		System.out.println("setIgloos(boolean hasigloos) method is called"); 
+		this.hasigloos = hasigloos;
 	}
-	
+	public int getX() { return x; }
+	public void setX(int x) { this.x = x; }
+	public int getY() { return y; }
+	public void setY(int y) { this.y = y; }	
 }
