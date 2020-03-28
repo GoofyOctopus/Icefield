@@ -6,11 +6,9 @@ import Figures.Figure;
 import Item.IItem;
 /*Erdene*/
 public class UnstableIceberg extends Iceberg{
-	private List<Figure> figures;
-	private List<IItem> items;
-	
 	private int capacity;
-	Random random;
+	private Random random;
+	
 	public UnstableIceberg(int x, int y) 
 	{ 
 		super(x,y);
@@ -32,12 +30,10 @@ public class UnstableIceberg extends Iceberg{
 	@Override
 	public void accept(Figure f) 
 	{ 
-		figures.add(f);
 		System.out.println("accept(Figure f) method is called");
-		if(capacity < figures.size())
-		{
+		figures.add(f);
+		if(figures.size() > capacity)
 			collapse();
-		}
 	}
 	/*
 	 * Makes all the figures fall into water 
@@ -45,8 +41,8 @@ public class UnstableIceberg extends Iceberg{
 	 */
 	public void collapse()
 	{
-		capacity = 0;
 		System.out.println("collapse() method is called");
+		capacity = 0;
 		for(int i = 0; i < figures.size(); i++)
 		{
 			figures.get(i).drown();

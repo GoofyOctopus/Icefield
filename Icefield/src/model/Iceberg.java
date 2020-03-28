@@ -3,6 +3,7 @@ package model;
 import Figures.Figure;
 import Item.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -12,8 +13,8 @@ public abstract class Iceberg {
 	private int snowUnit;
 	private boolean hasigloos;
 	private List<Iceberg> borderingIceberg;
-	private List<Figure> figures;
-	private List<IItem> items;
+	protected List<Figure> figures;
+	protected List<IItem> items;
 	private int x; //new location attribute
 	private int y; //new location attribute
 	
@@ -26,9 +27,15 @@ public abstract class Iceberg {
 		System.out.println("Default Iceberg constructor is called");
 		this.snowUnit = 1;
 		this.hasigloos = false;
-		this.borderingIceberg = null;
+		this.borderingIceberg = new ArrayList<Iceberg>();
+		this.items = new ArrayList<IItem>();
+		this.figures = new ArrayList<Figure>();
 		this.x=x;
 		this.y=y;
+		
+		for (int i = 0; i < 4; i++) //setting initial size of iceberg
+			this.borderingIceberg.add(i,null);
+			
 	}
 	/*
 	 * getNeighbor(Direction direction) method is used when a figure
@@ -121,7 +128,7 @@ public abstract class Iceberg {
 	{
 		System.out.println("addItem(IItem item) method is called"); 
 		this.items.add(item);
-		((Item) item).setIceberg(this); //telling the item that this is its iceberg
+		((IItem) item).setIceberg(this); //telling the item that this is its iceberg
 	}
 	/*
 	 * setIgloos(boolean hasigloos) method is called when an

@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Item.*;
@@ -24,8 +25,8 @@ public class Icefield {
 	public Icefield()
 	{ 
 		System.out.println("Icefield default constructor is called now all icebergs are instantiated");
-		icebergs = null;
-		items = null;
+		icebergs = new Iceberg[10][10];
+		items = new ArrayList<IItem>();
 		for(int i = 0; i < 10; i++) 
 		{
 			for(int j = 0; j < 10; j++)

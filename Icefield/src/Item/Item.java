@@ -12,7 +12,7 @@ public abstract class Item implements IItem
 	
 	public Item()//default constructor which the child classes will call
 	{
-		System.out.println("Defualt constructor is called");
+		//System.out.println("Defualt constructor is called"); unable to call this many times
 		figure = null;
 		iceberg = null;
 	}

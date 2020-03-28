@@ -272,7 +272,7 @@ public class Game {
 				} catch (Exception e) {
 					System.out.println("Invalid input");
 					invalid = true;
-				}	
+				}
         	}
     	}
     	roundCounter++;

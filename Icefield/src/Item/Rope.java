@@ -3,7 +3,7 @@ package Item;
 
 public class Rope extends Item
 {	
-	Rope rope= new Rope();
+	Rope rope;
 	//in the default constructor we are calling the constructor from  the super class
 	public Rope()//default constructor for rope class
 	{
