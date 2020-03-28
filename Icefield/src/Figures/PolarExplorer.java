@@ -16,6 +16,7 @@ public class PolarExplorer extends Figure{
 
 	@Override
 	public int useSkill(Direction d) {
+		System.out.println("useSkill(Direction) method is called");
 		if(iceberg.getNeighbor(d) instanceof UnstableIceberg) {
 			return ((UnstableIceberg)iceberg).getCapacity();
 		}

@@ -5,7 +5,6 @@
 package Figures;
 
 import model.Direction;
-import model.Iceberg;
 
 public class Eskimo extends Figure {
 
@@ -15,12 +14,13 @@ public class Eskimo extends Figure {
 	}
 
 	@Override
-	public int useSkill(Direction d) {
-		throw new Exception("Eskimo can not know capacity of iceberg!")
+	public int useSkill(Direction d) throws Exception {
+		throw new Exception("Eskimo can not know capacity of iceberg!");
 	}
 
 	@Override
 	public void useSkill() {
+		System.out.println("useSkill() method is called");
 		iceberg.sethasIgloos(true);
 	}
 }
