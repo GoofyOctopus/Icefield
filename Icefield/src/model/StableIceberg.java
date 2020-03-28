@@ -8,6 +8,5 @@ public class StableIceberg extends Iceberg{
 	{ 
 		super(x, y);
 	}
-
 	
 }
