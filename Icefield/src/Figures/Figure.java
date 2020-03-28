@@ -23,14 +23,14 @@ public abstract class Figure{
 	Iceberg iceberg;
 	ArrayList<IItem> inventory;
 	
-	
-	public Figure(Iceberg iceberg) {
+	public Figure() {
 		this.isDrowning = false;
 		this.roundOfDrowning = 0;
 		this.isWearingDivingSuit = false;
 		this.inventory = new ArrayList<IItem>();
 	}
-	
+
+
 	/*
 	 * Stepping method for figure which will call the remove method of 
 	 * iceberg which its currently on and call the acceot method of 
@@ -70,11 +70,17 @@ public abstract class Figure{
 	 *  add it to inventory of figure.
 	 */
 	public void retrieveItem(IItem i) {
-		for(int j=0;j<iceberg.getItems().size();j++) {
-			if(i.getClass().equals(iceberg.getItems().get(j).getClass())) {
-				iceberg.removeItem(i);
-				inventory.add(i);
-				break;
+		for(int j=0;j<inventory.size();j++) {
+			if(i.getClass().equals(inventory.get(j).getClass())){
+				
+			else
+				for(int k=0;k<iceberg.getItems().size();k++) {
+					if(i.getClass().equals(iceberg.getItems().get(j).getClass())) {
+						iceberg.removeItem(i);
+						inventory.add(i);
+						break;
+					}
+				}
 			}
 		}
 	}
