@@ -3,11 +3,10 @@ package Item;
 
 public class Food extends Item
 {
-	
-	public Food()
+	//in the default constructor we are calling the constructor from  the super class
+	public Food()//default constructor for class Food
 	{
-		super();
-		System.out.println("Ddefault constructor is called here");
+		super();//calling the super class constructor
 	}
 	@Override
 	public void useItem()//increasing the body heat unit of the figure by 1

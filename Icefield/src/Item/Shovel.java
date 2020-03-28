@@ -2,10 +2,10 @@ package Item;
 
 public class Shovel extends Item
 {
+	//in the default constructor we are calling the constructor from  the super class
 	public Shovel()
 	{
-		super();
-		System.out.println("Defualt constructor is called ");
+		super();//calling the super class constructor 
 	}
 	
 	@Override

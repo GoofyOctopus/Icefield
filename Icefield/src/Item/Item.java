@@ -10,17 +10,12 @@ public abstract class Item implements IItem
 	
 	abstract public void useItem();
 	
-	public Item()
+	public Item()//default constructor which the child classes will call
 	{
-		
+		System.out.println("Defualt constructor is called");
 		figure = null;
-		for(int i=0 ; i<10 ; i++)
-		{
-			for(int j=0 ; j<10 ; j++)
-			{
-			}
+		iceberg=null;
 		}
-	}
 	
 	public void destroy()
 	{
