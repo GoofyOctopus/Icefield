@@ -70,7 +70,7 @@ public class Icefield {
 				}
 				if(i==j)
 				{
-					icebergs[i][j].addItem(new DivingSuit());
+					icebergs[i][j].addItem(new DivingSuit()); 
 				}
 			}
 		} 
