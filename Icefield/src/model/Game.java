@@ -5,6 +5,7 @@ import java.util.Scanner;
 import Figures.Eskimo;
 import Figures.Figure;
 import Figures.PolarExplorer;
+import Item.*;
 /*
  *Beka Babunashvili 
  */
@@ -17,23 +18,26 @@ public class Game {
     /*
      * Shortcuts for possible moves:
      * W,S,D,A - for stepping(up,down,right,left), UR - use rope,
-     * US - use shovel, RS - remove snow, EF - eat food, 
-     * UD - use diving suit, UF - use flare gun.
+     * USH - use shovel, RS - remove snow, EF - eat food, 
+     * UD - use diving suit, UF - use flare gun, RI - retrieve item
+     * US - use skill;
      * */
     private enum Move{
-    	W,S,D,A, UR, US, RS, EF, UD,UF;
+    	W,S,D,A, UR, USH, RS, EF, UD, UF, RI,US;
     }
     /*
      * Constructor which sets everything ready for the game
      * and starts it.
      * */
     public Game() {
+    	boolean finished = false;
     	startGame();
-    	//while(true) {
+    	while(!finished) {
     		for(int i = 0; i < numberOfFigures; i++) {
-    			nextPlayer(figures.get(i));
+    			if(!nextPlayer(figures.get(i)))
+    				finished = true;
     		}
-    	//}
+    	}
     	
     }
     /*
@@ -57,7 +61,6 @@ public class Game {
     /*
      * Each player chooses a figure to play
      * */
-    /**Changed return value*/
     public Figure chooseFigure(){
     	System.out.println("ChooseFigure function has been called");
     	System.out.println("Type 'E' for Eskimo");
@@ -69,12 +72,12 @@ public class Game {
     		answer = in.next();
     		if(answer.toLowerCase().equals("e")) {
     	    	System.out.println("You have chosen Eskimo");
-    			Eskimo es = new Eskimo();
-    			return es;
+//    			Eskimo es = new Eskimo();
+//    			return es;
     		}else if(answer.toLowerCase().equals("p")) {
     			System.out.println("You have chosen Polar Explorer");
-    			PolarExplorer pe = new PolarExplorer();
-    			return pe;
+//    			PolarExplorer pe = new PolarExplorer();
+//    			return pe;
     		}
     		System.out.println("Invalid arguments");
     	}
@@ -83,9 +86,25 @@ public class Game {
      * Checks if flare gun is collected and
      * if all the figures are on the same iceberg
      * */
-    public void checkFlareGun(){
+    public boolean checkFlareGun(){
     	System.out.println("CheckFlareGun function has been called");
+    	int flare = 0;
+    	Iceberg ic = figures.get(0).getIceberg();
+    	ArrayList<IItem> items;
+    	for(int i = 0; i < numberOfFigures; i++) {
+    		if(ic != figures.get(0).getIceberg())
+    			return false;
+    		items = figures.get(i).getInventory();
+    		for(int j = 0; j < items.size(); j++) {
+    			if(items.get(j) instanceof Flare || items.get(j) instanceof Gun || items.get(j) instanceof Charge)
+    				flare++;
+    		}
+    	}
+    	if(flare == 3)
+    		return true;
+    	return false;
     }
+    
     /*
      * If players managed to collect flare gun and
      * step all the figures on the same iceberg, they win and
@@ -95,11 +114,25 @@ public class Game {
     	System.out.println("WinGame function has been called");
     	System.out.println("You have won!!!");
     }
+    
+    /*
+     * Checks if item is in current player's inventory
+     * and uses.
+     **/
+    public void checkItem(Figure currPl, Item i) {
+    	ArrayList<IItem> items = currPl.getInventory();
+    	for(int j = 0; j < items.size(); j++) {
+    		//if(items.get(j) == i) items.get(j).useItem();???????????????????????????????????
+    	}
+    }
+    
     /*
      * Current player makes move. It can step,remove snow, eat,
      * use shovel, rope, diving suit, flare gun or grab 
-     * an item.*/
-    public void makeMove(Figure currPl, Move move){
+     * an item.
+     * Returns false - if game finished, true - otherwise
+     * */
+    public boolean makeMove(Figure currPl, Move move){
     	System.out.println("MakeMove functino has been called");
     	switch(move) {
 	    case W:
@@ -117,22 +150,48 @@ public class Game {
 	    case RS:
 	        currPl.removeSnow();
 	        break;
+	    case RI:
+	    	//currPl.retrieveItem();??????????????????????????????????????????????????????
+	    	break;
+	    case UR:
+	    	checkItem(currPl, new Rope());
+	    	break;
+	    case USH:
+	    	checkItem(currPl, new Shovel());
+	    	break;
+	    case EF:
+	    	checkItem(currPl, new Food());
+	    	break;
+	    case UD:
+	    	checkItem(currPl, new DivingSuit());
+	    	break;
+	    case US:
+	    	//currPl.useSkill();??????????????????????????????????????????????????????
 	    default:
+	    	//Players won
+	    	if(checkFlareGun())
+	    		return false;
 	    	break;
     	}
     	numberOfMoves++;
-    	if(currPl.getBodyHeatUnit() == 0)
+    	//Ends game if player died
+    	if(currPl.getBodyHeatUnit() == 0) {
     		endGame();
+    		return false;
+    	}
+    	//Player fell into the water
     	Iceberg ib = currPl.getIceberg();
     	if(ib instanceof UnstableIceberg)
     		if(((UnstableIceberg) ib).getCapacity() == 0)
     			numberOfMoves = 4;
+    	return true;
     }
     /*
      * Gets current player, lets the player to make moves and
      * switches to the next player.
+     * Returns false - if game finished, true - otherwise
      * */
-    public void nextPlayer(Figure currPl){
+    public boolean nextPlayer(Figure currPl){
     	if(currPl.isDrowning() && currPl.getRoundOfDrowning() < roundCounter)
 			endGame();
     	Scanner in = new Scanner(System.in);
@@ -153,7 +212,7 @@ public class Game {
         		answer = answer.toUpperCase();
         		try {
         			move = Move.valueOf(answer);
-        			makeMove(currPl, move);
+        			if(!makeMove(currPl, move)) return false;
 				} catch (Exception e) {
 					System.out.println("Invalid input");
 					invalid = true;
@@ -161,6 +220,7 @@ public class Game {
         	}
     	}
     	roundCounter++;
+    	return true;
     }
     /*
      * Ends the game if anybody's heat went to 0 or anyone drowned

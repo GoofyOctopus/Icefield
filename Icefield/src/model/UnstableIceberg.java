@@ -39,6 +39,7 @@ public class UnstableIceberg extends Iceberg{
 	 */
 	public void collapse()
 	{
+		capacity = 0;
 		System.out.println("collapse() method is called");
 		for(int i = 0; i < figures.size(); i++)
 		{
