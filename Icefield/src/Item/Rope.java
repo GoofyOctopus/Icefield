@@ -15,7 +15,6 @@ public class Rope extends Item
 	{
 		System.out.println("useItem() method is called for rope");
 		figure.help(iceberg);
-		System.out.println("help(i:iceberg) method is called");
 	}
 	
 	

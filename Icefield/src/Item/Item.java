@@ -20,8 +20,10 @@ public abstract class Item implements IItem
 	{
 		if(iceberg!=null)
 			this.iceberg.removeItem(this);
+//removeItem method to be added to the figure
 //		if(figure!=null)
 //			this.figure.removeItem(this);
+
 		iceberg = null;
 		figure = null;
 	}

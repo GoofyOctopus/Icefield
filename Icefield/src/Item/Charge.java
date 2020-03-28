@@ -19,6 +19,9 @@ public class Charge implements IItem
 	{
 		iceberg=null;
 	}
+	
+	
+	
 	public Figure getFigure() {
 		return figure;
 	}
