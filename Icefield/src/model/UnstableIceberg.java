@@ -1,5 +1,7 @@
 package model;
 import java.util.List;
+import java.util.Random;
+
 import Figures.Figure;
 import Item.IItem;
 /*Erdene*/
@@ -7,10 +9,14 @@ public class UnstableIceberg extends Iceberg{
 	private List<Figure> figures;
 	private List<IItem> items;
 	private int capacity;
+	Random random;
 	public UnstableIceberg() { super(); }
 	public UnstableIceberg(List<Iceberg> neighbouringIcebergs) 
 	{
+
 		super(neighbouringIcebergs);
+		random = new Random();
+		capacity = random.nextInt(3);
 		System.out.println("UnstableIceberg(List<Iceberg> neighbouringIcebergs) constructor is called");
 	}
 	//Returns how many figure it can hold.
