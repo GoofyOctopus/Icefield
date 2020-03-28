@@ -1,5 +1,6 @@
 package Item;
 
-public class Charge {
+public class Charge implements IItem
+{
 
 }

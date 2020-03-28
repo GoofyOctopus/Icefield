@@ -1,9 +1,6 @@
 package Item;
 
-public class Gun extends Item
+public class Gun implements IItem
 {
-	public void useItem()
-	{
-		
-	}
+	
 }

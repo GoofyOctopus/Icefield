@@ -1,13 +1,19 @@
 package Item;
-import Figures.Figure;
 
 
 public class Food extends Item
 {
-	public void useItem()
+	
+	public Food()
 	{
-		increaseheatUnit();//increasing the body heat unit of the figure by 1
-		System.out.println("The body heat unit of the figure is increased by 1");
-		
+		super();
+		System.out.println("Ddefault constructor is called here");
+	}
+	@Override
+	public void useItem()//increasing the body heat unit of the figure by 1
+	{
+		System.out.println("useItem() method is called for food");
+		figure.increaseHeatUnit();
+		System.out.println("IncreaseHeatUnit() method is called");
 	}
 }

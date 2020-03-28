@@ -1,10 +1,6 @@
 package Item;
 
-public class Flare extends Item
+public class Flare implements IItem
 {
-	public void useItem()
-	{
-		
-	}
 
 }
