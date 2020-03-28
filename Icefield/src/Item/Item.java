@@ -14,12 +14,16 @@ public abstract class Item implements IItem
 	{
 		System.out.println("Defualt constructor is called");
 		figure = null;
-		iceberg=null;
-		}
-	
+		iceberg = null;
+	}
 	public void destroy()
 	{
-		iceberg=null;
+		if(iceberg!=null)
+			this.iceberg.removeItem(this);
+//		if(figure!=null)
+//			this.figure.removeItem(this);
+		iceberg = null;
+		figure = null;
 	}
 
 	public Figure getFigure() {

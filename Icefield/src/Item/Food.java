@@ -13,6 +13,6 @@ public class Food extends Item
 	{
 		System.out.println("useItem() method is called for food");
 		figure.increaseHeatUnit();
-		System.out.println("IncreaseHeatUnit() method is called");
+		this.destroy();
 	}
 }
