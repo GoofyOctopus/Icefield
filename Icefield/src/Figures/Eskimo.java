@@ -1,8 +1,10 @@
+/*
+ *  Khosoo
+ */
 package Figures;
 
 import model.Direction;
 import model.Iceberg;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class Eskimo extends Figure {
 
@@ -13,12 +15,11 @@ public class Eskimo extends Figure {
 
 	@Override
 	public int useSkill(Direction d) {
-		throw new Exception("Eskimo can not know capacity of icebergs");
+		throw new Exception("Eskimo can not know capacity of iceberg!")
 	}
 
 	@Override
 	public void useSkill() {
 		iceberg.sethasIgloos(true);
 	}
-
 }
