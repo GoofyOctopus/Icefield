@@ -1,8 +1,9 @@
 package Figures;
 
 import model.Direction;
-import model.Iceberg;
 
+import model.Iceberg;
+import model.UnstableIceberg;
 public class PolarExplorer extends Figure{
 
 	public PolarExplorer(Iceberg iceberg) {
@@ -12,11 +13,14 @@ public class PolarExplorer extends Figure{
 
 	@Override
 	public int useSkill(Direction d) {
-		return iceberg.getNeighbor(d).getCapacity();
+		if(iceberg.getNeighbor(d) instanceof UnstableIceberg) {
+			return ((UnstableIceberg)iceberg).getCapacity();
+		}
+		return 0;
 	}
 
 	@Override
 	public void useSkill() throws Exception {
-		throw new Exception("Polar explorer can not build igloos");
+		throw new Exception("Polar explorer can not build igloo!");
 	}	
 }

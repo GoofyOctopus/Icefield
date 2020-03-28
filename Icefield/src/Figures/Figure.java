@@ -101,7 +101,7 @@ public abstract class Figure{
 	 * different moves according to which type
 	 * of figures it is.
 	 */
-	public abstract int useSkill(Direction d);
+	public abstract int useSkill(Direction d) throws Exception;
 	public abstract void useSkill() throws Exception;
 	/* 
 	 * Getter and setter methods for attributes as it is needed in other classes.
