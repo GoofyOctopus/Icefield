@@ -1,5 +1,8 @@
 package Item;
 
+import Figures.Figure;
+import model.Iceberg;
+
 public class DivingSuit extends Item
 {
 	//in the default constructor we are calling the constructor from  the super class
@@ -15,5 +18,4 @@ public class DivingSuit extends Item
 		figure.setWearingDivingSuit(true); // making the isWearingDivingSuit to true to show that the figure has the diving suit on it
 		System.out.println("setWearingDivingSuit(boolean:isWearingDivingSuit) method is called");
 	}
-
 }

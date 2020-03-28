@@ -1,15 +1,15 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import Item.IItem;
+import Item.*;
 
 /*
  * Yazan
  */
 public class Icefield {
-	private Iceberg icebergs[][];;
+	private Iceberg icebergs[][];
+	private List<IItem> items;
 	
 	/*
 	 * Default constructor initializes the icebergs 2d array
@@ -25,6 +25,7 @@ public class Icefield {
 	{ 
 		System.out.println("Icefield default constructor is called now all icebergs are instantiated");
 		icebergs = null;
+		items = null;
 		for(int i = 0; i < 10; i++) 
 		{
 			for(int j = 0; j < 10; j++)
@@ -42,6 +43,34 @@ public class Icefield {
 				{
 					icebergs[i][j].setBorderingIceberg(Direction.LEFT, icebergs[i-1][j]);
 					icebergs[i-1][j].setBorderingIceberg(Direction.RIGHT, icebergs[i][j]);
+				}
+				if(j%2==0)
+				{
+					icebergs[i][j].addItem(new Food());
+				}
+				if(j%5==0)
+				{
+					icebergs[i][j].addItem(new Flare());
+				}
+				if((i!=0)&&(i%6==0))
+				{
+					icebergs[i][j].addItem(new Gun());
+				}
+				if((i!=0)&&(i%8==0))
+				{
+					icebergs[i][j].addItem(new Charge());
+				}
+				if((i!=0)&&(i%3==0))
+				{
+					icebergs[i][j].addItem(new Shovel());
+				}
+				if((j!=0)&&j%4==0)
+				{
+					icebergs[i][j].addItem(new Rope());
+				}
+				if(i==j)
+				{
+					icebergs[i][j].addItem(new DivingSuit());
 				}
 			}
 		} 

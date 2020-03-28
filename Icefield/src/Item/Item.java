@@ -21,4 +21,21 @@ public abstract class Item implements IItem
 	{
 		iceberg=null;
 	}
+
+	public Figure getFigure() {
+		return figure;
+	}
+
+	public void setFigure(Figure figure) {
+		this.figure = figure;
+	}
+
+	public Iceberg getIceberg() {
+		return iceberg;
+	}
+
+	public void setIceberg(Iceberg iceberg) {
+		this.iceberg = iceberg;
+	}
+	
 }

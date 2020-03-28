@@ -8,6 +8,7 @@ import Item.IItem;
 public class UnstableIceberg extends Iceberg{
 	private List<Figure> figures;
 	private List<IItem> items;
+	
 	private int capacity;
 	Random random;
 	public UnstableIceberg(int x, int y) 

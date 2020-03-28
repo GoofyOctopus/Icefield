@@ -1,7 +1,7 @@
 package model;
 
 import Figures.Figure;
-import Item.IItem;
+import Item.*;
 
 import java.util.List;
 
@@ -114,13 +114,14 @@ public abstract class Iceberg {
 	 */
 	public List<IItem> getItems() { System.out.println("getItems() method is called");return items; }
 	/*
-	 * setItems(List<IItem> items) method is called at the
+	 * addItem(IItem item) method is called at the
 	 * beginning of the game, when setting it up
 	 */
-	public void setItems(List<IItem> items)
+	public void addItem(IItem item)
 	{
-		System.out.println("setItems(List<IItem> items) method is called"); 
-		this.items = items; 
+		System.out.println("addItem(IItem item) method is called"); 
+		this.items.add(item);
+		((Item) item).setIceberg(this); //telling the item that this is its iceberg
 	}
 	/*
 	 * setIgloos(boolean hasigloos) method is called when an
