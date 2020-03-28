@@ -1,3 +1,6 @@
+/*
+ *  Khosoo
+ */
 package Figures;
 
 import model.Direction;

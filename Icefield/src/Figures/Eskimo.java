@@ -1,3 +1,6 @@
+/*
+ *  Khosoo
+ */
 package Figures;
 
 import model.Direction;
@@ -19,5 +22,4 @@ public class Eskimo extends Figure {
 	public void useSkill() {
 		iceberg.sethasIgloos(true);
 	}
-
 }

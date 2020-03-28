@@ -5,7 +5,6 @@
 package Figures;
 
 import java.util.ArrayList;
-
 import Item.IItem;
 import model.Direction;
 import model.Iceberg;
