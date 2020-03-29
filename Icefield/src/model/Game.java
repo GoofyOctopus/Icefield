@@ -16,8 +16,7 @@ public class Game {
     private int numberOfMoves;//Moves made by current player
     private ArrayList<Figure> figures;
     private Icefield icf;
-    private boolean test;//test cases or real game
-    private int testNum;
+    
     /*
      * Shortcuts for possible moves:
      * W,S,D,A - for stepping(up,down,right,left), UR - use rope,
@@ -38,18 +37,25 @@ public class Game {
      * Constructor which sets everything ready for the game
      * and starts it.
      * */
-    public Game(boolean testCases, int testNum) {
-    	this.testNum = testNum;
-    	test = testCases;
-    	boolean finished = false;
+    public Game(boolean testCases) {
     	startGame();
+    	if(!testCases)
+    		gameLoop();
+    }
+    /*
+     * If user doesn't want to test the game, game loop
+     * starts. Players start to make their moves, until
+     * game is finished.
+     * */
+    public void gameLoop() {
+    	boolean finished = false;
     	while(!finished) {
     		for(int i = 0; i < numberOfFigures; i++) {
     			if(!nextPlayer(figures.get(i)))
     				finished = true;
     		}
+        	roundCounter++;
     	}
-    	
     }
     /*
      *Gets number of players, lets them choose figures, creates
@@ -59,22 +65,18 @@ public class Game {
     	System.out.println("StartGame function has been called");
     	roundCounter = 0;
         numberOfMoves = 0;
-        if(test){
-        	numberOfFigures = 3;
-        }else {
-        	Scanner in = new Scanner(System.in);
-            boolean valid = false;
-            while(!valid) {
-            	System.out.println("Enter the number of players:");
-                numberOfFigures = in.nextInt();
-                if(numberOfFigures >= 3)
-                	break;
-                System.out.println("Minimum number of players is 3!");
-            }
+        Scanner in = new Scanner(System.in);
+        boolean valid = false;
+        while(!valid) {
+        	System.out.println("Enter the number of players:");
+            numberOfFigures = in.nextInt();
+            if(numberOfFigures >= 3)
+            	break;
+            System.out.println("Minimum number of players is 3!");
         }
         figures = new ArrayList<Figure>();
         for(int i = 0; i < numberOfFigures; i++) {
-        	figures.add(chooseFigure());
+        	figures.add(chooseFigure());//I will change this part later 
         }
         icf = new Icefield(figures);
     }
@@ -193,7 +195,7 @@ public class Game {
      * an item.
      * Returns false - if game finished, true - otherwise
      * */
-    public boolean makeMove(Figure currPl, Move move) throws Exception{
+    public boolean makeMove(Figure currPl, Move move) {
     	System.out.println("MakeMove functino has been called");
     	Scanner in = new Scanner(System.in);
     	String answer;
@@ -214,16 +216,10 @@ public class Game {
 	        currPl.removeSnow();
 	        break;
 	    case RI:
-	    	if(test) {
-	    		switch(testNum) {
-	    		default:grabItem(currPl,Items.FOOD);
-	    		}
-	    	}else {
-	    		System.out.println("Please, choose an item");
-		    	answer = in.next().toUpperCase();
-		    	Items it = Items.valueOf(answer);
-		    	grabItem(currPl, it);
-	    	}
+	    	System.out.println("Please, choose an item");
+	    	answer = in.next().toUpperCase();
+	    	Items it = Items.valueOf(answer);
+	    	grabItem(currPl, it);
 	    	break;
 	    case UR:
 	    	checkItem(currPl, new Rope(), true);
@@ -239,18 +235,22 @@ public class Game {
 	    	break;
 	    case US:
 	    	if(currPl instanceof PolarExplorer) {
-	    		if(test) {
-		    		switch(testNum) {
-		    		default:currPl.useSkill(Direction.DOWN);
-		    		}
-		    	}else {
-			    	System.out.println("Please, enter the direction");
-			    	answer = in.next();
-			    	Direction d = Direction.valueOf(answer);
-			    	currPl.useSkill(d);
-			    }
+	    		System.out.println("Please, enter the direction");
+		    	answer = in.next();
+		    	Direction d = Direction.valueOf(answer);
+		    	try {
+					currPl.useSkill(d);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	    	}else {
-	    		currPl.useSkill();
+	    		try {
+					currPl.useSkill();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	    	}
 	    	break;
 	    default:
@@ -289,38 +289,26 @@ public class Game {
     	System.out.println("Remove snow - \"RS\", Retrieve item - \"RI\",Use shovel - \"US\", ");
     	System.out.println("Use rope - \"UR\", Use diving suit - \"UD\",");
     	System.out.println( "Eat food - \"EF\", Use flare gun - \"UF\"");
-    	if(test) {
-    		switch(testNum) {
-    		default:try {
-					if(!makeMove(currPl, Move.A)) return false;
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+    	//Each player has 4 moves
+    	while(numberOfMoves < 4) {
+    		
+    		System.out.println("Enter next move:");
+    		boolean invalid = true;
+        	while(invalid) {
+        		invalid = false;
+        		answer = in.next();
+        		answer = answer.toUpperCase();
+        		try {
+        			move = Move.valueOf(answer);
+        			if(!makeMove(currPl, move)) return false;
+				} catch (IllegalArgumentException e) {
+					System.out.println("Invalid input");
+					invalid = true;
+				} catch(Exception e) {
+					System.out.println("Something went wrong while making a move!");
 				}
-    		}
-    	}else {
-	    	//Each player has 4 moves
-	    	while(numberOfMoves < 4) {
-	    		
-	    		System.out.println("Enter next move:");
-	    		boolean invalid = true;
-	        	while(invalid) {
-	        		invalid = false;
-	        		answer = in.next();
-	        		answer = answer.toUpperCase();
-	        		try {
-	        			move = Move.valueOf(answer);
-	        			if(!makeMove(currPl, move)) return false;
-					} catch (IllegalArgumentException e) {
-						System.out.println("Invalid input");
-						invalid = true;
-					} catch(Exception e) {
-						System.out.println("Something went wrong while making a move!");
-					}
-	        	}
-	    	}
-	    }
-    	roundCounter++;
+        	}
+    	}
     	return true;
     }
     /*
