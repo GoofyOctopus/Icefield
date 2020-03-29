@@ -8,7 +8,7 @@ import Figures.Figure;
 import Figures.PolarExplorer;
 import Item.*;
 /*
- *Beka Babunashvili 
+ *Author Beka Babunashvili 
  */
 public class Game {
     public int numberOfFigures; //Number of players
@@ -16,7 +16,7 @@ public class Game {
     private int numberOfMoves;//Moves made by current player
     private ArrayList<Figure> figures;
     private Icefield icf;
-    
+    private boolean test;
     /*
      * Shortcuts for possible moves:
      * W,S,D,A - for stepping(up,down,right,left), UR - use rope,
@@ -38,6 +38,7 @@ public class Game {
      * and starts it.
      * */
     public Game(boolean testCases) {
+    	test = testCases;
     	startGame();
     	if(!testCases)
     		gameLoop();
@@ -65,18 +66,28 @@ public class Game {
     	System.out.println("StartGame function has been called");
     	roundCounter = 0;
         numberOfMoves = 0;
-        Scanner in = new Scanner(System.in);
-        boolean valid = false;
-        while(!valid) {
-        	System.out.println("Enter the number of players:");
-            numberOfFigures = in.nextInt();
-            if(numberOfFigures >= 3)
-            	break;
-            System.out.println("Minimum number of players is 3!");
+        if(test) {
+        	numberOfFigures = 3;
+        }else {
+        	Scanner in = new Scanner(System.in);
+            boolean valid = false;
+            while(!valid) {
+            	System.out.println("Enter the number of players:");
+                numberOfFigures = in.nextInt();
+                if(numberOfFigures >= 3)
+                	break;
+                System.out.println("Minimum number of players is 3!");
+            }
         }
         figures = new ArrayList<Figure>();
-        for(int i = 0; i < numberOfFigures; i++) {
-        	figures.add(chooseFigure());//I will change this part later 
+        if(test) {
+        	figures.add(new Eskimo());
+        	figures.add(new Eskimo());
+        	figures.add(new PolarExplorer());
+        }else {
+        	 for(int i = 0; i < numberOfFigures; i++) {
+             	figures.add(chooseFigure()); 
+             }
         }
         icf = new Icefield(figures);
     }

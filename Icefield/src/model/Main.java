@@ -13,7 +13,7 @@ public class Main {
 		int answer = in.nextInt();
 		switch(answer) {
 		case 1: Game g = new Game(false);
-		case 2: //we have deal with tests
+		case 2: //we have deal with testss
 		}
 		
 	}
