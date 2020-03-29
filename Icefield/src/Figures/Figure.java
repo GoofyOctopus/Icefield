@@ -24,7 +24,11 @@ public abstract class Figure{
 	boolean isWearingDivingSuit;
 	Iceberg iceberg;
 	ArrayList<IItem> inventory;
-	
+	/*
+	 * Constructor for Fifgure class.
+	 * When it is initialized, it will have no item
+	 * in its inventory.
+	 */
 	public Figure() {
 		this.isDrowning = false;
 		this.roundOfDrowning = 0;
@@ -92,7 +96,7 @@ public abstract class Figure{
 				iceberg.removeItem(i);
 				inventory.add(i);
 				break;
-				}
+			}
 		}
 	}
 	/*
