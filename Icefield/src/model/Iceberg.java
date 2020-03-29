@@ -51,8 +51,8 @@ public abstract class Iceberg {
 		case UP: return borderingIceberg.get(0); 
 		case DOWN: return borderingIceberg.get(1); 
 		case RIGHT: return borderingIceberg.get(2);
-		case LEFT: return borderingIceberg.get(3);
-		default : return null;   //Invalid argument given
+		case LEFT:	return borderingIceberg.get(3);
+		default :  return null;   //Invalid argument given
 		}
 	}
 	/*
