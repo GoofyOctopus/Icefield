@@ -56,8 +56,14 @@ public class Game {
     	roundCounter = 0;
         numberOfMoves = 0;
         Scanner in = new Scanner(System.in);
-        System.out.println("Enter the number of players:");
-        numberOfFigures = in.nextInt();
+        boolean valid = false;
+        while(!valid) {
+        	System.out.println("Enter the number of players:");
+            numberOfFigures = in.nextInt();
+            if(numberOfFigures >= 3)
+            	break;
+            System.out.println("Minimum number of players is 3!");
+        }
         figures = new ArrayList<Figure>();
         for(int i = 0; i < numberOfFigures; i++) {
         	figures.add(chooseFigure());
@@ -146,7 +152,33 @@ public class Game {
     			
     	}
     }
-    
+    /*
+     * */
+    public void grabItem(Figure currPl,Items it) {
+    	switch(it) {
+    	case ROPE:
+	    	checkItem(currPl, new Rope(), false);
+	    	break;
+	    case SHOVEL:
+	    	checkItem(currPl, new Shovel(), false);
+	    	break;
+	    case FOOD:
+	    	checkItem(currPl, new Food(),false);
+	    	break;
+	    case SUIT:
+	    	checkItem(currPl, new DivingSuit(),false);
+	    	break;
+	    case FLARE:
+	    	checkItem(currPl, new Flare(),false);
+	    	break;
+	    case GUN:
+	    	checkItem(currPl, new Gun(),false);
+	    	break;
+	    default:
+	    	checkItem(currPl, new Charge(),false);
+	    	break;
+    	}
+    }
     /*
      * Current player makes move. It can step,remove snow, eat,
      * use shovel, rope, diving suit, flare gun or grab 
@@ -177,29 +209,7 @@ public class Game {
 	    	System.out.println("Please, choose an item");
 	    	answer = in.next().toUpperCase();
 	    	Items it = Items.valueOf(answer);
-	    	switch(it) {
-	    	case ROPE:
-		    	checkItem(currPl, new Rope(), false);
-		    	break;
-		    case SHOVEL:
-		    	checkItem(currPl, new Shovel(), false);
-		    	break;
-		    case FOOD:
-		    	checkItem(currPl, new Food(),false);
-		    	break;
-		    case SUIT:
-		    	checkItem(currPl, new DivingSuit(),false);
-		    	break;
-		    case FLARE:
-		    	checkItem(currPl, new Flare(),false);
-		    	break;
-		    case GUN:
-		    	checkItem(currPl, new Gun(),false);
-		    	break;
-		    default:
-		    	checkItem(currPl, new Charge(),false);
-		    	break;
-	    	}
+	    	grabItem(currPl, it);
 	    	break;
 	    case UR:
 	    	checkItem(currPl, new Rope(), true);
@@ -256,8 +266,9 @@ public class Game {
     	//Inputs for player to make a move
     	System.out.println("NextPlayer function has been called");
     	System.out.println("Go right - 'D', Go left - 'A', Go up - 'W', Go down - 'S'");
-    	System.out.println("Remove snow - \"RS\", Use shovel - \"US\", Use rope - \"UR\"");
-    	System.out.println("Use diving suit - \"UD\", Eat food - \"EF\", Use flare gun - \"UF\"");
+    	System.out.println("Remove snow - \"RS\", Retrieve item - \"RI\",Use shovel - \"US\", ");
+    	System.out.println("Use rope - \"UR\", Use diving suit - \"UD\",");
+    	System.out.println( "Eat food - \"EF\", Use flare gun - \"UF\"");
     	//Each player has 4 moves
     	while(numberOfMoves < 4) {
     		System.out.println("Enter next move:");
@@ -269,9 +280,11 @@ public class Game {
         		try {
         			move = Move.valueOf(answer);
         			if(!makeMove(currPl, move)) return false;
-				} catch (Exception e) {
+				} catch (IllegalArgumentException e) {
 					System.out.println("Invalid input");
 					invalid = true;
+				} catch(Exception e) {
+					System.out.println("Something went wrong while making a move!");
 				}
         	}
     	}
