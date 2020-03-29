@@ -8,24 +8,21 @@ public abstract class Item implements IItem
 	Figure figure;
 	Iceberg iceberg;
 	
-	abstract public void useItem();
+	abstract public void useItem();//abstract method which we implement in the child classes regarding using an item such as shovel,rope,diving suit,food
 	
 	public Item()//default constructor which the child classes will call
 	{
-		System.out.println("Default constructor is called");//ask yazan if we should have this
+		//by setting the figure and iceberg to null we show that the item is not owned by any of them
+		System.out.println("Default constructor is called");
 		figure = null;
 		iceberg = null;
 	}
 	public void destroy()
-	{/*here we are checking if the item is in iceberg then we remove the item and then we do 
-	the same thing for the figure and set the both of them to null */
+	{//here we are checking if the item is in iceberg then we remove the item from the iceberg
 		if(iceberg!=null)
 			this.iceberg.removeItem(this);
-		if(figure!=null)
-			this.figure.removeItem(this);
-
+		
 		iceberg = null;
-		figure = null;
 	}
 
 	//getters and setter methods

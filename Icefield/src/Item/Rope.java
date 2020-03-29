@@ -17,11 +17,10 @@ public class Rope extends Item
 		figure.help(iceberg);
 	}
 	
-	@Override
-	public void destroy()//removing the item from the collapsed iceberg
+	
+	public void destroy()//calling the destroy method from the super class which is item class
 	{
-		iceberg=null;
-		this.iceberg.removeItem(this);
+		super.destroy();
 	}
 	
 }

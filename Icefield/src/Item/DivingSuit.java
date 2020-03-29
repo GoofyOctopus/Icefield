@@ -1,7 +1,5 @@
 package Item;
 
-import Figures.Figure;
-import model.Iceberg;
 
 public class DivingSuit extends Item
 {
@@ -19,13 +17,8 @@ public class DivingSuit extends Item
 		 to show that the figure has the diving suit on it*/
 	}
 	
-	@Override
-	public void destroy()/*overriding the destroy method 
-	from the super class and destroying the item from the iceberg*/
+	public void destroy()/*we are calling the destroy method which is in the super class item and using it here*/
 	{
-		iceberg=null;
-		this.iceberg.removeItem(this);
-		//ask yazan also about this and do the same thing in rope and shovel also
-		
+		super.destroy();
 	}
 }

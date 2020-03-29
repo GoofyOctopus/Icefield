@@ -16,11 +16,9 @@ public class Shovel extends Item
 		iceberg.decreaseSnow(2);
 	}
 	
-	@Override
-	public void destroy()//removing item from the collapsed iceberg
+	public void destroy()//calling the destroy function from the super class which is item
 	{
-		iceberg=null;
-		this.iceberg.removeItem(this);
+		super.destroy();
 	}
 
 }

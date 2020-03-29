@@ -6,7 +6,6 @@ import Figures.Figure;
 
 public class Charge implements IItem
 {
-	//creating the instances of iceberg and figure with package visibility (ask yazan)
 	Iceberg iceberg;
 	Figure figure;
 	
@@ -18,11 +17,10 @@ public class Charge implements IItem
 		figure=null;
 	}
 
-	public void destroy()//destroying the item on the collapsed iceberg 
+	public void destroy()//destroying the item on the collapsed iceberg, checking if the item is on the iceberg then we remove it
 	{
-		iceberg=null;
-		//this.iceberg.removeItem(this);//removing the item from the iceberg
-		//ask yazan if it's just enough to set the iceberg to null or do we have to add the upper code ??
+		if(iceberg!=null)
+			this.iceberg.removeItem(this);
 	}
 	
 	

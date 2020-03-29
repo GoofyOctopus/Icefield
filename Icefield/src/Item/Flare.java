@@ -18,7 +18,8 @@ public class Flare implements IItem
 	
 	public void destroy()//destroying the item on the collapsed iceberg 
 	{
-		iceberg=null;
+		if(iceberg!=null)
+			this.iceberg.removeItem(this);
 	}
 	
 	//getter and setter methods

@@ -14,9 +14,10 @@ public class Gun implements IItem
 		iceberg=null;
 		figure=null;
 	}
-	public void destroy()//destroying the item on the collapsed iceberg 
+	public void destroy()//destroying the item on the collapsed iceberg, checking if the item is on the iceberg then we remove it
 	{
-		iceberg=null;
+		if(iceberg!=null)
+			this.iceberg.removeItem(this);
 	}
 	
 	//getter and setter methods
