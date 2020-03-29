@@ -14,8 +14,8 @@ public class Game {
     public int numberOfFigures; //Number of players
     public int roundCounter; //Current round
     private int numberOfMoves;//Moves made by current player
-    private ArrayList<Figure> figures;
-    private Icefield icf;
+    public ArrayList<Figure> figures;
+    public Icefield icf;
     private boolean test;
     /*
      * Shortcuts for possible moves:
@@ -24,13 +24,13 @@ public class Game {
      * UD - use diving suit, UF - use flare gun, RI - retrieve item
      * US - use skill;
      * */
-    private enum Move{
+    public enum Move{
     	W,S,D,A, UR, USH, RS, EF, UD, UF, RI,US;
     }
     /*
      * Enum for items to easily compare user input
      * */
-    private enum Items{
+    public enum Items{
     	ROPE, SHOVEL, FOOD, SUIT, FLARE, GUN, CHARGE;
     }
     /*

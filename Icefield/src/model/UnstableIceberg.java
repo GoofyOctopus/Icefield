@@ -14,13 +14,18 @@ public class UnstableIceberg extends Iceberg{
 		super(x,y);
 		random = new Random();
 		capacity = random.nextInt(3);
-		System.out.println("UnstableIceberg(List<Iceberg> neighbouringIcebergs) constructor is called");
+		System.out.println("UnstableIceberg constructor is called");
 	}
 
 	//Returns how many figure it can hold.
 	public int getCapacity() {
 		System.out.println("getCapacity() method is called"); 
 		return capacity;
+	}
+	//Sets capacity given by the parameter
+	public void setCapacity(int capacity) {
+		System.out.println("setCapacity() method is called");
+		this.capacity = capacity;
 	}
 	/*
 	 *  Adds the figure to the iceberg

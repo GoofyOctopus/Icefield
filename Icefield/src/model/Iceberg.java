@@ -24,7 +24,7 @@ public abstract class Iceberg {
 	 */
 	public Iceberg(int x, int y)
 	{
-		System.out.println("Default Iceberg constructor is called");
+		//System.out.println("Default Iceberg constructor is called");
 		this.snowUnit = 1;
 		this.hasigloos = false;
 		this.borderingIceberg = new ArrayList<Iceberg>();
@@ -50,8 +50,9 @@ public abstract class Iceberg {
 		{
 		case UP: return borderingIceberg.get(0); 
 		case DOWN: return borderingIceberg.get(1); 
-		case RIGHT: return borderingIceberg.get(2); 
-		default : return borderingIceberg.get(3);  //default is performed when non of the cases is true
+		case RIGHT: return borderingIceberg.get(2);
+		case LEFT: return borderingIceberg.get(3);
+		default : return null;   //Invalid argument given
 		}
 	}
 	/*
