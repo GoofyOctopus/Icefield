@@ -53,7 +53,7 @@ public class Main {
 	public void testCase1()
 	{
 		Game g = new Game(true);
-		g.makeMove(g.figures.get(0), Move.S);//Move down to stable iceberg
+		g.makeMove(g.figures.get(0), Move.A);//Move down to stable iceberg
 	}
 	public void testCase2() {
 		Game g = new Game(true);

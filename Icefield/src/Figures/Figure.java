@@ -37,14 +37,17 @@ public abstract class Figure{
 	}
 	/*
 	 * Stepping method for figure which will call the remove method of 
-	 * iceberg which its currently on and call the acceot method of 
+	 * iceberg which its currently on and call the accept method of 
 	 * iceberg which it intends to move to.
 	 */
 	
 	public void step(Direction d) {
 		System.out.println("step(Direction) method is called");
 		iceberg.remove(this);
-		iceberg.getNeighbor(d).accept(this);
+		Iceberg ic = iceberg.getNeighbor(d);
+		if(this != null)
+			System.out.println("one moment");
+		//ic.accept(this);
 	}
 	/*
 	public void die() {

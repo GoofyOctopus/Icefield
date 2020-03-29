@@ -76,11 +76,11 @@ public class Icefield {
 			}
 		} 
 		//setting the figures on the icebergs
-		for(int i = 0; i < figures.size(); i+=2)
+		for(int i = 0; i < figures.size(); i++)
 		{
 			//in location array, each two consecutive numbers represent a location 
-			icebergs[1][1].accept(figures.get(i));
-			figures.get(i).setIceberg(icebergs[1][1]);
+			icebergs[5][5].accept(figures.get(i));
+			figures.get(i).setIceberg(icebergs[5][5]);
 		}
 	}
 	/*
