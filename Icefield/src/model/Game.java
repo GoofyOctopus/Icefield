@@ -76,7 +76,7 @@ public class Game {
         for(int i = 0; i < numberOfFigures; i++) {
         	figures.add(chooseFigure());
         }
-        icf = new Icefield(figures, new int[5]);/**Should we pass figures to icefield???????*/
+        icf = new Icefield(figures);
     }
     
     /*
