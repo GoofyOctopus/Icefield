@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Item.*;
-
+import Figures.*;
 /*
  * Yazan
  */
@@ -22,7 +22,7 @@ public class Icefield {
 	 * the game. Also in the constructor the icebergs'
 	 * neighbors are set.
 	 */
-	public Icefield()
+	public Icefield(List<Figure> figures, int locations[])
 	{ 
 		System.out.println("Icefield default constructor is called now all icebergs are instantiated");
 		icebergs = new Iceberg[10][10];
@@ -75,7 +75,13 @@ public class Icefield {
 				}
 			}
 		} 
-		
+		//setting the figures on the icebergs
+		for(int i = 0; i < figures.size(); i+=2)
+		{
+			//in location array, each two consecutive numbers represent a location 
+			icebergs[locations[i]][locations[i+1]].accept(figures.get(i));
+			figures.get(i).setIceberg(icebergs[locations[i]][locations[i+1]]);
+		}
 	}
 	/*
 	 * generateBlizzards() method is used called from the Game class
