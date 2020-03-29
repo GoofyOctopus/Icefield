@@ -15,5 +15,12 @@ public class Shovel extends Item
 		//how to implement that we have to make the remove snow by 2 unit instead of 1
 		iceberg.decreaseSnow(2);
 	}
+	
+	@Override
+	public void destroy()//removing item from the collapsed iceberg
+	{
+		iceberg=null;
+		this.iceberg.removeItem(this);
+	}
 
 }

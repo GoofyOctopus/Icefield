@@ -20,6 +20,8 @@ public class Flare implements IItem
 	{
 		iceberg=null;
 	}
+	
+	//getter and setter methods
 	public Figure getFigure() {
 		return figure;
 	}

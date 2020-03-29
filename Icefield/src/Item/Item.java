@@ -12,22 +12,23 @@ public abstract class Item implements IItem
 	
 	public Item()//default constructor which the child classes will call
 	{
-		//System.out.println("Defualt constructor is called"); unable to call this many times
+		System.out.println("Default constructor is called");//ask yazan if we should have this
 		figure = null;
 		iceberg = null;
 	}
 	public void destroy()
-	{
+	{/*here we are checking if the item is in iceberg then we remove the item and then we do 
+	the same thing for the figure and set the both of them to null */
 		if(iceberg!=null)
 			this.iceberg.removeItem(this);
-//removeItem method to be added to the figure
-//		if(figure!=null)
-//			this.figure.removeItem(this);
+		if(figure!=null)
+			this.figure.removeItem(this);
 
 		iceberg = null;
 		figure = null;
 	}
 
+	//getters and setter methods
 	public Figure getFigure() {
 		return figure;
 	}

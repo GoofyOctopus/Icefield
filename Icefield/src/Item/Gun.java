@@ -18,6 +18,8 @@ public class Gun implements IItem
 	{
 		iceberg=null;
 	}
+	
+	//getter and setter methods
 	public Figure getFigure() {
 		return figure;
 	}
