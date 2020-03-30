@@ -22,16 +22,10 @@ public class Main {
 		case 1: Game g = new Game(false);
 		case 2: while(main.tests()) {System.out.println("############Case is done############");};
 		}
-		
-		/* *
-		 *  using 5x5 topleft part *
-		 *  2 eskimo 1 explorer *
-		 *   all items are reachable *
-		 *    14 test case 
-		 *    * 15 or any other number is exit */	
+			
 	}
 	public boolean tests() 
-	{
+	{	//You enter anything else to exit.
 		System.out.println("--------------------Test Cases--------------------");
 		System.out.println("Enter which case you would like to run: ");
 		System.out.println("1  : Move to unstable iceberg");
@@ -71,7 +65,7 @@ public class Main {
 		}
 	}
 	/*
-	 * Case N1 - Move to an unstable iceberg and collapse after exceeding
+	 * Test case N1 - Move to an unstable iceberg and collapse after exceeding
 	 * */
 	public void testCase1() {
 		Game g = new Game(true);
@@ -79,7 +73,7 @@ public class Main {
 		g.makeMove(g.figures.get(0), Move.D);
 	}
 	/*
-	 * Case N2 - Move to a stable iceberg
+	 * Test case N2 - Move to a stable iceberg
 	 * */
 	public void testCase2()
 	{
@@ -87,7 +81,7 @@ public class Main {
 		g.makeMove(g.figures.get(0), Move.D);//Move RIGHT
 	}
 	/*
-	 * Case N3 - Winning the game
+	 * Test case N3 - Winning the game
 	 * */
 	public void testCase3() {
 		Game g = new Game(true);
@@ -105,7 +99,7 @@ public class Main {
 		
 	}
 	/*
-	 * Case N4 - game is over
+	 * Test case N4 - game is over
 	 * */
 	public void testCase4() {
 		Game g = new Game(true);
@@ -120,7 +114,7 @@ public class Main {
 		
 	}
 	/*
-	 * Case N5 - drown
+	 * Test case N5 - drown
 	 * */
 	public void testCase5() {
 		Game g = new Game(true);
