@@ -76,26 +76,41 @@ public class temp {
 	}
 	public void testCase4() {}
 	public void testCase5() {}
+	/*
+	 * Genarating blizzard
+	 */
 	public void testCase6() {
 		Game g = new Game(true);
 		g.icf.generateBlizzards();
 		System.out.println("Generate blizzard test case is done!");
 	}
+	/*
+	 * Checking capaacity of neighboring iceberg.
+	 */
 	public void testCase7() {
 		Game g = new Game(true);
 		g.makeMove(g.figures.get(2), Move.US);
 		System.out.println("Check capacity test case is done!");
 		}
+	/*
+	 * Building igloo
+	 */
 	public void testCase8() {
 		Game g = new Game(true);
 		g.makeMove(g.figures.get(0), Move.US);
 		System.out.println("Build igloo test case is done!");
 	}
+	/*
+	 * Checking if next player method is running
+	 */
 	public void testCase9() {
 		Game g = new Game(true);
 		g.nextPlayer(g.figures.get(0));
 		System.out.println("Next player test case is done!");
 		}
+	/*
+	 * Removing snow
+	 */
 	public void testCase10() {
 		Game g = new Game(true);
 		g.makeMove(g.figures.get(0), Move.RS);
