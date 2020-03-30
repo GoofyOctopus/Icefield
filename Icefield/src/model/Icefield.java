@@ -106,4 +106,7 @@ public class Icefield {
 			}
 		}
 	}
+	public void test14() {
+		((UnstableIceberg) icebergs[0][1]).setCapacity(1);
+	}
 }
