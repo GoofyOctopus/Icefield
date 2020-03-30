@@ -53,11 +53,11 @@ public class Icefield {
 				{
 					icebergs[i][j].addItem(new Flare());
 				}
-				if((i!=0)&&(i%6==0))
+				if((i!=0)&&(i%6==0)||(i==1)&&(j==2))
 				{
 					icebergs[i][j].addItem(new Gun());
 				}
-				if((i!=0)&&(i%8==0))
+				if((i!=0)&&(i%8==0)||(i==2)&&(j==2))
 				{
 					icebergs[i][j].addItem(new Charge());
 				}
@@ -69,7 +69,7 @@ public class Icefield {
 				{
 					icebergs[i][j].addItem(new Rope());
 				}
-				if(i==j)
+				if(i==j+1)
 				{
 					icebergs[i][j].addItem(new DivingSuit()); 
 				}
@@ -96,7 +96,13 @@ public class Icefield {
 		{
 			for(int j = 0; j < 10; j++)
 			{
-				icebergs[i][j].increaseSnow();
+				if(icebergs[i][j].ishasIgloos()==true)
+					{
+					icebergs[i][j].increaseSnow();
+					for(int k = 0;k<icebergs[i][j].figures.size();k++)
+						icebergs[i][j].figures.get(k).decreaseHeatUnit();
+					}
+				
 			}
 		}
 	}

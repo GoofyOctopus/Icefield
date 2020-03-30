@@ -163,4 +163,7 @@ public abstract class Figure{
 	public boolean isWearingDivingSuit() {
 		return isWearingDivingSuit;
 	}
+	public void addToInventory(IItem item) {
+		this.inventory.add(item);
+	}
 }
