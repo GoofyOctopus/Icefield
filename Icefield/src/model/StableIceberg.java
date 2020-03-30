@@ -8,5 +8,8 @@ public class StableIceberg extends Iceberg{
 	{ 
 		super(x, y);
 	}
-	
+	@Override
+	public int getCapacity() {
+		return -1;
+	}
 }

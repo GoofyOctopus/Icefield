@@ -18,6 +18,7 @@ public class UnstableIceberg extends Iceberg{
 	}
 
 	//Returns how many figure it can hold.
+	@Override
 	public int getCapacity() {
 		System.out.println("getCapacity() method is called and it's " + capacity); 
 		return capacity;

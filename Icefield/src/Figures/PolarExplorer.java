@@ -10,6 +10,7 @@ public class PolarExplorer extends Figure{
 
 	public PolarExplorer() {
 		super();
+		System.out.println("Default constructor of polar explorer is called");
 		bodyHeatUnit = 4;
 	}
 	/*
