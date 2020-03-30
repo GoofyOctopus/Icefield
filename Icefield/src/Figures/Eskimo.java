@@ -10,6 +10,7 @@ public class Eskimo extends Figure {
 
 	public Eskimo() {
 		super();
+		System.out.println("Default constructor of eskimo is called");
 		bodyHeatUnit = 5;
 	}
 	/*
