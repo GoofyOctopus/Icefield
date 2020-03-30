@@ -111,7 +111,8 @@ public class Main {
 	public void testCase11() 
 	{
 		Game g = new Game(true);
-		g.makeMove(g.figures.get(0), Move.RI);
+		g.makeMove(g.figures.get(0), Move.S); //move to 1,2
+		g.makeMove(g.figures.get(0), Move.RI); //food
 		System.out.println("Retrieve an item test case is done");
 	}
 	public void testCase12()

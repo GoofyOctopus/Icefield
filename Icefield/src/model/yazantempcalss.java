@@ -10,6 +10,24 @@ public class yazantempcalss {
 
 	public void testCase11() 
 	{
+		System.out.println("--------------------Test Cases--------------------");
+		System.out.println("Enter which case you would like to run: ");
+		System.out.println("1 : ");
+		System.out.println("2 : ");
+		System.out.println("3 : ");
+		System.out.println("4 : ");
+		System.out.println("5 : ");
+		System.out.println("6 : ");
+		System.out.println("7 : ");
+		System.out.println("8 : ");
+		System.out.println("9 : ");
+		System.out.println("10 : ");
+		System.out.println("11 : ");
+		System.out.println("12 : ");
+		System.out.println("13 : ");
+		System.out.println("14 : ");
+		System.out.println("15 : ");
+		
 		Game g = new Game(true);
 		g.makeMove(g.figures.get(0), Move.RI);
 		System.out.println("Retrieve an item test case is done");
@@ -38,7 +56,6 @@ public class yazantempcalss {
 		g.makeMove(g.figures.get(2), Move.UR); 
 		System.out.println("Use rope case is called");
 	}
-	
 	public void testCase15()
 	{
 		Game g = new Game(true);
