@@ -24,7 +24,7 @@ public abstract class Iceberg {
 	 */
 	public Iceberg(int x, int y)
 	{
-		//System.out.println("Default Iceberg constructor is called");
+		System.out.println("Default Iceberg constructor is called");
 		this.snowUnit = 1;
 		this.hasigloos = false;
 		this.borderingIceberg = new ArrayList<Iceberg>();
@@ -45,7 +45,7 @@ public abstract class Iceberg {
 	 */
 	public Iceberg getNeighbor(Direction direction)
 	{
-		//System.out.println("getNeighbor(Direction direction) methos is called");
+		System.out.println("getNeighbor(Direction direction) methos is called");
 		switch (direction) 
 		{
 		case UP: return borderingIceberg.get(0); 
@@ -74,10 +74,10 @@ public abstract class Iceberg {
 	 */
 	public void setBorderingIceberg(Direction d, Iceberg i)
 	{
-		//System.out.println("setNeighbor(Direction d, Iceberg i) method is called");
+		System.out.println("setNeighbor(Direction d, Iceberg i) method is called");
 		
 		int index = d.ordinal();
-		borderingIceberg.add(index, i);
+		borderingIceberg.set(index, i);
 	}
 	/*
 	 * decreaseSnow(int units) method is called when the figure

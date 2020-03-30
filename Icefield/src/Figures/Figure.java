@@ -44,11 +44,7 @@ public abstract class Figure{
 	public void step(Direction d) {
 		System.out.println("step(Direction) method is called");
 		iceberg.remove(this);
-		Iceberg ic = iceberg.getNeighbor(d);
-//		if(ic == null)
-//			System.out.println("one moment");
-		
-		ic.accept(this);
+		iceberg.getNeighbor(d).accept(this);
 	}
 	/*
 	public void die() {

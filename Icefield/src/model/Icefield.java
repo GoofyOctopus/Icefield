@@ -35,16 +35,16 @@ public class Icefield {
 					icebergs[i][j]= new UnstableIceberg(i,j);
 				else
 					icebergs[i][j]= new StableIceberg(i,j);
-//				if(j > 0)
-//				{
-//					icebergs[i][j].setBorderingIceberg(Direction.UP, icebergs[i][j-1]);
-//					icebergs[i][j-1].setBorderingIceberg(Direction.DOWN, icebergs[i][j]);
-//				}
-//				if(i > 0)
-//				{
-//					icebergs[i][j].setBorderingIceberg(Direction.LEFT, icebergs[i-1][j]);
-//					icebergs[i-1][j].setBorderingIceberg(Direction.RIGHT, icebergs[i][j]);
-//				}
+				if(j > 0)
+				{
+					icebergs[i][j].setBorderingIceberg(Direction.UP, icebergs[i][j-1]);
+					icebergs[i][j-1].setBorderingIceberg(Direction.DOWN, icebergs[i][j]);
+				}
+				if(i > 0)
+				{
+					icebergs[i][j].setBorderingIceberg(Direction.LEFT, icebergs[i-1][j]);
+					icebergs[i-1][j].setBorderingIceberg(Direction.RIGHT, icebergs[i][j]);
+				}
 				if(j%2==0)
 				{
 					icebergs[i][j].addItem(new Food());
@@ -75,20 +75,7 @@ public class Icefield {
 				}
 			}
 		}
-		for(int i = 0; i < 10; i++) 
-		{
-			for(int j = 0; j < 10; j++)
-			{
-				if(j > 0)
-					icebergs[i][j].setBorderingIceberg(Direction.UP, icebergs[i][j-1]);
-				if(j < 9)
-					icebergs[i][j].setBorderingIceberg(Direction.DOWN, icebergs[i][j + 1]);
-				if(i > 0)
-					icebergs[i][j].setBorderingIceberg(Direction.RIGHT, icebergs[i-1][j]);
-				if(i < 9)
-					icebergs[i][j].setBorderingIceberg(Direction.LEFT, icebergs[i + 1][j]);
-			}
-		}
+		
 		//setting the figures on the icebergs
 		for(int i = 0; i < figures.size(); i++)
 		{
