@@ -25,7 +25,8 @@ public class PolarExplorer extends Figure{
 	public int useSkill(Direction d) {
 		System.out.println("useSkill(Direction) method is called");
 		if(iceberg.getNeighbor(d) instanceof UnstableIceberg) {
-			return ((UnstableIceberg)iceberg).getCapacity();
+			System.out.println("Capacity of iceberg in direction "+d+": "+ iceberg.getCapacity());
+			return iceberg.getCapacity();
 		}
 		return 0;
 	}
