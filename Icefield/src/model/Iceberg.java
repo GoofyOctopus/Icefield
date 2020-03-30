@@ -15,8 +15,8 @@ public abstract class Iceberg {
 	private List<Iceberg> borderingIceberg;
 	protected List<Figure> figures;
 	protected List<IItem> items;
-	private int x; //new location attribute
-	private int y; //new location attribute
+	protected int x; //new location attribute
+	protected int y; //new location attribute
 	
 	/*
 	 * Default constructor, sets most attributes, other attributes
@@ -45,7 +45,7 @@ public abstract class Iceberg {
 	 */
 	public Iceberg getNeighbor(Direction direction)
 	{
-		System.out.println("getNeighbor(Direction direction) methos is called");
+		System.out.println("getNeighbor(" + direction + ") methos is called");
 		switch (direction) 
 		{
 		case UP: return borderingIceberg.get(0); 
@@ -59,13 +59,20 @@ public abstract class Iceberg {
 	 * accept(Figure f) method is used when a figure that knows the
 	 * reference to one iceberg asks it to add him(moved to it)
 	 */
-	public void accept(Figure f) { System.out.println("accept(Figure f) method is called"); figures.add(f); }
+	public void accept(Figure f) { 
+		System.out.println("accept(Figure f) method is called for (" + this.x + "," + this.y + ") stable iceberg");
+		figures.add(f);
+		f.setIceberg(this);
+	}
 	/*
 	 * remove(Figure f) method is called when the figure is accepted
 	 * in another iceberg, where the previous iceberg is asked to
 	 * remove that figure from the list(moved from)
 	 */
-	public void remove(Figure f) { System.out.println("remove(Figure f) method is called"); figures.remove(f); }
+	public void remove(Figure f) { 
+		System.out.println("remove(Figure f) method is called for (" + this.x + "," + this.y + ")");
+		figures.remove(f);
+	}
 	/*
 	 * setBorderingIceberg(Direction d, Iceberg i) is called in cases of 
 	 * creating icebergs that don't have a list of neighboring 

@@ -42,9 +42,10 @@ public abstract class Figure{
 	 */
 	
 	public void step(Direction d) {
-		System.out.println("step(Direction) method is called");
+		System.out.println("step(" + d + ") method is called");
+		Iceberg ic = iceberg.getNeighbor(d);
 		iceberg.remove(this);
-		iceberg.getNeighbor(d).accept(this);
+		ic.accept(this);
 	}
 	/*
 	public void die() {

@@ -50,17 +50,30 @@ public class Main {
 		default : System.out.println("Test cases are done! Thank you!"); return false;
 		}
 	}
+	/*
+	 * Case N1 - Move to a stable iceberg
+	 * */
 	public void testCase1()
 	{
 		Game g = new Game(true);
-		g.makeMove(g.figures.get(0), Move.D);//Move down to stable iceberg
+		g.makeMove(g.figures.get(0), Move.D);//Move right to stable iceberg
+		//How do we show that it's a stable iceberg
 	}
+	/*
+	 * Case N2 - Move to an unstable iceberg
+	 * */
 	public void testCase2() {
 		Game g = new Game(true);
-		g.makeMove(g.figures.get(0), Move.A);//Move Left to stable iceberg
-		System.out.println("getNeighbor(Direction direction) methos is called");
+		g.makeMove(g.figures.get(0), Move.S);//Move DOWN to stable iceberg
+		g.makeMove(g.figures.get(0), Move.D);//Move RIGHT to stable iceberg
 	}
-	public void testCase3() {}
+	/*
+	 * Case N2 - Move to a hole to collapse
+	 * */
+	public void testCase3() {
+		Game g = new Game(true);
+		g.makeMove(g.figures.get(0), Move.A);//Move Left to stable iceberg
+	}
 	public void testCase4() {}
 	public void testCase5() {}
 	public void testCase6() {}

@@ -19,7 +19,7 @@ public class UnstableIceberg extends Iceberg{
 
 	//Returns how many figure it can hold.
 	public int getCapacity() {
-		System.out.println("getCapacity() method is called"); 
+		System.out.println("getCapacity() method is called and it's " + capacity); 
 		return capacity;
 	}
 	//Sets capacity given by the parameter
@@ -35,8 +35,9 @@ public class UnstableIceberg extends Iceberg{
 	@Override
 	public void accept(Figure f) 
 	{ 
-		System.out.println("accept(Figure f) method is called");
+		System.out.println("accept(Figure f) method is called for (" + x + "," + y + ") untstable iceberg");
 		figures.add(f);
+		f.setIceberg(this);
 		if(figures.size() > capacity)
 			collapse();
 	}
