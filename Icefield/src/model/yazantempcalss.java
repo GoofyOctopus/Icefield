@@ -38,6 +38,7 @@ public class yazantempcalss {
 		g.makeMove(g.figures.get(2), Move.UR); 
 		System.out.println("Use rope case is called");
 	}
+	
 	public void testCase15()
 	{
 		Game g = new Game(true);
