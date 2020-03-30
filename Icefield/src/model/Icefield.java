@@ -49,15 +49,15 @@ public class Icefield {
 				{
 					icebergs[i][j].addItem(new Food());
 				}
-				if(j%5==0)
+				if((i==1)&&(j==2))
 				{
 					icebergs[i][j].addItem(new Flare());
 				}
-				if((i!=0)&&(i%6==0)||(i==1)&&(j==2))
+				if((i==1)&&(j==2))
 				{
 					icebergs[i][j].addItem(new Gun());
 				}
-				if((i!=0)&&(i%8==0)||(i==2)&&(j==2))
+				if((i==1)&&(j==2))
 				{
 					icebergs[i][j].addItem(new Charge());
 				}

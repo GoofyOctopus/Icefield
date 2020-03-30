@@ -13,7 +13,7 @@ public class UnstableIceberg extends Iceberg{
 	{ 
 		super(x,y);
 		random = new Random();
-		capacity = random.nextInt(3);
+		capacity = random.nextInt(2);
 		System.out.println("UnstableIceberg constructor is called");
 	}
 
