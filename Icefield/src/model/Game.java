@@ -163,12 +163,12 @@ public class Game {
     		items = currPl.getIceberg().getItems();
     	
     	for(int j = 0; j < items.size(); j++) {
-    		Item c = (Item)items.get(j);
-    		if(c.equals(i)) {
+    		
+    		if(items.get(j).getClass() == i.getClass()) {
     			if(use)
-    				c.useItem();
+    				((Item) items.get(j)).useItem();
     			else
-    				currPl.retrieveItem(c);
+    				currPl.retrieveItem(items.get(j));
     		}
     			
     	}
@@ -289,8 +289,10 @@ public class Game {
      * Returns false - if game finished, true - otherwise
      * */
     public boolean nextPlayer(Figure currPl){
-    	if(currPl.isDrowning() && currPl.getRoundOfDrowning() < roundCounter)
+    	if(currPl.isDrowning() && currPl.getRoundOfDrowning() < roundCounter) {
 			endGame();
+			return false;
+		}
     	Scanner in = new Scanner(System.in);
     	String answer;
     	Move move;

@@ -20,7 +20,7 @@ public class Main {
 		int answer = in.nextInt();
 		switch(answer) {
 		case 1: Game g = new Game(false);
-		case 2: while(main.tests());
+		case 2: while(main.tests()) {System.out.println("############Case is done############");};
 		}
 		
 		/* *
@@ -34,10 +34,10 @@ public class Main {
 	{
 		System.out.println("--------------------Test Cases--------------------");
 		System.out.println("Enter which case you would like to run: ");
-		System.out.println("1  : Win");
-		System.out.println("2  : Endgame");
-		System.out.println("3  : Move to stable iceberg");
-		System.out.println("4  : Move to unstable iceberg");
+		System.out.println("1  : Move to unstable iceberg");
+		System.out.println("2  : Move to stable iceberg");
+		System.out.println("3  : WIN");
+		System.out.println("4  : Endgame");
 		System.out.println("5  : Drown");
 		System.out.println("6  : Blizzard");
 		System.out.println("7  : Check capacity");
@@ -70,59 +70,107 @@ public class Main {
 		}
 	}
 	/*
-	 * Case N1 - Move to a stable iceberg
+	 * Case N1 - Move to an unstable iceberg and collapse after exceeding
 	 * */
-	public void testCase1()
+	public void testCase1() {
+		Game g = new Game(true);
+		g.makeMove(g.figures.get(0), Move.S);
+		g.makeMove(g.figures.get(0), Move.D);
+	}
+	/*
+	 * Case N2 - Move to a stable iceberg
+	 * */
+	public void testCase2()
 	{
 		Game g = new Game(true);
 		g.makeMove(g.figures.get(0), Move.D);//Move RIGHT
 	}
 	/*
-	 * Case N2 - Move to an unstable iceberg
-	 * */
-	public void testCase2() {
-		Game g = new Game(true);
-		g.makeMove(g.figures.get(0), Move.S);//Move DOWN
-		g.makeMove(g.figures.get(0), Move.D);//Move RIGHT
-	}
-	/*
-	 * Case N2 - Move to an unstable iceberg to collapse
+	 * Case N3 - Winning the game
 	 * */
 	public void testCase3() {
 		Game g = new Game(true);
-		g.makeMove(g.figures.get(0), Move.A);//Move Left
-		g.makeMove(g.figures.get(1), Move.A);//Move Left
-		g.makeMove(g.figures.get(2), Move.A);//Move Left
+		g.makeMove(g.figures.get(0), Move.S);//Move Left
+		System.out.println("Type GUN");
+		g.makeMove(g.figures.get(0), Move.RI);
+		g.makeMove(g.figures.get(1), Move.S);//Move Left
+		System.out.println("Type CHARGE");
+		g.makeMove(g.figures.get(0), Move.RI);
+		g.makeMove(g.figures.get(2), Move.S);//Move Left
+		System.out.println("Type FLARE");
+		g.makeMove(g.figures.get(0), Move.RI);
+		if(g.checkFlareGun())
+			g.winGame();
+		
 	}
+	/*
+	 * Case N4 - game is over
+	 * */
 	public void testCase4() {
 		Game g = new Game(true);
+		g.makeMove(g.figures.get(0), Move.S);//Move DOWN
+		g.makeMove(g.figures.get(0), Move.D);//Move RIGHT
+		g.makeMove(g.figures.get(1), Move.S);//Move DOWN
+		g.makeMove(g.figures.get(1), Move.D);//Move RIGHT
+		g.makeMove(g.figures.get(2), Move.S);//Move DOWN
+		g.makeMove(g.figures.get(2), Move.D);//Move RIGHT
+		g.roundCounter++;
 		g.nextPlayer(g.figures.get(0));
-		g.nextPlayer(g.figures.get(1));
-		g.nextPlayer(g.figures.get(2));
-		
 		
 	}
-	public void testCase5() {}
+	/*
+	 * Case N5 - drown
+	 * */
+	public void testCase5() {
+		Game g = new Game(true);
+		g.makeMove(g.figures.get(0), Move.S);//Move DOWN
+		g.makeMove(g.figures.get(0), Move.D);//Move RIGHT
+		g.makeMove(g.figures.get(1), Move.S);//Move DOWN
+		g.makeMove(g.figures.get(1), Move.D);//Move RIGHT
+		g.makeMove(g.figures.get(2), Move.S);//Move DOWN
+		g.makeMove(g.figures.get(2), Move.D);//Move RIGHT
+		
+	}
+	/*
+	 * Test case N6 - Generate blizzard
+	 * */
 	public void testCase6() {
 		Game g = new Game(true);
 		g.icf.generateBlizzards();
 		System.out.println("Blizzard is generated!");
 	}
+	/*
+	 * Test case N7 - Checking capacity of neighboring iceberg
+	 * */
 	public void testCase7() {
-			Game g = new Game(true);
-		}
+		Game g = new Game(true);
+		g.makeMove(g.figures.get(2), Move.US);
+		System.out.println("Check capacity test case is done!");
+	}
+	/*
+	 * Test case N8 - Building igloos
+	 * */
 	public void testCase8() {
 		Game g = new Game(true);
 		g.makeMove(g.figures.get(2), Move.US);
 	}
+	/*
+	 * Test case N9 - Next player 
+	 * */
 	public void testCase9() {
 		Game g = new Game(true);
 		g.nextPlayer(g.figures.get(0));
-		}
+	}
+	/*
+	 * Test case N10 - Removing snow
+	 * */
 	public void testCase10() {
 		Game g = new Game(true);
 		g.makeMove(g.figures.get(0), Move.RS);
 	}
+	/*
+	 * Test case N11 - Retrieving an item
+	 * */
 	public void testCase11() 
 	{
 		Game g = new Game(true);
@@ -130,6 +178,9 @@ public class Main {
 		g.makeMove(g.figures.get(0), Move.RI); //food
 		System.out.println("Retrieve an item test case is done");
 	}
+	/*
+	 * Test case N12 - Using diving suit
+	 * */
 	public void testCase12()
 	{
 		Game g = new Game(true);
@@ -137,6 +188,9 @@ public class Main {
 		g.makeMove(g.figures.get(0), Move.UD);
 		System.out.println("Use diving suit test case is done");
 	}
+	/*
+	 * Test case N13 - Using food
+	 * */
 	public void testCase13()
 	{
 		Game g = new Game(true);
@@ -144,6 +198,9 @@ public class Main {
 		g.makeMove(g.figures.get(0), Move.EF);
 		System.out.println("Use food test case is done");
 	}
+	/*
+	 * Test case N14 - Using rope
+	 * */
 	public void testCase14()
 	{
 		Game g = new Game(true);
@@ -154,7 +211,9 @@ public class Main {
 		g.makeMove(g.figures.get(2), Move.UR); 
 		System.out.println("Use rope case is called");
 	}
-	
+	/*
+	 * Test case N15 - Using shovel
+	 * */
 	public void testCase15()
 	{
 		Game g = new Game(true);

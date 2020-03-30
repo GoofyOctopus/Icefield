@@ -91,7 +91,7 @@ public class temp {
 		Game g = new Game(true);
 		g.makeMove(g.figures.get(2), Move.US);
 		System.out.println("Check capacity test case is done!");
-		}
+	}
 	/*
 	 * Building igloo
 	 */
