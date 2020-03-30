@@ -66,6 +66,7 @@ public class Main {
 		case 12: testCase12(); return true;
 		case 13: testCase13(); return true;
 		case 14: testCase14(); return true;
+		case 15: testCase15(); return true;
 		default : System.out.println("Test cases are done! Thank you!"); return false;
 		}
 	}
@@ -144,6 +145,7 @@ public class Main {
 	 * */
 	public void testCase7() {
 		Game g = new Game(true);
+		System.out.println("Type any direction UP,DOWN,LEFT,RIGHT");
 		g.makeMove(g.figures.get(2), Move.US);
 		System.out.println("Check capacity test case is done!");
 	}
@@ -152,7 +154,7 @@ public class Main {
 	 * */
 	public void testCase8() {
 		Game g = new Game(true);
-		g.makeMove(g.figures.get(2), Move.US);
+		g.makeMove(g.figures.get(0), Move.US);
 	}
 	/*
 	 * Test case N9 - Next player 
@@ -160,6 +162,7 @@ public class Main {
 	public void testCase9() {
 		Game g = new Game(true);
 		g.nextPlayer(g.figures.get(0));
+		// You have to type D for testing.
 	}
 	/*
 	 * Test case N10 - Removing snow
@@ -175,8 +178,9 @@ public class Main {
 	{
 		Game g = new Game(true);
 		g.makeMove(g.figures.get(0), Move.S); //move to 1,2
-		g.makeMove(g.figures.get(0), Move.RI); //food
+		g.makeMove(g.figures.get(0), Move.RI); //food exist on this iceberg.
 		System.out.println("Retrieve an item test case is done");
+		//Please type FOOD for testing.
 	}
 	/*
 	 * Test case N12 - Using diving suit
@@ -185,6 +189,7 @@ public class Main {
 	{
 		Game g = new Game(true);
 		g.figures.get(0).addToInventory(new DivingSuit());
+		g.figures.get(0).getInventory().get(0).setFigure(g.figures.get(0));
 		g.makeMove(g.figures.get(0), Move.UD);
 		System.out.println("Use diving suit test case is done");
 	}
@@ -195,6 +200,7 @@ public class Main {
 	{
 		Game g = new Game(true);
 		g.figures.get(0).addToInventory(new Food());
+		g.figures.get(0).getInventory().get(0).setFigure(g.figures.get(0));
 		g.makeMove(g.figures.get(0), Move.EF);
 		System.out.println("Use food test case is done");
 	}
@@ -208,6 +214,8 @@ public class Main {
 		g.makeMove(g.figures.get(0), Move.A);
 		g.makeMove(g.figures.get(1), Move.A);
 		g.figures.get(2).addToInventory(new Rope());
+		g.figures.get(2).getInventory().get(0).setFigure(g.figures.get(2));
+		g.figures.get(2).getInventory().get(0).setIceberg(g.figures.get(2).getIceberg());
 		g.makeMove(g.figures.get(2), Move.UR); 
 		System.out.println("Use rope case is called");
 	}
@@ -218,6 +226,8 @@ public class Main {
 	{
 		Game g = new Game(true);
 		g.figures.get(0).addToInventory(new Shovel());
+		g.figures.get(0).getInventory().get(0).setFigure(g.figures.get(0));
+		g.figures.get(0).getInventory().get(0).setIceberg(g.figures.get(0).getIceberg());
 		g.makeMove(g.figures.get(0), Move.USH);
 		System.out.println("Use shovel test case is called");
 	}
