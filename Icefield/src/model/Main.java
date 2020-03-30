@@ -32,8 +32,23 @@ public class Main {
 	}
 	public boolean tests() 
 	{
-		System.out.println("Which test cases do you want");
-		System.out.println("We need to explain test cases to the user");	
+		System.out.println("--------------------Test Cases--------------------");
+		System.out.println("Enter which case you would like to run: ");
+		System.out.println("1  : Win");
+		System.out.println("2  : Endgame");
+		System.out.println("3  : Move to stable iceberg");
+		System.out.println("4  : Move to unstable iceberg");
+		System.out.println("5  : Drown");
+		System.out.println("6  : Blizzard");
+		System.out.println("7  : Check capacity");
+		System.out.println("8  : Build igloos");
+		System.out.println("9  : Next player");
+		System.out.println("10 : Remove snow");
+		System.out.println("11 : Retrieve an item");
+		System.out.println("12 : Use diving suit");
+		System.out.println("13 : Use food");
+		System.out.println("14 : Use rope");
+		System.out.println("15 : Use shovel");
 		Scanner in = new Scanner(System.in);
 		int answer = in.nextInt();
 		switch(answer) {
