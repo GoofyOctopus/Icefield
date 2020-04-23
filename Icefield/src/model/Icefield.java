@@ -30,8 +30,8 @@ public class Icefield {
 		for(int i = 0; i < 10; i++) 
 		{
 			for(int j = 0; j < 10; j++)
-			{
-				if(((i%2==0)&&(j%2==0))||((i==0)||(i==9)||(j==0)||(j==9)))
+			{	//all surroundings are unstable and some others
+				if(((i%2==0)&&(j%2==0))||((i==0)||(i==9)||(j==0)||(j==9))) 
 					icebergs[i][j]= new UnstableIceberg(i,j);
 				else
 					icebergs[i][j]= new StableIceberg(i,j);
@@ -83,6 +83,18 @@ public class Icefield {
 			icebergs[1][1].accept(figures.get(i));
 			figures.get(i).setIceberg(icebergs[1][1]);
 		}
+		
+		//setting the sea around the icefield
+		for(int i = 0; i< 10; i++) 
+		{
+			for( int j = 0; j< 10 ; j++) 
+			{
+				if((i==0)||(i==9))
+					((UnstableIceberg) icebergs[i][j]).setCapacity(0);
+				if((j==0)||(j==9))
+					((UnstableIceberg) icebergs[i][j]).setCapacity(0);
+			}
+		}
 	}
 	/*
 	 * generateBlizzards() method is used called from the Game class
@@ -106,7 +118,7 @@ public class Icefield {
 			}
 		}
 	}
-	public void test14() {
+	public void test14() {//must be removed and considered in test case 14!!
 		((UnstableIceberg) icebergs[0][1]).setCapacity(1);
 	}
 }

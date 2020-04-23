@@ -95,13 +95,6 @@ public abstract class Iceberg {
 	{
 		System.out.println("decreaseSnow(int units) method is called");
 		this.snowUnit = snowUnit - units < 0 ? 0 : snowUnit-units; 
-		/*
-		 * same as the following
-		 if(snowUnit - units < 0)
-			snowUnit = 0;
-		else
-			snowUnit-=units;
-		*/
 	}
 	/*
 	 * increaseSnow() method is called in case of blizzards
