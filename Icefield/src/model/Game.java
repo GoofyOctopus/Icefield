@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -7,6 +8,7 @@ import Figures.Eskimo;
 import Figures.Figure;
 import Figures.PolarExplorer;
 import Item.*;
+
 /*
  *Author Beka Babunashvili 
  */

@@ -1,11 +1,14 @@
 package model;
 
+import java.util.List;
 import java.util.Scanner;
 
 import Item.DivingSuit;
 import Item.Food;
 import Item.Rope;
 import Item.Shovel;
+import Utility.ReadFile;
+import Utility.WriteToFile;
 import model.Game.Move;
 
 public class Main {
@@ -22,6 +25,14 @@ public class Main {
 		case 1: Game g = new Game(false);
 		case 2: while(main.tests()) {System.out.println("############Case is done############");};
 		}
+		/*Usage of utility classes
+		List<String> data = ReadFile.readFrom("deleteme.txt"); 
+		for (String line : data) 
+			System.out.println(line);
+		
+		if(WriteToFile.writeTo(data, "C:/temp/help.txt"))
+			System.out.println("Saved Successfully!");
+		*/
 			
 	}
 	public boolean tests() 
