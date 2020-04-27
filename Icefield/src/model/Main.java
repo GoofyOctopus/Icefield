@@ -12,6 +12,7 @@ public class Main {
 		UtilityClass.run(next);
 		UtilityClass.print();
 	}
+	
 }
 	
 	
