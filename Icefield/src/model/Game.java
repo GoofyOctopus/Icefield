@@ -27,7 +27,7 @@ public class Game {
      * US - use skill;
      * */
     public enum Move{
-    	W,S,D,A, UR, USH, RS, EF, UD, UF, RI,US;
+    	W,S,D,A, UR, USH, RS, EF, UD, UF, RI,US,CW;
     }
     /*
      * Enum for items to easily compare user input
@@ -65,12 +65,9 @@ public class Game {
      *icefield and sets roundCounter and numberOfMoves to 0.
      * */
     public void startGame(){
-    	System.out.println("StartGame function has been called");
     	roundCounter = 0;
         numberOfMoves = 0;
-        if(test) {
-        	numberOfFigures = 3;
-        }else {
+        if(!test) {
         	Scanner in = new Scanner(System.in);
             boolean valid = false;
             while(!valid) {
@@ -82,11 +79,7 @@ public class Game {
             }
         }
         figures = new ArrayList<Figure>();
-        if(test) {
-        	figures.add(new Eskimo());
-        	figures.add(new Eskimo());
-        	figures.add(new PolarExplorer());
-        }else {
+        if(!test) {
         	 for(int i = 0; i < numberOfFigures; i++) {
              	figures.add(chooseFigure()); 
              }
@@ -108,11 +101,11 @@ public class Game {
     		answer = in.next();
     		if(answer.toLowerCase().equals("e")) {
     	    	System.out.println("You have chosen Eskimo");
-    			Eskimo es = new Eskimo();
+    			Eskimo es = new Eskimo("");
     			return es;
     		}else if(answer.toLowerCase().equals("p")) {
     			System.out.println("You have chosen Polar Explorer");
-    			PolarExplorer pe = new PolarExplorer();
+    			PolarExplorer pe = new PolarExplorer("");
     			return pe;
     		}
     		System.out.println("Invalid arguments");
@@ -123,7 +116,6 @@ public class Game {
      * if all the figures are on the same iceberg
      * */
     public boolean checkFlareGun(){
-    	System.out.println("CheckFlareGun function has been called");
     	int flare = 0;
     	Iceberg ic = figures.get(0).getIceberg();
     	ArrayList<IItem> items;
@@ -172,7 +164,6 @@ public class Game {
     			else
     				currPl.retrieveItem(items.get(j));
     		}
-    			
     	}
     }
     /*
@@ -180,7 +171,7 @@ public class Game {
     public void grabItem(Figure currPl,Items it) {
     	switch(it) {
     	case ROPE:
-	    	checkItem(currPl, new Rope(), false);
+    		
 	    	break;
 	    case SHOVEL:
 	    	checkItem(currPl, new Shovel(), false);
@@ -209,7 +200,6 @@ public class Game {
      * Returns false - if game finished, true - otherwise
      * */
     public boolean makeMove(Figure currPl, Move move) {
-    	System.out.println("MakeMove functino has been called");
     	Scanner in = new Scanner(System.in);
     	String answer;
     	switch(move) {
@@ -247,30 +237,14 @@ public class Game {
 	    	checkItem(currPl, new DivingSuit(),true);
 	    	break;
 	    case US:
-	    	if(currPl instanceof PolarExplorer) {
-	    		System.out.println("Please, enter the direction");
-		    	answer = in.next();
-		    	Direction d = Direction.valueOf(answer);
-		    	try {
-					currPl.useSkill(d);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-	    	}else {
-	    		try {
-					currPl.useSkill();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-	    	}
+	    	
 	    	break;
-	    default:
+	    case CW:
 	    	//Players won
-	    	if(checkFlareGun())
-	    		return false;
-	    	break;
+	    	return(checkFlareGun());
+	    default:
+	    	return false;
+	    		
     	}
     	numberOfMoves++;
     	//Ends game if player died
@@ -306,7 +280,6 @@ public class Game {
     	System.out.println( "Eat food - \"EF\", Use flare gun - \"UF\"");
     	//Each player has 4 moves
     	while(numberOfMoves < 4) {
-    		
     		System.out.println("Enter next move:");
     		boolean invalid = true;
         	while(invalid) {
@@ -331,7 +304,6 @@ public class Game {
      * into the water
      * */
     public void endGame(){
-    	System.out.println("EndGame function has been called");
     	System.out.println("You have lost :(");
     }
 

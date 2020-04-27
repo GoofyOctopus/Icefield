@@ -12,10 +12,8 @@ public class Rope extends Item
 	@Override
 	public void useItem() //rope can be used to help a figure which is drowning 
 	{
-		System.out.println("useItem() method is called for rope");
 		figure.help(iceberg);
 	}
-	
 	
 	public void destroy()//calling the destroy method from the super class which is item class
 	{

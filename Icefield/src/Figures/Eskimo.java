@@ -8,9 +8,8 @@ import model.Direction;
 
 public class Eskimo extends Figure {
 
-	public Eskimo() {
-		super();
-		System.out.println("Default constructor of eskimo is called");
+	public Eskimo(String name) {
+		super(name);
 		bodyHeatUnit = 5;
 	}
 	/*
@@ -28,7 +27,6 @@ public class Eskimo extends Figure {
 	 */
 	@Override
 	public void useSkill() {
-		System.out.println("useSkill() method is called");
 		iceberg.sethasIgloos(true);
 	}
 }

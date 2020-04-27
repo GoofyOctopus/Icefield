@@ -8,9 +8,8 @@ import model.UnstableIceberg;
 
 public class PolarExplorer extends Figure{
 
-	public PolarExplorer() {
-		super();
-		System.out.println("Default constructor of polar explorer is called");
+	public PolarExplorer(String name) {
+		super(name);
 		bodyHeatUnit = 4;
 	}
 	/*
@@ -23,9 +22,7 @@ public class PolarExplorer extends Figure{
 	 */
 	@Override
 	public int useSkill(Direction d) {
-		System.out.println("useSkill(Direction) method is called");
 		if(iceberg.getNeighbor(d) instanceof UnstableIceberg) {
-			System.out.println("Capacity of iceberg in direction "+d+": "+ iceberg.getCapacity());
 			return iceberg.getCapacity();
 		}
 		return 0;

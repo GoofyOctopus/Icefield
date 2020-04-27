@@ -8,24 +8,20 @@ import Item.IItem;
 public class UnstableIceberg extends Iceberg{
 	private int capacity;
 	private Random random;
-	
 	public UnstableIceberg(int x, int y) 
 	{ 
 		super(x,y);
 		random = new Random();
 		capacity = random.nextInt(2);
-		System.out.println("UnstableIceberg constructor is called");
 	}
 
 	//Returns how many figure it can hold.
 	@Override
 	public int getCapacity() {
-		System.out.println("getCapacity() method is called and it's " + capacity); 
 		return capacity;
 	}
 	//Sets capacity given by the parameter
 	public void setCapacity(int capacity) {
-		System.out.println("setCapacity() method is called");
 		this.capacity = capacity;
 	}
 	/*
@@ -36,7 +32,6 @@ public class UnstableIceberg extends Iceberg{
 	@Override
 	public void accept(Figure f) 
 	{ 
-		System.out.println("accept(Figure f) method is called for (" + x + "," + y + ") untstable iceberg");
 		figures.add(f);
 		f.setIceberg(this);
 		if(figures.size() > capacity)
@@ -48,7 +43,6 @@ public class UnstableIceberg extends Iceberg{
 	 */
 	public void collapse()
 	{
-		System.out.println("collapse() method is called");
 		capacity = 0;
 		for(int i = 0; i < figures.size(); i++)
 		{
@@ -58,5 +52,6 @@ public class UnstableIceberg extends Iceberg{
 		{
 			items.get(i).destroy();
 		}
+		collapsed=true;
 	}
 }

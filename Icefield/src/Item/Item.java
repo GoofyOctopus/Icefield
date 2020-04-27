@@ -13,7 +13,6 @@ public abstract class Item implements IItem
 	public Item()//default constructor which the child classes will call
 	{
 		//by setting the figure and iceberg to null we show that the item is not owned by any of them
-		System.out.println("Default constructor is called");
 		figure = null;
 		iceberg = null;
 	}

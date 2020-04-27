@@ -10,7 +10,6 @@ public class Gun implements IItem
 	
 	public Gun()//default constructor for class Gun
 	{
-		System.out.println("Default constructor is called");
 		iceberg=null;
 		figure=null;
 	}

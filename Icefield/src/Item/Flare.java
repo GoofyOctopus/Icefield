@@ -11,7 +11,6 @@ public class Flare implements IItem
 	
 	public Flare()//default constructor for class Flare
 	{
-		System.out.println("Default constructor is called for Flare");
 		iceberg=null;
 		figure=null;
 	}

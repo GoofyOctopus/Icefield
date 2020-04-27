@@ -1,20 +1,29 @@
 package model;
 
-import java.util.List;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import Item.DivingSuit;
-import Item.Food;
-import Item.Rope;
-import Item.Shovel;
-import Utility.ReadFile;
-import Utility.WriteToFile;
-import model.Game.Move;
+import Utility.UtilityClass;
 
 public class Main {
-
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
+		Scanner in = new Scanner(System.in);
+		String next = in.next();
+		UtilityClass.run(next);
+		UtilityClass.print();
+	}
+}
+	
+	
+	
+	
+	
+	
+/*  Previous tests
+ 
+	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
+
 		System.out.println("Do you want to play or test?");
 		System.out.println("For playing press 1");
 		System.out.println("For testing press 2");
@@ -32,8 +41,7 @@ public class Main {
 		
 		if(WriteToFile.writeTo(data, "C:/temp/help.txt"))
 			System.out.println("Saved Successfully!");
-		*/
-			
+		
 	}
 	public boolean tests() 
 	{	//You enter anything else to exit.
@@ -75,25 +83,25 @@ public class Main {
 		default : System.out.println("Test cases are done! Thank you!"); return false;
 		}
 	}
-	/*
+	
 	 * Test case N1 - Move to an unstable iceberg and collapse after exceeding
-	 * */
+
 	public void testCase1() {
 		Game g = new Game(true);
 		g.makeMove(g.figures.get(0), Move.S);
 		g.makeMove(g.figures.get(0), Move.D);
 	}
-	/*
+
 	 * Test case N2 - Move to a stable iceberg
-	 * */
+
 	public void testCase2()
 	{
 		Game g = new Game(true);
 		g.makeMove(g.figures.get(0), Move.D);//Move RIGHT
 	}
-	/*
+
 	 * Test case N3 - Winning the game
-	 * */
+
 	public void testCase3() {
 		Game g = new Game(true);
 		g.makeMove(g.figures.get(0), Move.S);//Move Left
@@ -109,9 +117,9 @@ public class Main {
 			g.winGame();
 		
 	}
-	/*
+
 	 * Test case N4 - game is over
-	 * */
+
 	public void testCase4() {
 		Game g = new Game(true);
 		g.makeMove(g.figures.get(0), Move.S);//Move DOWN
@@ -124,9 +132,9 @@ public class Main {
 		g.nextPlayer(g.figures.get(0));
 		
 	}
-	/*
+
 	 * Test case N5 - drown
-	 * */
+
 	public void testCase5() {
 		Game g = new Game(true);
 		g.makeMove(g.figures.get(0), Move.S);//Move DOWN
@@ -137,48 +145,48 @@ public class Main {
 		g.makeMove(g.figures.get(2), Move.D);//Move RIGHT
 		
 	}
-	/*
+
 	 * Test case N6 - Generate blizzard
-	 * */
+
 	public void testCase6() {
 		Game g = new Game(true);
 		g.icf.generateBlizzards();
 		System.out.println("Blizzard is generated!");
 	}
-	/*
+
 	 * Test case N7 - Checking capacity of neighboring iceberg
-	 * */
+
 	public void testCase7() {
 		Game g = new Game(true);
 		System.out.println("Type any direction UP,DOWN,LEFT,RIGHT");
 		g.makeMove(g.figures.get(2), Move.US);
 		System.out.println("Check capacity test case is done!");
 	}
-	/*
+
 	 * Test case N8 - Building igloos
-	 * */
+
 	public void testCase8() {
 		Game g = new Game(true);
 		g.makeMove(g.figures.get(0), Move.US);
 	}
-	/*
+
 	 * Test case N9 - Next player 
-	 * */
+
 	public void testCase9() {
 		Game g = new Game(true);
 		g.nextPlayer(g.figures.get(0));
 		// You have to type D for testing.
 	}
-	/*
+
 	 * Test case N10 - Removing snow
-	 * */
+
 	public void testCase10() {
 		Game g = new Game(true);
 		g.makeMove(g.figures.get(0), Move.RS);
 	}
-	/*
+
 	 * Test case N11 - Retrieving an item
-	 * */
+
 	public void testCase11() 
 	{
 		Game g = new Game(true);
@@ -187,9 +195,9 @@ public class Main {
 		System.out.println("Retrieve an item test case is done");
 		//Please type FOOD for testing.
 	}
-	/*
+
 	 * Test case N12 - Using diving suit
-	 * */
+
 	public void testCase12()
 	{
 		Game g = new Game(true);
@@ -198,9 +206,9 @@ public class Main {
 		g.makeMove(g.figures.get(0), Move.UD);
 		System.out.println("Use diving suit test case is done");
 	}
-	/*
+
 	 * Test case N13 - Using food
-	 * */
+
 	public void testCase13()
 	{
 		Game g = new Game(true);
@@ -209,9 +217,9 @@ public class Main {
 		g.makeMove(g.figures.get(0), Move.EF);
 		System.out.println("Use food test case is done");
 	}
-	/*
+
 	 * Test case N14 - Using rope
-	 * */
+
 	public void testCase14()
 	{
 		Game g = new Game(true);
@@ -224,9 +232,9 @@ public class Main {
 		g.makeMove(g.figures.get(2), Move.UR); 
 		System.out.println("Use rope case is called");
 	}
-	/*
+
 	 * Test case N15 - Using shovel
-	 * */
+
 	public void testCase15()
 	{
 		Game g = new Game(true);
@@ -236,5 +244,7 @@ public class Main {
 		g.makeMove(g.figures.get(0), Move.USH);
 		System.out.println("Use shovel test case is called");
 	}
-}
+	*/
+	
+
 

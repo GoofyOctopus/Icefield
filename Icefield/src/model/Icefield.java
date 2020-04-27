@@ -10,7 +10,6 @@ import Figures.*;
  */
 public class Icefield {
 	private Iceberg icebergs[][];
-	private List<IItem> items;
 	
 	/*
 	 * Default constructor initializes the icebergs 2d array
@@ -24,9 +23,7 @@ public class Icefield {
 	 */
 	public Icefield(List<Figure> figures)
 	{ 
-		System.out.println("Icefield default constructor is called now all icebergs are instantiated");
 		icebergs = new Iceberg[10][10];
-		items = new ArrayList<IItem>();
 		for(int i = 0; i < 10; i++) 
 		{
 			for(int j = 0; j < 10; j++)
@@ -45,7 +42,7 @@ public class Icefield {
 					icebergs[i][j].setBorderingIceberg(Direction.LEFT, icebergs[i-1][j]);
 					icebergs[i-1][j].setBorderingIceberg(Direction.RIGHT, icebergs[i][j]);
 				}
-				if(j%2==0)
+			/*	if(j%2==0)
 				{
 					icebergs[i][j].addItem(new Food());
 				}
@@ -73,6 +70,7 @@ public class Icefield {
 				{
 					icebergs[i][j].addItem(new DivingSuit()); 
 				}
+				*/
 			}
 		}
 		
@@ -101,24 +99,71 @@ public class Icefield {
 	 * it iterates through the iceberg objects and call the increaseSnow
 	 * method for each
 	 */
-	public void generateBlizzards()
-	{
-		System.out.println("generateBlizzards() method is called");
-		for(int i = 0; i < 10; i++) 
-		{
-			for(int j = 0; j < 10; j++)
-			{
-				if(icebergs[i][j].ishasIgloos()==true)
-					{
-					icebergs[i][j].increaseSnow();
-					for(int k = 0;k<icebergs[i][j].figures.size();k++)
-						icebergs[i][j].figures.get(k).decreaseHeatUnit();
-					}
-				
-			}
+	
+	
+	public void setFigures(Figure f,int x,int y) {
+		icebergs[x][y].accept(f);
+		f.setIceberg(icebergs[x][y]);
+	}
+	
+	public void createStableIceberg(int x,int y) {
+		icebergs[x][y]=new StableIceberg(x,y);
+		icebergs[x][y].setBorderingIceberg(Direction.UP, icebergs[x][y-1]);
+		icebergs[x][y].setBorderingIceberg(Direction.DOWN, icebergs[x][y+1]);
+		icebergs[x][y].setBorderingIceberg(Direction.LEFT, icebergs[x-1][y]);
+		icebergs[x][y].setBorderingIceberg(Direction.RIGHT, icebergs[x+1][y]);
+		icebergs[x][y-1].setBorderingIceberg(Direction.DOWN, icebergs[x][y]);
+		icebergs[x][y+1].setBorderingIceberg(Direction.UP, icebergs[x][y]);
+		icebergs[x-1][y].setBorderingIceberg(Direction.RIGHT, icebergs[x][y]);
+		icebergs[x+1][y].setBorderingIceberg(Direction.LEFT, icebergs[x][y]);
+	}
+	
+	public void createUnstableIceberg(int x,int y,int capacity) {
+		icebergs[x][y]=new UnstableIceberg(x,y);
+		icebergs[x][y].setBorderingIceberg(Direction.UP, icebergs[x][y-1]);
+		icebergs[x][y].setBorderingIceberg(Direction.DOWN, icebergs[x][y+1]);
+		icebergs[x][y].setBorderingIceberg(Direction.LEFT, icebergs[x-1][y]);
+		icebergs[x][y].setBorderingIceberg(Direction.RIGHT, icebergs[x+1][y]);
+		icebergs[x][y-1].setBorderingIceberg(Direction.DOWN, icebergs[x][y]);
+		icebergs[x][y+1].setBorderingIceberg(Direction.UP, icebergs[x][y]);
+		icebergs[x-1][y].setBorderingIceberg(Direction.RIGHT, icebergs[x][y]);
+		icebergs[x+1][y].setBorderingIceberg(Direction.LEFT, icebergs[x][y]);
+		icebergs[x][y].setCapacity(capacity);
+	}
+	
+	public void setItems(String name,int x,int y) {
+		switch(name) {
+		case "rope": icebergs[x][y].addItem(new Rope());
+		break;
+		case "food": icebergs[x][y].addItem(new Food());
+		break;
+		case "flare": icebergs[x][y].addItem(new Flare());
+		break;
+		case "gun": icebergs[x][y].addItem(new Gun());
+		break;
+		case "charge": icebergs[x][y].addItem(new Charge());
+		break;
+		case "shovel": icebergs[x][y].addItem(new Shovel());
+		break;
+		case "divingsuit": icebergs[x][y].addItem(new DivingSuit());
+		break;
 		}
 	}
-	public void test14() {//must be removed and considered in test case 14!!
-		((UnstableIceberg) icebergs[0][1]).setCapacity(1);
+	
+	public void setSnow(int x,int y,int snow) {
+		icebergs[x][y].setSnow(snow);
+	}
+	
+	public void setCapacity(int x,int y,int capacity) {
+		icebergs[x][y].setCapacity(capacity);
+	}
+	
+	public void generateBlizzards(int x,int y){
+		if(icebergs[x][y].ishasIgloos()==true)
+			{
+				icebergs[x][y].increaseSnow();
+			}
+		for(int k = 0;k<icebergs[x][y].figures.size();k++)
+			icebergs[x][y].figures.get(k).decreaseHeatUnit();
 	}
 }

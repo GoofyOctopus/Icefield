@@ -12,4 +12,8 @@ public class StableIceberg extends Iceberg{
 	public int getCapacity() {
 		return -1;
 	}
+	@Override
+	public void setCapacity(int capacity) {
+		// TODO Auto-generated method stub
+	}
 }

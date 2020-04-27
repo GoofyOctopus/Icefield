@@ -15,6 +15,7 @@ public abstract class Iceberg {
 	private List<Iceberg> borderingIceberg;
 	protected List<Figure> figures;
 	protected List<IItem> items;
+	protected boolean collapsed=false;
 	protected int x; //new location attribute
 	protected int y; //new location attribute
 	
@@ -24,7 +25,6 @@ public abstract class Iceberg {
 	 */
 	public Iceberg(int x, int y)
 	{
-		System.out.println("Default Iceberg constructor is called");
 		this.snowUnit = 1;
 		this.hasigloos = false;
 		this.borderingIceberg = new ArrayList<Iceberg>();
@@ -45,7 +45,6 @@ public abstract class Iceberg {
 	 */
 	public Iceberg getNeighbor(Direction direction)
 	{
-		System.out.println("getNeighbor(" + direction + ") methos is called");
 		switch (direction) 
 		{
 		case UP: return borderingIceberg.get(0); 
@@ -60,7 +59,6 @@ public abstract class Iceberg {
 	 * reference to one iceberg asks it to add him(moved to it)
 	 */
 	public void accept(Figure f) { 
-		System.out.println("accept(Figure f) method is called for (" + this.x + "," + this.y + ") stable iceberg");
 		figures.add(f);
 		f.setIceberg(this);
 	}
@@ -70,7 +68,6 @@ public abstract class Iceberg {
 	 * remove that figure from the list(moved from)
 	 */
 	public void remove(Figure f) { 
-		System.out.println("remove(Figure f) method is called for (" + this.x + "," + this.y + ")");
 		figures.remove(f);
 	}
 	/*
@@ -81,8 +78,6 @@ public abstract class Iceberg {
 	 */
 	public void setBorderingIceberg(Direction d, Iceberg i)
 	{
-		System.out.println("setNeighbor(Direction d, Iceberg i) method is called");
-		
 		int index = d.ordinal();
 		borderingIceberg.set(index, i);
 	}
@@ -93,25 +88,24 @@ public abstract class Iceberg {
 	 */
 	public void decreaseSnow(int units) 
 	{
-		System.out.println("decreaseSnow(int units) method is called");
 		this.snowUnit = snowUnit - units < 0 ? 0 : snowUnit-units; 
 	}
 	/*
 	 * increaseSnow() method is called in case of blizzards
 	 */
-	public void increaseSnow() { System.out.println("increaseSnow() mehtod is called"); snowUnit++; }
+	public void increaseSnow() { snowUnit++; }
 	/*
 	 * isIgloos() method is called to check whether this iceberg
 	 * has igloos or not
 	 * method name is changed for consistency
 	 */
-	public boolean ishasIgloos() { System.out.println("ishasIgloos() method is called"); return hasigloos; }
+	public boolean ishasIgloos() { return hasigloos; }
 	/*
 	 * removeItem(IItem item) method removes a passed item from
 	 * the list of items, and that happens when a player retrieve
 	 * it or when an iceberg drown
 	 */
-	public void removeItem(IItem item) { System.out.println("removeItem(IItem item) is called"); items.remove(item); }
+	public void removeItem(IItem item) { items.remove(item); }
 	/*
 	 * The following methods are just getters and setters,
 	 * they were not represented in the class diagram for
@@ -121,14 +115,13 @@ public abstract class Iceberg {
 	 * getItems() is called when we want to write the items
 	 * in the iceberg on the screen(in the future)
 	 */
-	public List<IItem> getItems() { System.out.println("getItems() method is called");return items; }
+	public List<IItem> getItems() { return items; }
 	/*
 	 * addItem(IItem item) method is called at the
 	 * beginning of the game, when setting it up
 	 */
 	public void addItem(IItem item)
 	{
-		System.out.println("addItem(IItem item) method is called"); 
 		this.items.add(item);
 		((IItem) item).setIceberg(this); //telling the item that this is its iceberg
 	}
@@ -138,9 +131,14 @@ public abstract class Iceberg {
 	 */
 	public void sethasIgloos(boolean hasigloos) 
 	{ 
-		System.out.println("setIgloos(boolean hasigloos) method is called"); 
 		this.hasigloos = hasigloos;
 	}
+	
+	public void setSnow(int snow) {
+		this.snowUnit = snow;
+	}
+	public boolean isCollapsed() {return collapsed;}
+	public abstract void setCapacity(int capacity);
 	public int getX() { return x; }
 	public void setX(int x) { this.x = x; }
 	public int getY() { return y; }
