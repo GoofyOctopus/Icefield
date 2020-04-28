@@ -3,11 +3,11 @@ package model;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import Utility.UtilityClass;
+import Utility.UtilClass;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
-			UtilityClass.running();
+			UtilClass.running();
 	}
 }
 	

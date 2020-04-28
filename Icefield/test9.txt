@@ -1,0 +1,5 @@
+create iceberg stable 1 1
+create iceberg unstable 2 1 1
+modify capacity 2 1 2
+create figure explorer 1 1 exp1
+use skill exp1 right
