@@ -23,8 +23,10 @@ public class ReadFile {
 		}
 		File file = new File(fileName);
 		if (!file.exists()) {
-			throw new FileNotFoundException(file.getAbsolutePath());
+			System.out.println("file not found");
 		}
+		if(file.exists())
+			System.out.println("Running commands in file "+ fileName);
 		List<String> data = new ArrayList<String>();
 		BufferedReader in = null;
 		try {
@@ -36,13 +38,11 @@ public class ReadFile {
 				}
 			}
 		} catch (IOException e) {
-			System.out.println("CANT READ!!");
 		} finally {
 			if (in != null) {
 				try {
 					in.close();
 				} catch (IOException e) {
-					System.out.println("CANT EXIT!!");
 				}
 			}
 		}

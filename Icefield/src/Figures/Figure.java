@@ -69,8 +69,8 @@ public abstract class Figure{
 	/*
 	 *  Method that decreases snow of iceberg by one unit.
 	 */
-	public void removeSnow() {
-		iceberg.decreaseSnow(1);
+	public void removeSnow(int x) {
+		iceberg.decreaseSnow(x);
 	}
 	public void removeItem(IItem i) {
 		inventory.remove(i);
@@ -82,18 +82,8 @@ public abstract class Figure{
 	 *  add it to inventory of figure.
 	 */
 	public void retrieveItem(IItem i) {
-		for(int k=0;k<inventory.size();k++) {
-			if(i.getClass().equals(inventory.get(k).getClass()) && !(i instanceof Food)) {
-				return;
-			}	
-		}
-		for(int j=0;j<iceberg.getItems().size();j++) {
-			if(i.getClass().equals(iceberg.getItems().get(j).getClass())) {
-				iceberg.removeItem(i);
-				inventory.add(i);
-				break;
-			}
-		}
+		iceberg.removeItem(i);
+		inventory.add(i);
 	}
 	/*
 	 * This function tells other classes that it is being helped 

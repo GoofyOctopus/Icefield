@@ -159,11 +159,15 @@ public class Icefield {
 	}
 	
 	public void generateBlizzards(int x,int y){
-		if(icebergs[x][y].ishasIgloos()==true)
+		if(icebergs[x][y].ishasIgloos()!=true)
 			{
 				icebergs[x][y].increaseSnow();
+				for(int k = 0;k<icebergs[x][y].figures.size();k++)
+					icebergs[x][y].figures.get(k).decreaseHeatUnit();
 			}
-		for(int k = 0;k<icebergs[x][y].figures.size();k++)
-			icebergs[x][y].figures.get(k).decreaseHeatUnit();
+	}
+	
+	public Iceberg getIceberg(int x,int y) {
+		return icebergs[x][y];
 	}
 }

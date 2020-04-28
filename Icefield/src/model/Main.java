@@ -6,13 +6,9 @@ import java.util.Scanner;
 import Utility.UtilityClass;
 
 public class Main {
-	public static void main(String[] args) throws FileNotFoundException {
-		Scanner in = new Scanner(System.in);
-		String next = in.next();
-		UtilityClass.run(next);
-		UtilityClass.print();
+	public static void main(String[] args) throws Exception {
+			UtilityClass.running();
 	}
-	
 }
 	
 	

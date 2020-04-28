@@ -13,11 +13,12 @@ import Item.*;
  *Author Beka Babunashvili 
  */
 public class Game {
-    public int numberOfFigures; //Number of players
-    public int roundCounter; //Current round
-    private int numberOfMoves;//Moves made by current player
+    public int numberOfFigures = 0; //Number of players
+    public int roundCounter = 0; //Current round
+    public int numberOfMoves = 0;//Moves made by current player
     public ArrayList<Figure> figures;
     public Icefield icf;
+    Direction d = Direction.UP;
     private boolean test;
     /*
      * Shortcuts for possible moves:
@@ -27,7 +28,7 @@ public class Game {
      * US - use skill;
      * */
     public enum Move{
-    	W,S,D,A, UR, USH, RS, EF, UD, UF, RI,US,CW;
+    	W,S,D,A, UR, USH, RS, EF, UD, UF, RI, USPE, CW, USE;
     }
     /*
      * Enum for items to easily compare user input
@@ -51,6 +52,7 @@ public class Game {
      * game is finished.
      * */
     public void gameLoop() {
+    	
     	boolean finished = false;
     	while(!finished) {
     		for(int i = 0; i < numberOfFigures; i++) {
@@ -119,8 +121,8 @@ public class Game {
     	int flare = 0;
     	Iceberg ic = figures.get(0).getIceberg();
     	ArrayList<IItem> items;
-    	for(int i = 0; i < numberOfFigures; i++) {
-    		if(ic != figures.get(0).getIceberg())
+    	for(int i = 0; i < figures.size(); i++) {
+    		if(ic.x != figures.get(i).getIceberg().x || ic.y!=figures.get(i).getIceberg().y)
     			return false;
     		items = figures.get(i).getInventory();
     		for(int j = 0; j < items.size(); j++) {
@@ -171,7 +173,7 @@ public class Game {
     public void grabItem(Figure currPl,Items it) {
     	switch(it) {
     	case ROPE:
-    		
+    		checkItem(currPl, new Rope(), false);
 	    	break;
 	    case SHOVEL:
 	    	checkItem(currPl, new Shovel(), false);
@@ -199,7 +201,7 @@ public class Game {
      * an item.
      * Returns false - if game finished, true - otherwise
      * */
-    public boolean makeMove(Figure currPl, Move move) {
+    public boolean makeMove(Figure currPl, Move move) throws Exception {
     	Scanner in = new Scanner(System.in);
     	String answer;
     	switch(move) {
@@ -216,7 +218,7 @@ public class Game {
 	        currPl.step(Direction.LEFT);
 	        break;
 	    case RS:
-	        currPl.removeSnow();
+	        currPl.removeSnow(1);
 	        break;
 	    case RI:
 	    	System.out.println("Please, choose an item");
@@ -225,20 +227,24 @@ public class Game {
 	    	grabItem(currPl, it);
 	    	break;
 	    case UR:
-	    	checkItem(currPl, new Rope(), true);
+	    	for(int i=0;i<figures.size();i++) {
+	    		figures.get(i).help(figures.get(i).getIceberg().getNeighbor(Direction.UP));
+	    	}
 	    	break;
 	    case USH:
-	    	checkItem(currPl, new Shovel(), true);
+	    	currPl.removeSnow(2);
 	    	break;
 	    case EF:
-	    	checkItem(currPl, new Food(),true);
+	    	currPl.increaseHeatUnit();
 	    	break;
 	    case UD:
-	    	checkItem(currPl, new DivingSuit(),true);
+	    	currPl.setWearingDivingSuit(true);
 	    	break;
-	    case US:
-	    	
+	    case USPE:
+	    	currPl.useSkill(d);
 	    	break;
+	    case USE:
+	    	currPl.useSkill();
 	    case CW:
 	    	//Players won
 	    	return(checkFlareGun());

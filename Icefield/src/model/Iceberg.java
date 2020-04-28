@@ -137,9 +137,13 @@ public abstract class Iceberg {
 	public void setSnow(int snow) {
 		this.snowUnit = snow;
 	}
+	public List<Figure> getFigures(){
+		return figures;
+	}
 	public boolean isCollapsed() {return collapsed;}
 	public abstract void setCapacity(int capacity);
 	public int getX() { return x; }
+	public int getSnow() {return snowUnit;}
 	public void setX(int x) { this.x = x; }
 	public int getY() { return y; }
 	public void setY(int y) { this.y = y; }	
