@@ -1,0 +1,15 @@
+create iceberg stable 1 1
+create iceberg stable 2 1
+create figure eskimo 1 1 esk1
+create figure eskimo 1 1 esk2
+create figure explorer 1 1 exp1
+create flare 2 1
+create gun 2 1
+create charge 2 1
+step right esk1
+retrieve flare esk1
+step right esk2
+retrieve gun esk2
+step right exp1
+retrieve charge exp1
+check win

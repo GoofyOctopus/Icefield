@@ -1,0 +1,5 @@
+create iceberg stable 1 1
+create iceberg unstable 2 1 1
+modify capacity 2 1 2 
+create figure eskimo 1 1 esk1
+step right esk1

@@ -9,10 +9,11 @@ import Figures.Figure;
 import Figures.PolarExplorer;
 import Item.*;
 
+
 /*
  *Author Beka Babunashvili 
  */
-public class Game {
+public class Game extends Thread{
     public int numberOfFigures = 0; //Number of players
     public int roundCounter = 0; //Current round
     public int numberOfMoves = 0;//Moves made by current player
@@ -40,11 +41,23 @@ public class Game {
      * Constructor which sets everything ready for the game
      * and starts it.
      * */
+    
     public Game(boolean testCases) {
     	test = testCases;
+    	/*
+    	 * The basic idea to separate the threads is here
+    	 * let's not delete the test and override the code
+    	 * instead of calling the starting and looping methods, 
+    	 * we wait to be told from the Main. Otherwise, the whole class should be modified
+    	 * in a way that it just do the logic and the calculations(what I prefer)
+    	 */
+    	//startGame(); 
+    	//if(!testCases)
+    	//	gameLoop();
+    }
+    public void run() {
     	startGame();
-    	if(!testCases)
-    		gameLoop();
+    	gameLoop();
     }
     /*
      * If user doesn't want to test the game, game loop
@@ -312,5 +325,4 @@ public class Game {
     public void endGame(){
     	System.out.println("You have lost :(");
     }
-
 }

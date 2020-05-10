@@ -1,0 +1,8 @@
+create iceberg stable 2 2
+create iceberg unstable 2 3 0
+create figure eskimo 2 2 esk1
+create figure eskimo 2 2 esk2
+create rope 2 2
+retrieve rope esk1
+step down esk2
+use rope esk1 down

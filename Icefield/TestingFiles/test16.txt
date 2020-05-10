@@ -1,0 +1,7 @@
+create iceberg stable 2 2
+create iceberg stable 2 3
+create figure eskimo 2 2 esk1
+create divingsuit 2 3
+step down esk1
+retrieve divingsuit esk1
+use divingsuit esk1

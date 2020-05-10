@@ -1,5 +1,0 @@
-create iceberg stable 2 2
-create iceberg unstable 2 3 0
-create figure eskimo 2 2 esk1
-create figure explorer 2 2 exp1
-step down esk1

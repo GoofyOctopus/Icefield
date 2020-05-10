@@ -1,13 +1,16 @@
 package model;
 
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import view.MainFrame;
 
-import Utility.UtilClass;
-
-public class Main {
+public class Main{
 	public static void main(String[] args) throws Exception {
-			UtilClass.running();
+			Game mGame = new Game(false); //model game
+			mGame.start(); //this starts the game and the looping
+			MainFrame.createMainFrame(mGame);
+			MainFrame view = MainFrame.getMainFrame();
+			view.controller.addListeners(); //Subscription we need
+			
+			//UtilClass.running();
 	}
 }
 	

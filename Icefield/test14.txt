@@ -1,5 +1,0 @@
-create iceberg stable 2 2
-create figure eskimo 2 2 esk1
-modify snow 2 2 2
-remove snow esk1
-show snow unit 2 2

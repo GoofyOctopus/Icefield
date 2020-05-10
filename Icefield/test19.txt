@@ -1,9 +1,0 @@
-create iceberg stable 2 2
-create iceberg stable 2 3
-create figure eskimo 2 2 esk1
-modify snow 2 3 3
-create shovel 2 3
-step down esk1
-retrieve shovel esk1
-use shovel esk1
-show snow unit 2 3

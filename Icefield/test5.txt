@@ -1,4 +1,0 @@
-create iceberg stable 1 1
-create figure eskimo 1 1 esk1
-modify bodyheat esk1 1
-generate blizzard 1 1
