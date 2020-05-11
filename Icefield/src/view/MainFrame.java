@@ -29,12 +29,13 @@ public class MainFrame extends JFrame{
 		JPanel myPnl = new JPanel();
 	
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(600, 200);
         
         myPnl.add(myBtn);
         
         this.add(myPnl);
+        this.pack();
         this.setVisible(true);
+        
 	}
 	public static void createMainFrame(Game mGame) {
 		if(instance==null)
