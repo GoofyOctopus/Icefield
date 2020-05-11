@@ -111,9 +111,9 @@ public class pStart extends JPanel implements ActionListener
 			}
 			else 
 			{
-				this.setVisible(false);
-				pSelect pselect = new pSelect();
-				pselect.setVisible(true);
+				//this.setVisible(false);
+				//pSelect pselect = new pSelect();
+				//pselect.setVisible(true);
 			}
 		}
 		
