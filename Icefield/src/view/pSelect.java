@@ -91,7 +91,15 @@ public class pSelect extends JPanel implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		// TODO Auto-generated method stub
+		if(e.getActionCommand().equals("bEskimoo"))
+		{
+			
+		}
+		
+		else if(e.getActionCommand().equals("bExplorer"))
+		{
+			
+		}
 		
 	}
 
