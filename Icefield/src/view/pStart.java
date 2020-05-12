@@ -13,7 +13,7 @@ import javax.swing.*;
 public class pStart extends JPanel implements ActionListener
 {
 	public int numberPlayers = 0;
-	private static final String IMG_PATH = "Images/newIce.jpg";
+	private static final String IMG_PATH = "Images\\newIce.jpg";
 	ImageIcon img= new ImageIcon(IMG_PATH);
 	
 	protected pStart()

@@ -13,10 +13,12 @@ import jdk.dynalink.beans.StaticClass;
 
 public class pSelect extends JPanel implements ActionListener
 {
-	private static final String IMG_PATH = "C:\\Users\\kamiy\\OneDrive\\Desktop\\Figures game\\newIce.jpg";
-	//private static final String pImg = "C:\\Users\\kamiy\\OneDrive\\Desktop\\Figures game\\bpolar.png";
-	private static final String eImg =  "C:\\Users\\kamiy\\OneDrive\\Desktop\\Figures game\\Eskimo.png";
-	ImageIcon img= new ImageIcon(IMG_PATH);
+	private static final String IMG_PATH = "Images\\newIce.jpg";
+	Icon backGround_img = new ImageIcon(getClass().getResource(IMG_PATH));
+	private static final String pImg = "Images\\bpolar.png";
+	Icon explorer_img = new ImageIcon(getClass().getResource(pImg));
+	private static final String eImg =  "Images\\Eskimo.jpg";
+	Icon eski_img= new ImageIcon(getClass().getResource(eImg));
 
 	protected  pSelect() 
 	{
@@ -29,7 +31,7 @@ public class pSelect extends JPanel implements ActionListener
 		Font f1 = new Font("arial", Font.BOLD, 15);
 		
 		JPanel panel = new JPanel();
-		JLabel backGround= new JLabel(img);
+		JLabel backGround= new JLabel(backGround_img);
 		backGround.setLayout(new BoxLayout(backGround, BoxLayout.PAGE_AXIS));
 		panel.setLayout(new BorderLayout());
 		panel.add(backGround);
@@ -49,15 +51,13 @@ public class pSelect extends JPanel implements ActionListener
 		JTextField tName = new JTextField();
 		tName.setMaximumSize(new Dimension(80,20));
 		
-		JButton bEskimoo = new JButton();
-		bEskimoo.setIcon(new ImageIcon("D:\\Figures\\Eskimo.jpg"));
+		JButton bEskimoo = new JButton(eski_img);
 		bEskimoo.setAlignmentX(Component.LEFT_ALIGNMENT);
 		bEskimoo.setMaximumSize(new Dimension(50,50));
 		validate();
 		
 		
-		JButton bExplorer = new JButton();
-		bExplorer.setIcon(new ImageIcon("D:\\Figures\\bpolar.jpg"));
+		JButton bExplorer = new JButton(explorer_img);
 		bExplorer.setAlignmentX(Component.TOP_ALIGNMENT);
 		bExplorer.setMaximumSize(new Dimension(50, 50));
 		validate();
