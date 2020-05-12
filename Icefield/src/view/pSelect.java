@@ -51,14 +51,14 @@ public class pSelect extends JPanel implements ActionListener
 		tName.setMaximumSize(new Dimension(80,20));
 		
 		JButton bEskimoo = new JButton();
-		bEskimoo.setIcon(new ImageIcon("D:\\Figures\\Eskimo.jpg"));
+		bEskimoo.setIcon(new ImageIcon("Images/Eskimo.jpg"));
 		bEskimoo.setAlignmentX(Component.LEFT_ALIGNMENT);
 		bEskimoo.setMaximumSize(new Dimension(50,50));
 		validate();
 		
 		
 		JButton bExplorer = new JButton();
-		bExplorer.setIcon(new ImageIcon("D:\\Figures\\bpolar.jpg"));
+		bExplorer.setIcon(new ImageIcon("Images/bpolar.png"));
 		bExplorer.setAlignmentX(Component.TOP_ALIGNMENT);
 		bExplorer.setMaximumSize(new Dimension(50, 50));
 		validate();
