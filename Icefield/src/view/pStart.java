@@ -13,23 +13,22 @@ import javax.swing.*;
 public class pStart extends JPanel implements ActionListener
 {
 	public int numberPlayers = 0;
-	private static final String IMG_PATH = "C:\\Users\\kamiy\\OneDrive\\Desktop\\Figures game\\newIce.jpg";
-	JFrame frame = new JFrame("Myframe");
+	private static final String IMG_PATH = "Images/newIce.jpg";
 	ImageIcon img= new ImageIcon(IMG_PATH);
+	JFrame frame = new JFrame();
 	
 	protected pStart()
 	{
 		create();
 	}
 	
-		
-	
 	public void create()
 	{
 		Font f0 = new Font("arial", Font.BOLD, 20);
 		Font f1 = new Font("arial", Font.BOLD, 40);
 		JPanel panel=new JPanel();
-		JLabel backGround= new JLabel(img);
+		JLabel backGround= new JLabel();
+		backGround.setIcon(img);
 		backGround.setLayout(new BoxLayout(backGround, BoxLayout.PAGE_AXIS));
 		panel.setLayout(new BorderLayout());
 		panel.add(backGround);
@@ -76,9 +75,6 @@ public class pStart extends JPanel implements ActionListener
 		backGround.add(Box.createRigidArea(new Dimension(0,40)));
 		backGround.add(bExit);
 
-		frame.add(panel);
-		frame.setVisible(true);
-		frame.setSize(600, 600);
 		
 		numberPlayers = Integer.parseInt(tNumberPlayer.getText());
 		
@@ -86,16 +82,17 @@ public class pStart extends JPanel implements ActionListener
 		bStart.addActionListener(this);
 		bExit.addActionListener(this);
 		
+		frame.add(backGround);
+		frame.setSize(600, 600);
+		frame.setVisible(true);
+		
+		
 	}
-	
 	
 	
 	public static void main(String args[])
 	{
-		pStart menu=new pStart();
 	}
-
-
 /*
  * Adding the action performed by the mouse click event for the buttons play and exit
  * */
@@ -106,7 +103,7 @@ public class pStart extends JPanel implements ActionListener
 		{
 			if(numberPlayers == 0 || numberPlayers > 3)
 			{
-				JOptionPane.showMessageDialog(frame, "Invalid number !!");
+				//JOptionPane.showMessageDialog(frame, "Invalid number !!");
 				
 			}
 			else 
@@ -119,7 +116,7 @@ public class pStart extends JPanel implements ActionListener
 		
 		else if(e.getActionCommand().equals("EXIT"))
 		{
-			frame.dispose();
+			//frame.dispose();
 		}
 		
 	}
