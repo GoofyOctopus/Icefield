@@ -16,7 +16,6 @@ public class pSelect extends JPanel implements ActionListener
 	private static final String IMG_PATH = "C:\\Users\\kamiy\\OneDrive\\Desktop\\Figures game\\newIce.jpg";
 	//private static final String pImg = "C:\\Users\\kamiy\\OneDrive\\Desktop\\Figures game\\bpolar.png";
 	private static final String eImg =  "C:\\Users\\kamiy\\OneDrive\\Desktop\\Figures game\\Eskimo.png";
-	JFrame frame = new JFrame("Myframe");
 	ImageIcon img= new ImageIcon(IMG_PATH);
 
 	protected  pSelect() 
@@ -72,21 +71,10 @@ public class pSelect extends JPanel implements ActionListener
 		backGround.add(tName);
 		backGround.add(bEskimoo);
 		backGround.add(bExplorer);
-		
-		frame.add(panel);
-		frame.setVisible(true);
-		frame.setSize(600, 600);
-	}
-	
-	
-	
-	public static void main(String args[])
-	{
-		pSelect menu=new pSelect();
-	}
 
+	}
 	
-	
+
 	
 	@Override
 	public void actionPerformed(ActionEvent e) 

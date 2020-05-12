@@ -15,7 +15,6 @@ public class pStart extends JPanel implements ActionListener
 	public int numberPlayers = 0;
 	private static final String IMG_PATH = "Images/newIce.jpg";
 	ImageIcon img= new ImageIcon(IMG_PATH);
-	JFrame frame = new JFrame();
 	
 	protected pStart()
 	{
@@ -82,17 +81,11 @@ public class pStart extends JPanel implements ActionListener
 		bStart.addActionListener(this);
 		bExit.addActionListener(this);
 		
-		frame.add(backGround);
-		frame.setSize(600, 600);
-		frame.setVisible(true);
 		
 		
 	}
 	
 	
-	public static void main(String args[])
-	{
-	}
 /*
  * Adding the action performed by the mouse click event for the buttons play and exit
  * */
