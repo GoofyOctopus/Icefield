@@ -28,6 +28,7 @@ public class pStats extends JPanel {
 	 */
 	public pStats() {
 		setLayout(new BorderLayout(0, 0));
+		//adding border
 		setBorder(new EmptyBorder(10, 10, 10, 10));
 		pBottom = new JPanel();
 		
