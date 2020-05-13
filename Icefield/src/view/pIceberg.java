@@ -23,6 +23,12 @@ public class pIceberg extends JPanel{
 	JLabel background, figureLabel;
 	
 	public pIceberg(Iceberg i) {
+		update(i);
+	}
+	/*
+	 * Update
+	 * */
+	public void update(Iceberg i) {
 		iceberg = i;
 		createBackground();
 		if(i.getFigures().size() > 0)

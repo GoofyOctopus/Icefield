@@ -46,10 +46,7 @@ public class pStats extends JPanel {
 		pBottom.add(lName, BorderLayout.WEST);	
 		pBottom.add(lHealth, BorderLayout.CENTER);
 		pBottom.add(pBottomRight, BorderLayout.EAST);
-		add(pBottom, BorderLayout.SOUTH);
-		
-
-		
+		add(pBottom, BorderLayout.SOUTH);	
 		
 	}
 	public void HealthChange(int health)

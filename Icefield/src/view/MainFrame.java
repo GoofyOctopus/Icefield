@@ -6,11 +6,13 @@ import model.Game;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import view.GameFrame;
 /*
  * Auther Yazan Suleiman
  */
@@ -21,6 +23,8 @@ public class MainFrame extends JFrame{
 	private static MainFrame instance = null;
 	pStart myPnl;
 	pSelect pselect;
+	int numberPlayers;
+	HashMap<String, String> figureNames;
 	/*
 	 * as usual, in the constructor the components are added
 	 * and instantiated
@@ -28,11 +32,34 @@ public class MainFrame extends JFrame{
 	protected MainFrame(Game mGame) {
 		Controller.createController(mGame, this);
 		controller = Controller.getController();
-		
 		myPnl = new pStart();
-		myPnl.bStart.addActionListener(
+		myPnl.bStart.addActionListener( 
 				ae ->	{
-					//You can add the code here or it can be added from the controller
+					numberPlayers = Integer.parseInt(myPnl.tNumberPlayer.getText());
+					if(numberPlayers < 3)
+						JOptionPane.showMessageDialog(this, "Invalid number !!");
+					else 
+					{
+						myPnl.setVisible(false);
+						pselect = new pSelect();
+						this.add(pselect);
+						pselect.setVisible(true);
+						figureNames = new HashMap<String, String>();
+						pselect.bEskimoo.addActionListener(new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								createFigures(pselect.tName.getText(), "Eskimoo");
+								pselect.tName.setText("");
+							}
+						});
+						pselect.bExplorer.addActionListener(new ActionListener() {	
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								createFigures(pselect.tName.getText(), "Explorer");
+								pselect.tName.setText("");
+							}
+						});
+					}
 				});
 		myPnl.bExit.addActionListener(
 			ae ->	{
@@ -76,26 +103,22 @@ public class MainFrame extends JFrame{
 	public void update() {
 		myBtn.setText("HI");
 	}
+	/*
+	 * Saves names and types of the figures and
+	 * gives to the controller to set up the game.
+	 * After it creates a new frame and start the game.
+	 * */
+	public void createFigures(String name, String type) {
+		figureNames.put(name, type);
+		numberPlayers--;
+		if(numberPlayers == 0) {
+			controller.setGameParameters(figureNames);
+			//GameFrame gFrame = new GameFrame(mGame, controller);
+		}
+	}
 	
-	/*#####################Yazan here is a part of code maybe useful for the play button on the first panel to change the panels*/
 	
-//	@Override
-//	public void actionPerformed(ActionEvent e) {
-//		if(e.getActionCommand().equals("PLAY"))
-//		{
-//			int numberPlayers = Integer.parseInt(myPnl.tNumberPlayer.getText());
-//			if(numberPlayers < 3)
-//			{
-//				JOptionPane.showMessageDialog(this, "Invalid number !!");
-//				
-//			}
-//			else 
-//			{
-//				myPnl.setVisible(false);
-//				pselect = new pSelect();
-//				this.add(pselect);
-//				pselect.setVisible(true);
-//			}
-//		}
-//	}
+	
+
+	
 }

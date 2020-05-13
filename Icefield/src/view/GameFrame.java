@@ -27,18 +27,12 @@ public class GameFrame extends JFrame{
 		mainPanel.add(statsPanel);
 	}
 	
-	//I just copied methods below from the mainframe, that's I guess how the panel is controlled from the controllers
-	
-	
 	/*
 	 * here are the methods to be called from the controller
 	 * to set the listeners to certain components 
 	 */
-	public void addBtnListener(ActionListener myListener) {
-		//this.myBtn.addActionListener(myListener);
-	}
 	public void addTestListener(KeyListener myListener) {
-		//this.myBtn.addKeyListener(myListener); //Other component to subscribe!
+		this.addKeyListener(myListener);
 	}
 	
 	/*
@@ -47,6 +41,7 @@ public class GameFrame extends JFrame{
 	 * (in other words: reset all components)
 	 */
 	public void update() {
-		//myBtn.setText("HI");
+		icefieldPanel.update();
+		//update statspanel also should be done
 	}
 }

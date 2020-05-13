@@ -27,4 +27,13 @@ public class pIcefield extends JPanel{
 			}
 		}        
 	}
+	/*
+	 * Updates the panel according to the model
+	 * */
+	public void update() {
+		for(int i = 0; i < 10; i++) 
+			for(int j = 0; j < 10; j++) 
+				picebergs[i][j].update(icefield.getIceberg(i, j));		
+	}
+	
 }
