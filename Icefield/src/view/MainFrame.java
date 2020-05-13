@@ -3,11 +3,13 @@ package view;
 import controller.Controller;
 import model.Game;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 /*
  * Auther Yazan Suleiman
@@ -16,7 +18,9 @@ public class MainFrame extends JFrame{
 	public Controller controller = null;
 	private Game mGame;
 	private JButton myBtn;
-	private static MainFrame instance = null;	
+	private static MainFrame instance = null;
+	pStart myPnl;
+	pSelect pselect;
 	/*
 	 * as usual, in the constructor the components are added
 	 * and instantiated
@@ -25,15 +29,19 @@ public class MainFrame extends JFrame{
 		Controller.createController(mGame, this);
 		controller = Controller.getController();
 		
-		myBtn = new JButton("Test");
-		JPanel myPnl = new JPanel();
-	
+		myPnl = new pStart();
+		myPnl.bStart.addActionListener(
+				ae ->	{
+					//You can add the code here or it can be added from the controller
+				});
+		myPnl.bExit.addActionListener(
+			ae ->	{
+			dispose(); // this only disposes the frame, I guess the game thread will still work 
+		});
+		this.setSize(580,580);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        myPnl.add(myBtn);
-        
         this.add(myPnl);
-        this.pack();
         this.setVisible(true);
         
 	}
@@ -68,4 +76,26 @@ public class MainFrame extends JFrame{
 	public void update() {
 		myBtn.setText("HI");
 	}
+	
+	/*#####################Yazan here is a part of code maybe useful for the play button on the first panel to change the panels*/
+	
+//	@Override
+//	public void actionPerformed(ActionEvent e) {
+//		if(e.getActionCommand().equals("PLAY"))
+//		{
+//			int numberPlayers = Integer.parseInt(myPnl.tNumberPlayer.getText());
+//			if(numberPlayers < 3)
+//			{
+//				JOptionPane.showMessageDialog(this, "Invalid number !!");
+//				
+//			}
+//			else 
+//			{
+//				myPnl.setVisible(false);
+//				pselect = new pSelect();
+//				this.add(pselect);
+//				pselect.setVisible(true);
+//			}
+//		}
+//	}
 }

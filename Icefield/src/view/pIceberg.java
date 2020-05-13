@@ -35,7 +35,7 @@ public class pIceberg extends JPanel{
 	void createBackground() {
 		BufferedImage image = null;
 		try {
-			image = ImageIO.read(new File("C:\\Users\\Beka\\Downloads\\grass.jpg"));
+			image = ImageIO.read(new File("/Images/newIce.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,7 +49,7 @@ public class pIceberg extends JPanel{
 	void drawFigure() {
 		BufferedImage image = null;
 		try {
-			image = ImageIO.read(new File("C:\\Users\\Beka\\Downloads\\fifki.jpg"));
+			image = ImageIO.read(new File("/Images/newIce.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
