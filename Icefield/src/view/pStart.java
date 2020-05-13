@@ -23,8 +23,8 @@ public class pStart extends JPanel implements ActionListener
 	
 	public void create()
 	{
-		Font f0 = new Font("arial", Font.BOLD, 20);
-		Font f1 = new Font("arial", Font.BOLD, 40);
+		Font f0 = new Font("ubuntu", Font.BOLD, 20);
+		Font f1 = new Font("ubuntu", Font.BOLD, 40);
 		JPanel panel=new JPanel();
 		JLabel backGround= new JLabel();
 		backGround.setIcon(img);

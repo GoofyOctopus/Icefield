@@ -51,13 +51,17 @@ public class pSelect extends JPanel implements ActionListener
 		JTextField tName = new JTextField();
 		tName.setMaximumSize(new Dimension(80,20));
 		
-		JButton bEskimoo = new JButton(eski_img);
+
+		JButton bEskimoo = new JButton();
+		bEskimoo.setIcon(new ImageIcon("Images/Eskimo.jpg"));
 		bEskimoo.setAlignmentX(Component.LEFT_ALIGNMENT);
 		bEskimoo.setMaximumSize(new Dimension(50,50));
 		validate();
 		
-		
-		JButton bExplorer = new JButton(explorer_img);
+
+
+		JButton bExplorer = new JButton();
+		bExplorer.setIcon(new ImageIcon("Images/bpolar.png"));
 		bExplorer.setAlignmentX(Component.TOP_ALIGNMENT);
 		bExplorer.setMaximumSize(new Dimension(50, 50));
 		validate();
