@@ -38,13 +38,13 @@ public class MainFrame extends JFrame{
 		controller = Controller.getController();
 		myPnl = new pStart();
 		
-		
+		/*  For testing purpose dont delete
 		testPnl = new JPanel();
 		testBtn1 = new JButton("Eskimo",new ImageIcon("Images/Eskimo.jpg"));
 		testBtn2 = new JButton("Explorer",new ImageIcon("Images/bpolar.png"));
 		testPnl.add(testBtn1);
 		testPnl.add(testBtn2);
-		
+		*/
 		
 		myPnl.bStart.addActionListener( 
 				ae ->	{
@@ -92,10 +92,12 @@ public class MainFrame extends JFrame{
 		this.setSize(580,580);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-		//For testing purpose
+		/*  For testing purpose dont delete
 		this.add(testPnl);
+		*/
 		
-        //this.add(myPnl);
+		
+        this.add(myPnl);
         this.setVisible(true);
         
 	}
@@ -118,17 +120,19 @@ public class MainFrame extends JFrame{
 	public void addBtnListener(ActionListener myListener) {
 		this.myBtn.addActionListener(myListener);
 		
-		//For testing purpose
+		/*  For testing purpose dont delete
 		this.testBtn1.addActionListener(myListener);
 		this.testBtn2.addActionListener(myListener);
+		*/
 		
 	}
 	public void addTestListener(KeyListener myListener) {
 		this.myBtn.addKeyListener(myListener); //Other component to subscribe!
 		
-		//For testing purpose
+		/*  For testing purpose dont delete
 		this.testBtn1.addKeyListener(myListener);
 		this.testBtn2.addKeyListener(myListener);
+		*/
 	}
 	
 	/*
