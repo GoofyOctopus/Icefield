@@ -63,6 +63,7 @@ public class MainFrame extends JFrame{
 						 * the Eskimo or the polar explorer and adding them to the hash table by the name
 						 * and their type/
 						 */
+		
 						pselect.bEskimoo.addActionListener(new ActionListener() 
 						{
 							@Override
@@ -87,13 +88,14 @@ public class MainFrame extends JFrame{
 			ae ->	{
 			dispose(); // this only disposes the frame, I guess the game thread will still work 
 		});
+		
 		this.setSize(580,580);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
 		//For testing purpose
 		this.add(testPnl);
 		
-        this.add(myPnl);
+        //this.add(myPnl);
         this.setVisible(true);
         
 	}
@@ -151,6 +153,7 @@ public class MainFrame extends JFrame{
 			//GameFrame gFrame = new GameFrame(mGame, controller);
 		}
 	}
+	
 	
 	
 	
