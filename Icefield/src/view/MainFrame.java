@@ -15,9 +15,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import view.GameFrame;
 /*
- * Auther Yazan Suleiman
+ * Author Yazan Suleiman
  */
-public class MainFrame extends JFrame{
+public class MainFrame extends JFrame implements IView{
 	public Controller controller = null;
 	private Game mGame;
 	private JButton myBtn;
@@ -127,7 +127,7 @@ public class MainFrame extends JFrame{
 		*/
 		
 	}
-	public void addTestListener(KeyListener myListener) {
+	public void addKeyListener(KeyListener myListener) {
 		//this.myBtn.addKeyListener(myListener); //Other component to subscribe!
 		
 		/*  For testing purpose dont delete
@@ -135,15 +135,8 @@ public class MainFrame extends JFrame{
 		this.testBtn2.addKeyListener(myListener);
 		*/
 	}
-	
-	/*
-	 * This method is called from the Controller, every component here
-	 * should be updated to be consistent with the model
-	 * (in other words: reset all components)
-	 */
-	public void update() {
-		//myBtn.setText("HI");
-	}
+
+	public void update() {}
 	/*
 	 * Saves names and types of the figures and
 	 * gives to the controller to set up the game.
@@ -157,8 +150,8 @@ public class MainFrame extends JFrame{
 			controller.setGameParameters(figureNames);
 			System.out.println(mGame.figures.size());
 			GameFrame gFrame = new GameFrame(mGame, controller);
+			this.controller.setView(gFrame);
 			this.setVisible(false);
-			//gFrame.setVisible(true);
 		}
 	}
 	

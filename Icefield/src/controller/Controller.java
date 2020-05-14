@@ -6,15 +6,18 @@ import java.awt.event.KeyListener;
 import java.util.HashMap;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 import model.Game;
+import view.GameFrame;
+import view.IView;
 import view.MainFrame;
 /*
- * Auther Yazan Suleiman
+ * Author Yazan Suleiman
  */
 public class Controller {
 	private Game mGame;
-	private MainFrame view;
+	private IView view;
 	
 	private static Controller instance = null;	
 	protected Controller(Game mGame, MainFrame view) {
@@ -31,7 +34,9 @@ public class Controller {
 			System.out.println("Instance is null!");
 		return instance;
 	}
-	
+	public void setView(GameFrame view) {
+		this.view = view;
+	}
 	/*
 	 * to be called from the main, calls the method that
 	 * sets the listeners in the view
@@ -39,7 +44,7 @@ public class Controller {
 	 */
 	public void addListeners() {
 		this.view.addBtnListener(new MyBtnListener ());
-		this.view.addTestListener(new MyKeyListener());	
+		this.view.addKeyListener(new MyKeyListener());	
 	}
 	
 	/*

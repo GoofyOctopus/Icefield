@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import controller.Controller;
 import model.Game;
 
-public class GameFrame extends JFrame{
+public class GameFrame extends JFrame implements IView{
 	//Controller and game class passed in constructor
 	private Controller controller = null; 
 	private Game mGame;
@@ -37,8 +37,10 @@ public class GameFrame extends JFrame{
 	 * here are the methods to be called from the controller
 	 * to set the listeners to certain components 
 	 */
-	public void addTestListener(KeyListener myListener) {
+	public void addKeyListener(KeyListener myListener) {
+		this.statsPanel.addKeyListener(myListener);
 		this.addKeyListener(myListener);
+		this.icefieldPanel.addKeyListener(myListener);
 	}
 	
 	/*
@@ -46,6 +48,7 @@ public class GameFrame extends JFrame{
 	 * should be updated to be consistent with the model
 	 * (in other words: reset all components)
 	 */
+	public void addBtnListener(ActionListener myListener) {};
 	public void update() {
 		icefieldPanel.update();
 		//update statspanel also should be done
