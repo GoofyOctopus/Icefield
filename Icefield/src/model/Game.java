@@ -17,6 +17,9 @@ public class Game extends Thread{
     public int numberOfFigures = 0; //Number of players
     public int roundCounter = 0; //Current round
     public int numberOfMoves = 0;//Moves made by current player
+    
+    public int currentFigure = 0;
+    
     public ArrayList<Figure> figures;
     public Icefield icf;
     Direction d = Direction.UP;
@@ -29,7 +32,7 @@ public class Game extends Thread{
      * US - use skill;
      * */
     public enum Move{
-    	W,S,D,A, UR, USH, RS, EF, UD, UF, RI, USPE, CW, USE;
+    	W,S,D,A, UR, USH, RS, EF, UD, UF, RI, US, CW;
     }
     /*
      * Enum for items to easily compare user input
@@ -57,7 +60,7 @@ public class Game extends Thread{
     }
     public void run() {
     	startGame();
-    	gameLoop();
+    	//gameLoop();
     }
     /*
      * If user doesn't want to test the game, game loop
@@ -75,6 +78,35 @@ public class Game extends Thread{
         	roundCounter++;
     	}
     }
+    
+    public boolean madeMove(String input) {
+    	
+    	if(numberOfMoves==4) {
+    		currentFigure++;
+    		numberOfMoves=0;
+    	}
+    	if(currentFigure>=numberOfFigures) {
+    		roundCounter++;
+    		currentFigure = currentFigure % numberOfFigures;
+    	}
+    	Figure currPl = figures.get(currentFigure);
+    	if(currPl.isDrowning() && currPl.getRoundOfDrowning() < roundCounter) {
+			endGame();
+			return false;
+		}
+    	System.out.println("Current figure "+currentFigure);
+    	Move move = Move.valueOf(input.toUpperCase());
+    	try {
+			if(!makeMove(currPl, move)) return false;
+		} catch (IllegalArgumentException e) {
+			System.out.println("Invalid input");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Something went wrong while making a move!");
+		}
+    	System.out.println("Current numberOfMoves "+ numberOfMoves +"\n");
+    	return true;
+		}
     /*
      *Gets number of players, lets them choose figures, creates
      *icefield and sets roundCounter and numberOfMoves to 0.
@@ -94,12 +126,32 @@ public class Game extends Thread{
             }
         }
         figures = new ArrayList<Figure>();
+        /*
         if(!test) {
-        	 for(int i = 0; i < numberOfFigures; i++) {
+         for(int i = 0; i < numberOfFigures; i++) {
              	figures.add(chooseFigure()); 
              }
         }
-        icf = new Icefield(figures);
+        */
+        //icf = new Icefield(figures);
+    }
+    
+    public void addFigure(String name) {
+    	if(figures.size()<numberOfFigures) {
+    		if(name.equalsIgnoreCase("Eskimo")) {
+    			figures.add(new Eskimo(""));
+    			System.out.println("Eskimo chosen");
+    			System.out.println(figures.size());
+    		}
+    		if(name.equalsIgnoreCase("Explorer")) {
+    			figures.add(new PolarExplorer(""));
+    			System.out.println("Explorer chosen");
+    			System.out.println(figures.size());
+    		}
+    	}
+    	if(figures.size()==numberOfFigures) {
+    		icf = new Icefield(figures);
+    	}
     }
     
     /*
@@ -215,22 +267,28 @@ public class Game extends Thread{
      * Returns false - if game finished, true - otherwise
      * */
     public boolean makeMove(Figure currPl, Move move) throws Exception {
+    	System.out.println("makemove called !");
     	Scanner in = new Scanner(System.in);
     	String answer;
     	switch(move) {
 	    case W:
+	    	System.out.println("Moved up");
 	        currPl.step(Direction.UP);
 	        break;
 	    case S:
+	    	System.out.println("Moved down");
 	        currPl.step(Direction.DOWN);
 	        break;
 	    case D:
+	    	System.out.println("Moved right");
 	        currPl.step(Direction.RIGHT);
 	        break;
 	    case A:
+	    	System.out.println("Moved left");
 	        currPl.step(Direction.LEFT);
 	        break;
 	    case RS:
+	    	System.out.println("Removed snow");
 	        currPl.removeSnow(1);
 	        break;
 	    case RI:
@@ -245,19 +303,20 @@ public class Game extends Thread{
 	    	}
 	    	break;
 	    case USH:
-	    	currPl.removeSnow(2);
+	    	checkItem(currPl,new Shovel(), true);
 	    	break;
 	    case EF:
-	    	currPl.increaseHeatUnit();
+	    	checkItem(currPl,new Food(), true);
 	    	break;
 	    case UD:
-	    	currPl.setWearingDivingSuit(true);
+	    	checkItem(currPl,new DivingSuit(), true);
 	    	break;
-	    case USPE:
-	    	currPl.useSkill(d);
+	    case US:
+	    	if(currPl instanceof Eskimo) 
+	    		currPl.useSkill();
+	    	if(currPl instanceof PolarExplorer)
+	    		currPl.useSkill(d);
 	    	break;
-	    case USE:
-	    	currPl.useSkill();
 	    case CW:
 	    	//Players won
 	    	return(checkFlareGun());
@@ -274,8 +333,10 @@ public class Game extends Thread{
     	//Player fell into the water
     	Iceberg ib = currPl.getIceberg();
     	if(ib instanceof UnstableIceberg)
-    		if(((UnstableIceberg) ib).getCapacity() == 0)
+    		if(((UnstableIceberg) ib).getCapacity() == 0) {
     			numberOfMoves = 4;
+    			System.out.println("Figure " + currentFigure+" is drowning");
+    		}
     	return true;
     }
     /*

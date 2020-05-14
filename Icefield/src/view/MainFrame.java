@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.util.HashMap;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -22,6 +23,9 @@ public class MainFrame extends JFrame{
 	private JButton myBtn;
 	private static MainFrame instance = null;
 	pStart myPnl;
+	JPanel testPnl;
+	private JButton testBtn1;
+	private JButton testBtn2;
 	pSelect pselect;
 	int numberPlayers;
 	HashMap<String, String> figureNames;
@@ -33,6 +37,15 @@ public class MainFrame extends JFrame{
 		Controller.createController(mGame, this);
 		controller = Controller.getController();
 		myPnl = new pStart();
+		
+		
+		testPnl = new JPanel();
+		testBtn1 = new JButton("Eskimo",new ImageIcon("Images/Eskimo.jpg"));
+		testBtn2 = new JButton("Explorer",new ImageIcon("Images/bpolar.png"));
+		testPnl.add(testBtn1);
+		testPnl.add(testBtn2);
+		
+		
 		myPnl.bStart.addActionListener( 
 				ae ->	{
 					numberPlayers = Integer.parseInt(myPnl.tNumberPlayer.getText());//getting the number of players from the user
@@ -77,6 +90,9 @@ public class MainFrame extends JFrame{
 		this.setSize(580,580);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+		//For testing purpose
+		this.add(testPnl);
+		
         this.add(myPnl);
         this.setVisible(true);
         
@@ -99,9 +115,18 @@ public class MainFrame extends JFrame{
 	 */
 	public void addBtnListener(ActionListener myListener) {
 		this.myBtn.addActionListener(myListener);
+		
+		//For testing purpose
+		this.testBtn1.addActionListener(myListener);
+		this.testBtn2.addActionListener(myListener);
+		
 	}
 	public void addTestListener(KeyListener myListener) {
 		this.myBtn.addKeyListener(myListener); //Other component to subscribe!
+		
+		//For testing purpose
+		this.testBtn1.addKeyListener(myListener);
+		this.testBtn2.addKeyListener(myListener);
 	}
 	
 	/*
@@ -110,13 +135,14 @@ public class MainFrame extends JFrame{
 	 * (in other words: reset all components)
 	 */
 	public void update() {
-		myBtn.setText("HI");
+		//myBtn.setText("HI");
 	}
 	/*
 	 * Saves names and types of the figures and
 	 * gives to the controller to set up the game.
 	 * After it creates a new frame and start the game.
 	 * */
+	
 	public void createFigures(String name, String type) {
 		figureNames.put(name, type);
 		numberPlayers--;

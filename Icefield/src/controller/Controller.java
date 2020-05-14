@@ -3,8 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.HashMap;
-import java.util.Iterator;
+
+import javax.swing.JButton;
 
 import model.Game;
 import view.MainFrame;
@@ -52,7 +52,16 @@ public class Controller {
 	private class MyBtnListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			JButton button = (JButton)e.getSource();
 			System.out.println("Button Clicked!");
+			System.out.println(button.getText());
+			
+			if(e.getActionCommand().equalsIgnoreCase("Eskimo")) {
+				mGame.addFigure("Eskimo");
+			}
+			if(e.getActionCommand().equalsIgnoreCase("Explorer")) {
+				mGame.addFigure("Explorer");
+			}
 			/*
 			 * edit the model from here!
 			 * after that ask the view to update
@@ -61,6 +70,7 @@ public class Controller {
 		}
 	}
 	private class MyKeyListener implements KeyListener{
+		String firstinput;
 		@Override
 		public void keyTyped(KeyEvent e) {
 			// TODO Auto-generated method stub
@@ -73,6 +83,47 @@ public class Controller {
 			/*
 			 * switch case based on it change the model
 			 */
+			if(e.getKeyCode() == KeyEvent.VK_W) {
+				mGame.madeMove("w");
+	        }
+
+	        if(e.getKeyCode() == KeyEvent.VK_S) {
+	            mGame.madeMove("s");
+	        }
+
+	        if(e.getKeyCode() == KeyEvent.VK_D) {
+	        	mGame.madeMove("d");
+	        }
+
+	        if(e.getKeyCode() == KeyEvent.VK_A) {
+	        	mGame.madeMove("a");
+	        }
+	        
+	        if(e.getKeyCode() == KeyEvent.VK_C) {
+	        	mGame.madeMove("rs");
+	        }
+
+	        if(e.getKeyCode() == KeyEvent.VK_V) {
+	            mGame.madeMove("us");
+	        }
+
+	        if(e.getKeyCode() == KeyEvent.VK_R) {
+	            firstinput = "Retrieve";
+	        }
+
+	        if(e.getKeyCode() == KeyEvent.VK_U) {
+	        	firstinput = "Use";
+	        }
+	        
+	        if(e.getKeyCode() == KeyEvent.VK_1) {
+	        	//mGame.figures.get(mGame.currentFigure).getInventory().get(0);
+	            if(firstinput!=null && firstinput.equalsIgnoreCase("Use")) {
+	            	mGame.madeMove("ef");
+	            	firstinput = null;
+	            }
+	            	
+	        }
+			
 			
 			update();
 		}
@@ -90,16 +141,17 @@ public class Controller {
 	private void update() {
 		this.view.update();
 	}
+
 	/*
 	 * Receives names and types of the figures and
 	 * passes to the model to create icefield and figures
 	 * */
+	/*
 	public void setGameParameters(HashMap<String, String> figureNames) {
 		System.out.println(figureNames.size());
 		for (String key : figureNames.keySet()) {
 		   System.out.println(key + " " + figureNames.get(key));
-		}
-		
-		
+		}	
 	}
+	*/
 }

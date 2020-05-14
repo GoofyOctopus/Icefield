@@ -170,6 +170,7 @@ public class UtilClass {
 					}
 				}
 				switch(splitted.get(i)[1]) {
+				/*
 				case "skill":
 					if(game.figures.get(chosen) instanceof Eskimo) {
 						game.makeMove(game.figures.get(chosen), Move.USE);
@@ -195,6 +196,7 @@ public class UtilClass {
 						
 					}
 					break;
+					*/
 				case "rope":
 					game.makeMove(game.figures.get(chosen), Move.UR);
 					output.add(splitted.get(i)[2]+" has helped figures in the direction "+ splitted.get(i)[3] +" with rope");
@@ -510,6 +512,7 @@ public class UtilClass {
 				}
 			}
 			switch(splitted[1]) {
+			/*
 			case "skill":
 				if(game.figures.get(chosen) instanceof Eskimo) {
 					game.makeMove(game.figures.get(chosen), Move.USE);
@@ -540,7 +543,7 @@ public class UtilClass {
 					
 				}
 				break;
-				
+				*/
 			case "rope":
 				game.makeMove(game.figures.get(chosen), Move.UR);
 				output.add(splitted[2]+" has helped figures in the direction "+ splitted[3] +" with rope");
