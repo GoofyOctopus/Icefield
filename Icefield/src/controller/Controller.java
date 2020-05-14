@@ -38,21 +38,16 @@ public class Controller {
 		this.view = view;
 	}
 	/*
-	 * to be called from the main, calls the method that
-	 * sets the listeners in the view
-	 * DO NOT SET DIRECTLY!
+	 * sets listeners to the view components
 	 */
 	public void addListeners() {
+		System.out.println("Called");
 		this.view.addBtnListener(new MyBtnListener ());
 		this.view.addKeyListener(new MyKeyListener());	
 	}
 	
 	/*
 	 * The implementation of the listeners
-	 * for certain components custom listeners can 
-	 * created, then set using the method created for
-	 * that purpose in the view -----------
-	 * ----------- ----------------------
 	 * model modified here based on the event then update method is called
 	 */
 	private class MyBtnListener implements ActionListener{
@@ -78,9 +73,7 @@ public class Controller {
 	private class MyKeyListener implements KeyListener{
 		String firstinput;
 		@Override
-		public void keyTyped(KeyEvent e) {
-			// TODO Auto-generated method stub
-		}
+		public void keyTyped(KeyEvent e) { }
 
 		@Override
 		public void keyPressed(KeyEvent e) {
@@ -135,14 +128,10 @@ public class Controller {
 		}
 
 		@Override
-		public void keyReleased(KeyEvent e) {
-			// TODO Auto-generated method stub
-		}
+		public void keyReleased(KeyEvent e) { }
 	}	
 	/*
-	 * the following method is called after modifying the model
-	 * the purpose is to call the update method in the view
-	 * don't call the view method directly from the listener
+	 * updates the view
 	 */
 	private void update() {
 		this.view.update();

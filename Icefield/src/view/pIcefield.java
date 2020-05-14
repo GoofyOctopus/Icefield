@@ -2,6 +2,7 @@ package view;
 
 import java.awt.GridLayout;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import model.Icefield;
@@ -31,6 +32,7 @@ public class pIcefield extends JPanel{
 	 * Updates the panel according to the model
 	 * */
 	public void update() {
+		System.out.println("Icebergs are updated!");
 		for(int i = 0; i < 10; i++) 
 			for(int j = 0; j < 10; j++) 
 				picebergs[i][j].update(icefield.getIceberg(i, j));		

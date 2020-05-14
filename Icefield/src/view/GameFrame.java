@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -16,6 +17,7 @@ public class GameFrame extends JFrame implements IView{
 	private Game mGame;
 	private pIcefield icefieldPanel;
 	private pStats statsPanel;
+	
 	public GameFrame(Game mGame, Controller controller) {
 		this.mGame = mGame;
 		this.controller = controller;
@@ -31,24 +33,19 @@ public class GameFrame extends JFrame implements IView{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.add(mainPanel);
 		this.setVisible(true);
+		//---------------------------
+		icefieldPanel.setFocusable(true);
+		icefieldPanel.requestFocusInWindow();
 	}
 	
-	/*
-	 * here are the methods to be called from the controller
-	 * to set the listeners to certain components 
-	 */
+
 	public void addKeyListener(KeyListener myListener) {
-		this.statsPanel.addKeyListener(myListener);
-		this.addKeyListener(myListener);
+		System.out.println("Called");
 		this.icefieldPanel.addKeyListener(myListener);
 	}
 	
-	/*
-	 * This method is called from the Controller, every component here
-	 * should be updated to be consistent with the model
-	 * (in other words: reset all components)
-	 */
 	public void addBtnListener(ActionListener myListener) {};
+	
 	public void update() {
 		icefieldPanel.update();
 		//update statspanel also should be done

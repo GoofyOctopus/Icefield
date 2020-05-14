@@ -29,10 +29,7 @@ public class MainFrame extends JFrame implements IView{
 	pSelect pselect;
 	int numberPlayers;
 	HashMap<String, String> figureNames;
-	/*
-	 * as usual, in the constructor the components are added
-	 * and instantiated
-	 */
+
 	protected MainFrame(Game mGame) {
 		this.mGame = mGame;
 		Controller.createController(mGame, this);
@@ -49,6 +46,10 @@ public class MainFrame extends JFrame implements IView{
 		
 		myPnl.bStart.addActionListener( 
 				ae ->	{
+					if(myPnl.tNumberPlayer.getText().equals("")) {
+						JOptionPane.showMessageDialog(this, "Enter the number of players !!");
+						return;
+								}
 					numberPlayers = Integer.parseInt(myPnl.tNumberPlayer.getText());//getting the number of players from the user
 					if(numberPlayers < 3) //checking if the number of players is less than 3, if it is then show a message otherwise swap to the selection menu
 						JOptionPane.showMessageDialog(this, "Invalid number !!");
@@ -114,10 +115,6 @@ public class MainFrame extends JFrame implements IView{
 		return instance;
 	}
 	
-	/*
-	 * here are the methods to be called from the controller
-	 * to set the listeners to certain components 
-	 */
 	public void addBtnListener(ActionListener myListener) {
 		//this.myBtn.addActionListener(myListener);
 		
@@ -130,12 +127,12 @@ public class MainFrame extends JFrame implements IView{
 	public void addKeyListener(KeyListener myListener) {
 		//this.myBtn.addKeyListener(myListener); //Other component to subscribe!
 		
-		/*  For testing purpose dont delete
+		/*  For testing purpose don't delete
 		this.testBtn1.addKeyListener(myListener);
 		this.testBtn2.addKeyListener(myListener);
 		*/
 	}
-
+	
 	public void update() {}
 	/*
 	 * Saves names and types of the figures and
@@ -151,6 +148,7 @@ public class MainFrame extends JFrame implements IView{
 			System.out.println(mGame.figures.size());
 			GameFrame gFrame = new GameFrame(mGame, controller);
 			this.controller.setView(gFrame);
+			this.controller.addListeners();
 			this.setVisible(false);
 		}
 	}
