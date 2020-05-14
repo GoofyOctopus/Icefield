@@ -34,6 +34,7 @@ public class MainFrame extends JFrame{
 	 * and instantiated
 	 */
 	protected MainFrame(Game mGame) {
+		this.mGame = mGame;
 		Controller.createController(mGame, this);
 		controller = Controller.getController();
 		myPnl = new pStart();
@@ -118,7 +119,7 @@ public class MainFrame extends JFrame{
 	 * to set the listeners to certain components 
 	 */
 	public void addBtnListener(ActionListener myListener) {
-		this.myBtn.addActionListener(myListener);
+		//this.myBtn.addActionListener(myListener);
 		
 		/*  For testing purpose dont delete
 		this.testBtn1.addActionListener(myListener);
@@ -127,7 +128,7 @@ public class MainFrame extends JFrame{
 		
 	}
 	public void addTestListener(KeyListener myListener) {
-		this.myBtn.addKeyListener(myListener); //Other component to subscribe!
+		//this.myBtn.addKeyListener(myListener); //Other component to subscribe!
 		
 		/*  For testing purpose dont delete
 		this.testBtn1.addKeyListener(myListener);
@@ -154,7 +155,10 @@ public class MainFrame extends JFrame{
 		numberPlayers--;
 		if(numberPlayers == 0) {
 			controller.setGameParameters(figureNames);
-			//GameFrame gFrame = new GameFrame(mGame, controller);
+			System.out.println(mGame.figures.size());
+			GameFrame gFrame = new GameFrame(mGame, controller);
+			this.setVisible(false);
+			//gFrame.setVisible(true);
 		}
 	}
 	

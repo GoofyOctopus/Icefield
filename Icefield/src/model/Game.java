@@ -1,6 +1,6 @@
 package model;
 import java.util.ArrayList;
-
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,7 +13,7 @@ import Item.*;
 /*
  *Author Beka Babunashvili 
  */
-public class Game extends Thread{
+public class Game{
     public int numberOfFigures = 0; //Number of players
     public int roundCounter = 0; //Current round
     public int numberOfMoves = 0;//Moves made by current player
@@ -47,6 +47,9 @@ public class Game extends Thread{
     
     public Game(boolean testCases) {
     	test = testCases;
+    	startGame();
+    	//gameLoop();
+
     	/*
     	 * The basic idea to separate the threads is here
     	 * let's not delete the test and override the code
@@ -58,10 +61,7 @@ public class Game extends Thread{
     	//if(!testCases)
     	//	gameLoop();
     }
-    public void run() {
-    	startGame();
-    	//gameLoop();
-    }
+   
     /*
      * If user doesn't want to test the game, game loop
      * starts. Players start to make their moves, until
@@ -114,17 +114,18 @@ public class Game extends Thread{
     public void startGame(){
     	roundCounter = 0;
         numberOfMoves = 0;
-        if(!test) {
-        	Scanner in = new Scanner(System.in);
-            boolean valid = false;
-            while(!valid) {
-            	System.out.println("Enter the number of players:");
-                numberOfFigures = in.nextInt();
-                if(numberOfFigures >= 3)
-                	break;
-                System.out.println("Minimum number of players is 3!");
-            }
-        }
+        
+//        if(!test) {
+//        	Scanner in = new Scanner(System.in);
+//            boolean valid = false;
+//            while(!valid) {
+//            	System.out.println("Enter the number of players:");
+//                numberOfFigures = in.nextInt();
+//                if(numberOfFigures >= 3)
+//                	break;
+//                System.out.println("Minimum number of players is 3!");
+//            }
+//        }
         figures = new ArrayList<Figure>();
         /*
         if(!test) {
@@ -136,22 +137,29 @@ public class Game extends Thread{
         //icf = new Icefield(figures);
     }
     
-    public void addFigure(String name) {
-    	if(figures.size()<numberOfFigures) {
-    		if(name.equalsIgnoreCase("Eskimo")) {
-    			figures.add(new Eskimo(""));
-    			System.out.println("Eskimo chosen");
-    			System.out.println(figures.size());
-    		}
-    		if(name.equalsIgnoreCase("Explorer")) {
-    			figures.add(new PolarExplorer(""));
-    			System.out.println("Explorer chosen");
-    			System.out.println(figures.size());
-    		}
-    	}
-    	if(figures.size()==numberOfFigures) {
-    		icf = new Icefield(figures);
-    	}
+    public void addFigure(HashMap<String, String> figureNames) {
+//    	if(figures.size()<numberOfFigures) {
+//    		if(name.equalsIgnoreCase("Eskimo")) {
+//    			figures.add(new Eskimo(""));
+//    			System.out.println("Eskimo chosen");
+//    			System.out.println(figures.size());
+//    		}
+//    		if(name.equalsIgnoreCase("Explorer")) {
+//    			figures.add(new PolarExplorer(""));
+//    			System.out.println("Explorer chosen");
+//    			System.out.println(figures.size());
+//    		}
+//    	}
+    	for (String key : figureNames.keySet()) {
+ 		   if(figureNames.get(key).equals("Eskimoo"))
+ 			   figures.add(new Eskimo(key));
+ 		   else
+ 			   figures.add(new PolarExplorer(key));
+ 		}
+    	numberOfFigures = figureNames.size();
+    	
+    	icf = new Icefield(figures);
+    	
     }
     
     /*

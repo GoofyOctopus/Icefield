@@ -9,8 +9,10 @@ import model.Direction;
 public class Eskimo extends Figure {
 
 	public Eskimo(String name) {
+		
 		super(name);
 		bodyHeatUnit = 5;
+		System.out.println("Eskimo was created - " + name);
 	}
 	/*
 	 * If Eskimo use this type of useSkill method,

@@ -13,7 +13,7 @@ public class pIcefield extends JPanel{
 		icefield = field;
 		picebergs = new pIceberg[10][10];//2D array for panels of icebergs
 		setLayout(new GridLayout(10, 10)); //Making 10x10 grid panel
-		
+		createIcebergs();
 	}
 	/*
 	 * Creating panels for each iceberg and adding on this panel
@@ -21,7 +21,7 @@ public class pIcefield extends JPanel{
 	void createIcebergs() {
 		for(int i = 0; i < 10; i++) {
 			for(int j = 0; j < 10; j++) {
-				//System.out.println(icefield.getIceberg(i, j).getCapacity());
+				System.out.println(icefield.getIceberg(i, j).getCapacity());
 				picebergs[i][j] = new pIceberg(icefield.getIceberg(i, j));
 				add(picebergs[i][j]);
 			}

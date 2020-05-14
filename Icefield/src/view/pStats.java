@@ -55,7 +55,6 @@ public class pStats extends JPanel {
 		items.add(lGun);
 		items.add(lFlare);
 		
-		System.out.println(items.size());
 		lName = new JLabel("Name: Figure1                 ");
 		lHealth = new JLabel("Body heath:             ");
 		pBottomRight = new JPanel();

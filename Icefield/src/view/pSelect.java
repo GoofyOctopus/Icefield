@@ -16,11 +16,11 @@ public class pSelect extends JPanel
 	
 	// who did the changes here pleas explain what changes you have made
 	//private static final String IMG_PATH = "Images\\newIce.jpg";
-	Icon backGround_img = new ImageIcon(getClass().getResource(IMG_PATH));
-	private static final String pImg = "Images\\bpolar.png";
-	Icon explorer_img = new ImageIcon(getClass().getResource(pImg));
-	private static final String eImg =  "Images\\Eskimo.jpg";
-	Icon eski_img= new ImageIcon(getClass().getResource(eImg));
+//	Icon backGround_img = new ImageIcon(getClass().getResource(IMG_PATH));
+//	private static final String pImg = "Images\\bpolar.png";
+//	Icon explorer_img = new ImageIcon(getClass().getResource(pImg));
+//	private static final String eImg =  "Images\\Eskimo.jpg";
+//	Icon eski_img= new ImageIcon(getClass().getResource(eImg));
 
 	private static final String IMG_PATH = "Images/newIce.jpg";
 	ImageIcon img= new ImageIcon(IMG_PATH);
@@ -37,15 +37,6 @@ public class pSelect extends JPanel
 	{
 		Font f0 = new Font("ubuntu", Font.BOLD, 30);
 		Font f1 = new Font("ubuntu", Font.BOLD, 15);
-		
-
-		JPanel panel = new JPanel();
-		JLabel backGround= new JLabel(backGround_img);
-		backGround.setLayout(new BoxLayout(backGround, BoxLayout.PAGE_AXIS));
-		panel.setLayout(new BorderLayout());
-		panel.add(backGround);
-		panel.setOpaque(true);
-		panel.setBounds(0, 0, 600, 600);
 
 		
 		backGround= new JLabel(img);
@@ -70,18 +61,14 @@ public class pSelect extends JPanel
 		
 
 
-		JButton bEskimoo = new JButton();
-
+		
 		bEskimoo = new JButton();
 
 		bEskimoo.setIcon(new ImageIcon("Images/Eskimo.jpg"));
 		bEskimoo.setAlignmentX(Component.LEFT_ALIGNMENT);
 		bEskimoo.setMaximumSize(new Dimension(50,50));
 		validate();
-		
-
-
-		JButton bExplorer = new JButton();
+	
 	
 		bExplorer = new JButton();
 

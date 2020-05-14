@@ -21,10 +21,16 @@ public class GameFrame extends JFrame{
 		this.controller = controller;
 		icefieldPanel = new pIcefield(mGame.icf);
 		statsPanel = new pStats();
+		//pIceberg p1 = new pIceberg(mGame.icf.getIceberg(1, 0));
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 		mainPanel.add(icefieldPanel);
 		mainPanel.add(statsPanel);
+		this.pack();
+		this.setSize(580,580);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.add(mainPanel);
+		this.setVisible(true);
 	}
 	
 	/*

@@ -30,8 +30,7 @@ public class pStart extends JPanel
 		//changing the Fonts of the labels
 		Font f0 = new Font("ubuntu", Font.BOLD, 20);
 		Font f1 = new Font("ubuntu", Font.BOLD, 40);
-		JPanel panel=new JPanel();
-		JLabel backGround= new JLabel();
+		
 		
 		backGround= new JLabel();
 		backGround.setIcon(img);
@@ -82,7 +81,7 @@ public class pStart extends JPanel
 		backGround.add(bExit);		
 
 		
-		numberPlayers = Integer.parseInt(tNumberPlayer.getText());
+		//numberPlayers = Integer.parseInt(tNumberPlayer.getText());
 		
 		//adding the action listeners for the buttons
 		//bStart.addActionListener(this);

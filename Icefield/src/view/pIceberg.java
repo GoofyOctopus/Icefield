@@ -40,13 +40,13 @@ public class pIceberg extends JPanel{
 	 * */
 	void createBackground() {
 		BufferedImage image = null;
-		try {
-			image = ImageIO.read(new File("/Images/newIce.jpg"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        background = new JLabel(new ImageIcon(image));
+//		try {
+//			image = ImageIO.read(new File("/Images/2 eskimo.png"));
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+        background = new JLabel(new ImageIcon("Images/3 explorer.png"));
         background.setLayout(new FlowLayout());
 	}
 	/*
@@ -54,13 +54,13 @@ public class pIceberg extends JPanel{
 	 * */
 	void drawFigure() {
 		BufferedImage image = null;
-		try {
-			image = ImageIO.read(new File("/Images/newIce.jpg"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        figureLabel = new JLabel(new ImageIcon(image));
+//		try {
+//			image = ImageIO.read(new File("/Images/newIce.jpg"));
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+        figureLabel = new JLabel(new ImageIcon("Images/6 explorer.png"));
         background.add(figureLabel);
 	}
 //	

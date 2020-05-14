@@ -11,6 +11,7 @@ public class PolarExplorer extends Figure{
 	public PolarExplorer(String name) {
 		super(name);
 		bodyHeatUnit = 4;
+		System.out.println("Explorer was created - " + name);
 	}
 	/*
 	 * Polar explorer can know capacity of iceberg,

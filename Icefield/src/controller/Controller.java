@@ -57,12 +57,12 @@ public class Controller {
 			System.out.println("Button Clicked!");
 			System.out.println(button.getText());
 			
-			if(e.getActionCommand().equalsIgnoreCase("Eskimo")) {
-				mGame.addFigure("Eskimo");
-			}
-			if(e.getActionCommand().equalsIgnoreCase("Explorer")) {
-				mGame.addFigure("Explorer");
-			}
+//			if(e.getActionCommand().equalsIgnoreCase("Eskimo")) {
+//				mGame.addFigure("Eskimo");
+//			}
+//			if(e.getActionCommand().equalsIgnoreCase("Explorer")) {
+//				mGame.addFigure("Explorer");
+//			}
 			/*
 			 * edit the model from here!
 			 * after that ask the view to update
@@ -149,10 +149,11 @@ public class Controller {
 	 * */
 	
 	public void setGameParameters(HashMap<String, String> figureNames) {
-		System.out.println(figureNames.size());
-		for (String key : figureNames.keySet()) {
-		   System.out.println(key + " " + figureNames.get(key));
-		}	
+		//System.out.println(figureNames.size());
+//		for (String key : figureNames.keySet()) {
+//		   System.out.println(key + " " + figureNames.get(key));
+//		}	
+		mGame.addFigure(figureNames);
 	}
 	
 }
