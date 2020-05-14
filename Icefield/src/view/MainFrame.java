@@ -35,26 +35,35 @@ public class MainFrame extends JFrame{
 		myPnl = new pStart();
 		myPnl.bStart.addActionListener( 
 				ae ->	{
-					numberPlayers = Integer.parseInt(myPnl.tNumberPlayer.getText());
-					if(numberPlayers < 3)
+					numberPlayers = Integer.parseInt(myPnl.tNumberPlayer.getText());//getting the number of players from the user
+					if(numberPlayers < 3) //checking if the number of players is less than 3, if it is then show a message otherwise swap to the selection menu
 						JOptionPane.showMessageDialog(this, "Invalid number !!");
 					else 
 					{
-						myPnl.setVisible(false);
+						myPnl.setVisible(false);//making the start panel invisible
 						pselect = new pSelect();
 						this.add(pselect);
-						pselect.setVisible(true);
+						pselect.setVisible(true);//instead making the selection panel visible 
 						figureNames = new HashMap<String, String>();
-						pselect.bEskimoo.addActionListener(new ActionListener() {
+						/*
+						 * adding the action listeners when the user clicks on either of the buttons which are 
+						 * the Eskimo or the polar explorer and adding them to the hash table by the name
+						 * and their type/
+						 */
+						pselect.bEskimoo.addActionListener(new ActionListener() 
+						{
 							@Override
-							public void actionPerformed(ActionEvent e) {
+							public void actionPerformed(ActionEvent e) 
+							{
 								createFigures(pselect.tName.getText(), "Eskimoo");
-								pselect.tName.setText("");
+								pselect.tName.setText("");//removing the entered name from the textField after the button has been pressed
 							}
 						});
-						pselect.bExplorer.addActionListener(new ActionListener() {	
+						pselect.bExplorer.addActionListener(new ActionListener() 
+						{	
 							@Override
-							public void actionPerformed(ActionEvent e) {
+							public void actionPerformed(ActionEvent e) 
+							{
 								createFigures(pselect.tName.getText(), "Explorer");
 								pselect.tName.setText("");
 							}
