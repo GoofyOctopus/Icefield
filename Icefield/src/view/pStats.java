@@ -17,8 +17,7 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 
-import java.awt.Component;
-import java.awt.Dimension;
+
 
 public class pStats extends JPanel {
 	private JPanel pBottom;
@@ -49,13 +48,14 @@ public class pStats extends JPanel {
 		items = new ArrayList<JLabel>();
 		
 		items.add(lRope);
-		items.add(lFlare);
+		items.add(lCharge);
+		items.add(lFood);
 		items.add(lShovel);
 		items.add(lSuit);
 		items.add(lGun);
 		items.add(lFlare);
-		items.add(lCharge);
 		
+		System.out.println(items.size());
 		lName = new JLabel("Name: Figure1                 ");
 		lHealth = new JLabel("Body heath:             ");
 		pBottomRight = new JPanel();
