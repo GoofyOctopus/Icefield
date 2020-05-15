@@ -46,7 +46,7 @@ public class pIceberg extends JPanel{
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-        background = new JLabel(new ImageIcon("Images/3 explorer.png"));
+        background = new JLabel(new ImageIcon("Images/snow.png"));
         background.setLayout(new FlowLayout());
 	}
 	/*
@@ -60,7 +60,7 @@ public class pIceberg extends JPanel{
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-        figureLabel = new JLabel(new ImageIcon("Images/6 explorer.png"));
+        figureLabel = new JLabel(new ImageIcon("Images/explorer.png"));
         background.add(figureLabel);
 	}
 //	
