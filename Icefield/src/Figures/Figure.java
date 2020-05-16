@@ -44,6 +44,7 @@ public abstract class Figure{
 	 */
 	
 	public void step(Direction d) {
+		if(this.isDrowning) return;
 		Iceberg ic = iceberg.getNeighbor(d);
 		iceberg.remove(this);
 		ic.accept(this);

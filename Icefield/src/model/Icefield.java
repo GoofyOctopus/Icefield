@@ -75,12 +75,11 @@ public class Icefield {
 			}
 		}
 		
-		//setting the figures on the icebergs
 		for(int i = 0; i < figures.size(); i++)
 		{
 			//in location array, each two consecutive numbers represent a location 
-			icebergs[1][1].accept(figures.get(i));
-			figures.get(i).setIceberg(icebergs[1][1]);
+			icebergs[2][i+1].accept(figures.get(i));
+			figures.get(i).setIceberg(icebergs[2][i+1]);
 		}
 		
 		//setting the sea around the icefield
@@ -98,6 +97,8 @@ public class Icefield {
 				}
 			}
 		}
+		((UnstableIceberg) icebergs[2][2]).setCapacity(1);
+		
 	}
 	/*
 	 * generateBlizzards() method is used called from the Game class

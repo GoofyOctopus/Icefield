@@ -276,23 +276,32 @@ public class Game{
      * Returns false - if game finished, true - otherwise
      * */
     public boolean makeMove(Figure currPl, Move move) throws Exception {
+    	//If player is in the water, we change the current player
+    	Iceberg ib = currPl.getIceberg();
+    	if(ib instanceof UnstableIceberg) {
+    		if(((UnstableIceberg) ib).getCapacity() == 0) {
+    			numberOfMoves = 4;
+    			System.out.println("Figure " + currentFigure+" is drowning");
+    		}
+    	}
     	System.out.println("makemove called !");
+    	
     	switch(move) {
 	    case W:
 	    	System.out.println("Moved up");
-	        currPl.step(Direction.UP);
+	        currPl.step(Direction.LEFT);
 	        break;
 	    case S:
 	    	System.out.println("Moved down");
-	        currPl.step(Direction.DOWN);
+	        currPl.step(Direction.RIGHT);
 	        break;
 	    case D:
 	    	System.out.println("Moved right");
-	        currPl.step(Direction.RIGHT);
+	        currPl.step(Direction.DOWN);
 	        break;
 	    case A:
 	    	System.out.println("Moved left");
-	        currPl.step(Direction.LEFT);
+	        currPl.step(Direction.UP);
 	        break;
 	    case RS:
 	    	System.out.println("Removed snow");
@@ -343,12 +352,7 @@ public class Game{
     		return false;
     	}
     	//Player fell into the water
-    	Iceberg ib = currPl.getIceberg();
-    	if(ib instanceof UnstableIceberg)
-    		if(((UnstableIceberg) ib).getCapacity() == 0) {
-    			numberOfMoves = 4;
-    			System.out.println("Figure " + currentFigure+" is drowning");
-    		}
+    	
     	return true;
     }
     /*
