@@ -225,6 +225,7 @@ public class UtilClass {
 					}
 				}
 			}
+			/*
 			if(splitted.get(i)[0].equals("retrieve")) {
 				int chosen=0;
 				numMoves++;
@@ -334,6 +335,7 @@ public class UtilClass {
 					break;
 				}
 			}
+			*/
 			if(splitted.get(i)[0].equals("next")&&splitted.get(i)[1].equals("player")) {
 				output.add("It is next player’s turn");
 				if(currentFigure<figureNumber && game.figures.get(currentFigure).isDrowning()) 
@@ -579,6 +581,7 @@ public class UtilClass {
 				}
 			}
 		}
+		/*
 		else if(splitted[0].equals("retrieve")) {
 			int chosen=0;
 			game.numberOfMoves++;
@@ -702,6 +705,7 @@ public class UtilClass {
 				break;
 			}
 		}
+		*/
 		else if(splitted[0].equals("next") && splitted[1].equals("player")) {
 			output.add("It is next player’s turn");
 			System.out.println("It is next player’s turn");

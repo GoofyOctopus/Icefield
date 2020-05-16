@@ -32,7 +32,7 @@ public class Game{
      * US - use skill;
      * */
     public enum Move{
-    	W,S,D,A, UR, USH, RS, EF, UD, UF, RI, US, CW;
+    	W,S,D,A, UR, USH, RS, EF, UD, UF, RI, USE, CW, USPE;
     }
     /*
      * Enum for items to easily compare user input
@@ -318,9 +318,11 @@ public class Game{
 	    case UD:
 	    	useItem(currPl,new DivingSuit());
 	    	break;
-	    case US:
+	    case USE:
 	    	if(currPl instanceof Eskimo) 
 	    		currPl.useSkill();
+	    	break;
+	    case USPE:
 	    	if(chosendir!=null)
 	    		if(currPl instanceof PolarExplorer) {
 	    			currPl.useSkill(chosendir);
