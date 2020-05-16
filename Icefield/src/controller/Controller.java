@@ -108,7 +108,7 @@ public class Controller {
 	        }
 
 	        if(e.getKeyCode() == KeyEvent.VK_R) {
-	            firstinput = "Retrieve";
+	            mGame.madeMove("ri");
 	        }
 
 	        if(e.getKeyCode() == KeyEvent.VK_U) {
