@@ -88,10 +88,14 @@ public class Icefield {
 		{
 			for( int j = 0; j< 10 ; j++) 
 			{
-				if((i==0)||(i==9))
+				if((i==0)||(i==9)) {
 					((UnstableIceberg) icebergs[i][j]).setCapacity(0);
-				if((j==0)||(j==9))
+					((UnstableIceberg) icebergs[i][j]).setWater();
+				}
+				if((j==0)||(j==9)) {
 					((UnstableIceberg) icebergs[i][j]).setCapacity(0);
+					((UnstableIceberg) icebergs[i][j]).setWater();
+				}
 			}
 		}
 	}

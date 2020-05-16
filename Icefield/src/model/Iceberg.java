@@ -18,6 +18,8 @@ public abstract class Iceberg {
 	protected boolean collapsed=false;
 	protected int x; //new location attribute
 	protected int y; //new location attribute
+	protected boolean holeDiscovered = false;
+	protected boolean water = false;
 	
 	/*
 	 * Default constructor, sets most attributes, other attributes
@@ -151,4 +153,6 @@ public abstract class Iceberg {
 	public int getY() { return y; }
 	public void setY(int y) { this.y = y; }	
 	public abstract int getCapacity();
+	public boolean getWater() {return water;}
+	public boolean getHoleDiscovered() {return holeDiscovered;}
 }

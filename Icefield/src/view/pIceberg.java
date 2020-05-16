@@ -48,20 +48,36 @@ public class pIceberg extends JPanel{
 	 * Creating background image
 	 * */
 	void createBackground() {
-		if(iceberg.getCapacity() == 0)
+		if(iceberg.getWater() || (iceberg.getCapacity() == 0 && iceberg.getHoleDiscovered()))
 			background.setIcon(new ImageIcon("Images/water.png"));
 		else if(iceberg.getSnow() == 0)
-			background.setIcon(new ImageIcon("Images/snow.png"));
-		else
 			background.setIcon(new ImageIcon("Images/ice.png"));
+		else
+			background.setIcon(new ImageIcon("Images/snow.png"));
         
 	}
 	/*
 	 * Draw figure on the iceberg
 	 * */
 	void drawFigure() {
-        //if(iceberg.getFigures().size() > )
-        this.figureLabel.setIcon(new ImageIcon("Images/explorer.png"));
+		boolean ex = false, es = false;
+		
+        for(int i = 0; i < iceberg.getFigures().size(); i++) {
+        	if(iceberg.getFigures().get(i) instanceof Eskimo)
+        		es = true;
+        	else
+        		ex = true;
+        }
+        if(es && ex)
+        	this.figureLabel.setIcon(new ImageIcon("Images/40x40 eskimo and explorer.png"));
+        else if(ex && iceberg.getFigures().size() > 1)
+        	this.figureLabel.setIcon(new ImageIcon("Images/2 explorer.png"));
+        else if(ex)
+        	this.figureLabel.setIcon(new ImageIcon("Images/explorer.png"));
+        else if(es && iceberg.getFigures().size() > 1)
+        	this.figureLabel.setIcon(new ImageIcon("Images/2 eskimo.png"));
+        else if(es)
+        	this.figureLabel.setIcon(new ImageIcon("Images/eskimo.png"));
 	}
 //	
 //	/*

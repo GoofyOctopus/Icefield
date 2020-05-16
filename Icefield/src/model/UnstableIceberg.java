@@ -8,6 +8,7 @@ import Item.IItem;
 public class UnstableIceberg extends Iceberg{
 	private int capacity;
 	private Random random;
+	
 	public UnstableIceberg(int x, int y) 
 	{ 
 		super(x,y);
@@ -34,8 +35,10 @@ public class UnstableIceberg extends Iceberg{
 	{ 
 		figures.add(f);
 		f.setIceberg(this);
-		if(figures.size() > capacity)
+		if(figures.size() > capacity) {
+			if(capacity == 0) discover();//It was a hole and was discovered
 			collapse();
+		}
 	}
 	/*
 	 * Makes all the figures fall into water 
@@ -53,5 +56,18 @@ public class UnstableIceberg extends Iceberg{
 			items.get(i).destroy();
 		}
 		collapsed=true;
+	}
+	/*
+	 * It sets a parameter, that this hole is discovered,
+	 * Cause someone stepped on it
+	 * */
+	public void discover() {
+		holeDiscovered = true;
+	}
+	/*
+	 * Points the unstable iceberg as the water
+	 * */
+	public void setWater() {
+		water = true;
 	}
 }
