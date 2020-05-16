@@ -52,18 +52,14 @@ public class pStats extends JPanel {
 		pBottom = new JPanel();
 		
 		items = new ArrayList<JLabel>();
-		items.add(lRope);
-		items.add(lCharge);
-		items.add(lFood);
+		
 
 		
 		
 		//making jlist
 		
 		l1 = new DefaultListModel<>();  
-        l1.addElement("Rope");  
-        l1.addElement("Charge");  
-        l1.addElement("Food");
+
   
         listBox = new JList<>(l1); 
         
@@ -93,11 +89,13 @@ public class pStats extends JPanel {
 	public void ShowStats(int move) {
 		lStats.setText("Stats: move " + move);
 	}
+	
 	public void PlayerChange(Eskimo eskimo) {
 		lName.setText("Name: " + eskimo.getName() + "       ");
 		HealthChange(eskimo.getBodyHeatUnit());
 		
 		l1.clear();
+		
 		items.clear();
 		for(int i = 0; i < eskimo.getInventory().size(); i++)
 		{
@@ -138,6 +136,10 @@ public class pStats extends JPanel {
 			}
 		}
 		listBox = new JList<>(l1); 
+		for(int i = 0; i <items.size();i++)
+		{
+			pBottomRight.add(items.get(i));
+		}
 	}
 	public void PlayerChange(PolarExplorer polarExplorer) {
 		lName.setText("Name: " + polarExplorer.getName() + "       ");
@@ -183,7 +185,10 @@ public class pStats extends JPanel {
 			}
 		}
 		listBox = new JList<>(l1); 
-		
+		for(int i = 0; i <items.size();i++)
+		{
+			pBottomRight.add(items.get(i));
+		}
 	}
 
 
