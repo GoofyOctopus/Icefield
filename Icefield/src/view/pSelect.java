@@ -14,14 +14,6 @@ import jdk.dynalink.beans.StaticClass;
 public class pSelect extends JPanel
 {
 	
-	// who did the changes here pleas explain what changes you have made
-	//private static final String IMG_PATH = "Images\\newIce.jpg";
-//	Icon backGround_img = new ImageIcon(getClass().getResource(IMG_PATH));
-//	private static final String pImg = "Images\\bpolar.png";
-//	Icon explorer_img = new ImageIcon(getClass().getResource(pImg));
-//	private static final String eImg =  "Images\\Eskimo.jpg";
-//	Icon eski_img= new ImageIcon(getClass().getResource(eImg));
-
 	private static final String IMG_PATH = "Images/newIce.jpg";
 	ImageIcon img= new ImageIcon(IMG_PATH);
 	JLabel backGround,title, select;
@@ -35,8 +27,8 @@ public class pSelect extends JPanel
 
 	public void create()
 	{
-		Font f0 = new Font("ubuntu", Font.BOLD, 30);
-		Font f1 = new Font("ubuntu", Font.BOLD, 15);
+		Font f0 = new Font("calibri", Font.BOLD, 42);
+		Font f1 = new Font("calibri", Font.BOLD, 18);
 
 		
 		backGround= new JLabel(img);
@@ -59,56 +51,30 @@ public class pSelect extends JPanel
 		tName = new JTextField();
 		tName.setMaximumSize(new Dimension(80,20));
 		
-
-
-		
 		bEskimoo = new JButton();
-
 		bEskimoo.setIcon(new ImageIcon("Images/Eskimo.jpg"));
-		bEskimoo.setAlignmentX(Component.LEFT_ALIGNMENT);
+		bEskimoo.setAlignmentX(Component.CENTER_ALIGNMENT);
 		bEskimoo.setMaximumSize(new Dimension(50,50));
 		validate();
-	
 	
 		bExplorer = new JButton();
 
 		bExplorer.setIcon(new ImageIcon("Images/bpolar.png"));
-		bExplorer.setAlignmentX(Component.TOP_ALIGNMENT);
+		bExplorer.setAlignmentX(Component.CENTER_ALIGNMENT);
 		bExplorer.setMaximumSize(new Dimension(50, 50));
 		validate();
 		
-		
-		
 		backGround.add(title);
-		backGround.add(Box.createRigidArea(new Dimension(0,20)));
+		backGround.add(Box.createRigidArea(new Dimension(0,15)));
 		backGround.add(select);
 		backGround.add(Box.createRigidArea(new Dimension(0,20)));
 		backGround.add(tName);
 		backGround.add(bEskimoo);
+		backGround.add(Box.createRigidArea(new Dimension(50,20)));
 		backGround.add(bExplorer);
 
-
 	}
-	
-
-	/*
-	@Override
-	public void actionPerformed(ActionEvent e) 
-	{
-		if(e.getActionCommand().equals("bEskimoo"))
-		{
-			
-		}
-		
-		else if(e.getActionCommand().equals("bExplorer"))
-		{
-			
-		}
-		
-	}*/
-
-	
-	}	
+}	
 
 
 

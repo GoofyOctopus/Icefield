@@ -9,6 +9,7 @@ import Figures.*;
  * Yazan
  */
 public class Icefield {
+	private boolean isBlizzard = false;
 	private Iceberg icebergs[][];
 	
 	/*
@@ -159,6 +160,7 @@ public class Icefield {
 	}
 	
 	public void generateBlizzards(int x,int y){
+		isBlizzard = true;
 		if(icebergs[x][y].ishasIgloos()!=true)
 			{
 				icebergs[x][y].increaseSnow();
@@ -169,5 +171,15 @@ public class Icefield {
 	
 	public Iceberg getIceberg(int x,int y) {
 		return icebergs[x][y];
+	}
+	
+	public void setBlizzard(boolean value)
+	{
+		isBlizzard = value;
+	}
+	
+	public boolean getBlizzardd()
+	{
+		return isBlizzard;
 	}
 }
