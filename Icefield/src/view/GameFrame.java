@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 
 import controller.Controller;
 import model.Game;
@@ -79,4 +80,21 @@ public class GameFrame extends JFrame implements IView{
 		icefieldPanel.update();
 		//update statspanel also should be done
 	}
+	
+	public void blizzSwap()
+	{
+		java.util.Timer timer = new java.util.Timer();
+		timer.schedule
+		(
+				new java.util.TimerTask()
+				{
+					@Override
+					public void run()
+					{cardLayout.show(bgContainer, "BlizzardPanel");}
+				}
+				, 3000);
+		timer.cancel();
+		cardLayout.show(bgContainer, "GamePanel");
+	}
+	
 }

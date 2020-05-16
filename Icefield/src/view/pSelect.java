@@ -27,8 +27,8 @@ public class pSelect extends JPanel
 
 	public void create()
 	{
-		Font f0 = new Font("calibri", Font.BOLD, 42);
-		Font f1 = new Font("calibri", Font.BOLD, 18);
+		Font f0 = new Font("Comic Sans MS", Font.BOLD, 42);
+		Font f1 = new Font("Comic Sans MS", Font.BOLD, 18);
 
 		
 		backGround= new JLabel(img);

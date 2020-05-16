@@ -28,8 +28,8 @@ public class pStart extends JPanel
 	public void create()
 	{
 		//changing the Fonts of the labels
-		Font f0 = new Font("calibri", Font.BOLD, 20);
-		Font f1 = new Font("calibri", Font.BOLD, 40);
+		Font f0 = new Font("Comic Sans MS", Font.BOLD, 20);
+		Font f1 = new Font("Comic Sans MS", Font.BOLD, 40);
 		
 		
 		backGround= new JLabel();

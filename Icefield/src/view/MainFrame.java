@@ -75,7 +75,7 @@ public class MainFrame extends JFrame implements IView{
 								pselect.tName.setText("");//removing the entered name from the textField after the button has been pressed
 							}
 						});
-						pselect.bExplorer.addActionListener(new ActionListener() 
+						pselect.bExplorer.addActionListener(new ActionListener()
 						{	
 							@Override
 							public void actionPerformed(ActionEvent e) 
