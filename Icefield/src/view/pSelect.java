@@ -19,6 +19,8 @@ public class pSelect extends JPanel
 	JLabel backGround,title, select;
 	public JTextField tName;
 	public JButton bEskimoo, bExplorer;
+	private JPanel buttonsPanel = new JPanel();
+	
 
 	protected  pSelect() 
 	{
@@ -37,7 +39,7 @@ public class pSelect extends JPanel
 		this.add(backGround);
 		this.setOpaque(true);
 		this.setBounds(0, 0, 600, 600);
-		
+
 		title = new JLabel("Figure Selection");
 		title.setFont(f0);
 		title.setForeground(Color.blue);
@@ -64,14 +66,20 @@ public class pSelect extends JPanel
 		bExplorer.setMaximumSize(new Dimension(50, 50));
 		validate();
 		
+		buttonsPanel.setLayout(new BorderLayout());
+		buttonsPanel.add(bEskimoo, BorderLayout.WEST);
+		buttonsPanel.add(bExplorer, BorderLayout.EAST);
+		buttonsPanel.setMaximumSize(new Dimension(600,120));
+		buttonsPanel.setOpaque(false);
+		
 		backGround.add(title);
 		backGround.add(Box.createRigidArea(new Dimension(0,15)));
 		backGround.add(select);
 		backGround.add(Box.createRigidArea(new Dimension(0,20)));
 		backGround.add(tName);
-		backGround.add(bEskimoo);
-		backGround.add(Box.createRigidArea(new Dimension(50,20)));
-		backGround.add(bExplorer);
+		backGround.add(Box.createRigidArea(new Dimension(0,100)));
+		backGround.add(buttonsPanel);
+
 
 	}
 }	
