@@ -105,6 +105,9 @@ public abstract class Iceberg {
 	 * the list of items, and that happens when a player retrieve
 	 * it or when an iceberg drown
 	 */
+	public void retrievedAllItem() {
+		items.clear();
+	}
 	public void removeItem(IItem item) { items.remove(item); }
 	/*
 	 * The following methods are just getters and setters,

@@ -81,9 +81,11 @@ public abstract class Figure{
 	 *  if those conditions are passed, it removes it from iceberg and
 	 *  add it to inventory of figure.
 	 */
-	public void retrieveItem(IItem i) {
-		iceberg.removeItem(i);
-		inventory.add(i);
+	public void retrieveItem() {
+		for(int j=0; j<iceberg.getItems().size(); j++) {
+			inventory.add(iceberg.getItems().get(j));
+		}
+		iceberg.retrievedAllItem();
 	}
 	/*
 	 * This function tells other classes that it is being helped 

@@ -19,10 +19,10 @@ public class Game{
     public int numberOfMoves = 0;//Moves made by current player
     
     public int currentFigure = 0;
-    
+    public boolean finished = false;
     public ArrayList<Figure> figures;
     public Icefield icf;
-    Direction d = Direction.UP;
+    Direction chosendir = null;
     private boolean test;
     /*
      * Shortcuts for possible moves:
@@ -224,25 +224,25 @@ public class Game{
      * and uses.
      * 2.Use = false, Checks if item is on the iceberg and player can retrieve
      **/
-    public void checkItem(Figure currPl, IItem i, boolean use) {
+    public void useItem(Figure currPl, IItem i) {
     	List<IItem> items;
-    	if(use)
-    		items = currPl.getInventory();
-    	else
-    		items = currPl.getIceberg().getItems();
+    	//if(use)
+    	items = currPl.getInventory();
+    	//else
+    	//items = currPl.getIceberg().getItems();
     	
     	for(int j = 0; j < items.size(); j++) {
     		
     		if(items.get(j).getClass() == i.getClass()) {
-    			if(use)
+    			//if(use)
     				((Item) items.get(j)).useItem();
-    			else
-    				currPl.retrieveItem(items.get(j));
+    			//else
+    				//currPl.retrieveItem(items.get(j));
     		}
     	}
     }
     /*
-     * */
+     * 
     public void grabItem(Figure currPl,Items it) {
     	switch(it) {
     	case ROPE:
@@ -268,6 +268,7 @@ public class Game{
 	    	break;
     	}
     }
+    */
     /*
      * Current player makes move. It can step,remove snow, eat,
      * use shovel, rope, diving suit, flare gun or grab 
@@ -276,8 +277,6 @@ public class Game{
      * */
     public boolean makeMove(Figure currPl, Move move) throws Exception {
     	System.out.println("makemove called !");
-    	Scanner in = new Scanner(System.in);
-    	String answer;
     	switch(move) {
 	    case W:
 	    	System.out.println("Moved up");
@@ -300,30 +299,33 @@ public class Game{
 	        currPl.removeSnow(1);
 	        break;
 	    case RI:
-	    	System.out.println("Please, choose an item");
-	    	answer = in.next().toUpperCase();
-	    	Items it = Items.valueOf(answer);
-	    	grabItem(currPl, it);
+	    	currPl.retrieveItem();
 	    	break;
 	    case UR:
-	    	for(int i=0;i<figures.size();i++) {
-	    		figures.get(i).help(figures.get(i).getIceberg().getNeighbor(Direction.UP));
+	    	if(chosendir!=null) {
+	    		for(int i=0;i<currPl.getIceberg().getNeighbor(chosendir).getFigures().size();i++) {
+	    			currPl.getIceberg().getNeighbor(chosendir).getFigures().get(i).help(currPl.getIceberg());
+	    		}
+	    		chosendir = null;
 	    	}
 	    	break;
 	    case USH:
-	    	checkItem(currPl,new Shovel(), true);
+	    	useItem(currPl,new Shovel());
 	    	break;
 	    case EF:
-	    	checkItem(currPl,new Food(), true);
+	    	useItem(currPl,new Food());
 	    	break;
 	    case UD:
-	    	checkItem(currPl,new DivingSuit(), true);
+	    	useItem(currPl,new DivingSuit());
 	    	break;
 	    case US:
 	    	if(currPl instanceof Eskimo) 
 	    		currPl.useSkill();
-	    	if(currPl instanceof PolarExplorer)
-	    		currPl.useSkill(d);
+	    	if(chosendir!=null)
+	    		if(currPl instanceof PolarExplorer) {
+	    			currPl.useSkill(chosendir);
+	    			chosendir=null;
+	    		}
 	    	break;
 	    case CW:
 	    	//Players won
@@ -335,7 +337,7 @@ public class Game{
     	numberOfMoves++;
     	//Ends game if player died
     	if(currPl.getBodyHeatUnit() == 0) {
-    		endGame();
+    		finished = true;
     		return false;
     	}
     	//Player fell into the water
@@ -354,7 +356,7 @@ public class Game{
      * */
     public boolean nextPlayer(Figure currPl){
     	if(currPl.isDrowning() && currPl.getRoundOfDrowning() < roundCounter) {
-			endGame();
+			finished = true;
 			return false;
 		}
     	Scanner in = new Scanner(System.in);

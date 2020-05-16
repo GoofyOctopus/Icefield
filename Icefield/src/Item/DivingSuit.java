@@ -14,6 +14,7 @@ public class DivingSuit extends Item
 	{
 		figure.setWearingDivingSuit(true); /* making the isWearingDivingSuit to true
 		 to show that the figure has the diving suit on it*/
+		destroy();
 	}
 	
 	public void destroy()/*we are calling the destroy method which is in the super class item and using it here*/

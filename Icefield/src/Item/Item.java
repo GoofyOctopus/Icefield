@@ -20,7 +20,6 @@ public abstract class Item implements IItem
 	{//here we are checking if the item is in iceberg then we remove the item from the iceberg
 		if(iceberg!=null)
 			this.iceberg.removeItem(this);
-		
 		iceberg = null;
 	}
 
