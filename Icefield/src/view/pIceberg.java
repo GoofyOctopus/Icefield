@@ -20,10 +20,15 @@ import model.Iceberg;
 public class pIceberg extends JPanel{
 	Iceberg iceberg; //Iceberg to be drawn
 	Figure currPl; //Current player
-	JLabel background, figureLabel;
+	public JLabel background, figureLabel;
 	
 	public pIceberg(Iceberg i) {
+		figureLabel = new JLabel();
+		background = new JLabel();
+		background.setLayout(new FlowLayout());
+        background.add(figureLabel);
 		update(i);
+		add(background);
 	}
 	/*
 	 * Update
@@ -31,37 +36,32 @@ public class pIceberg extends JPanel{
 	public void update(Iceberg i) {
 		iceberg = i;
 		createBackground();
-		if(i.getFigures().size() > 0)
+		if(i.getFigures().size() > 0) {
 			drawFigure();
-		add(background);
+		}
+		else if(i.getFigures().size() == 0) {
+			//System.out.println("("+i.getX()+"," + i.getY()+")");
+			figureLabel.setIcon(null);
+		}
 	}
 	/*
 	 * Creating background image
 	 * */
 	void createBackground() {
-		BufferedImage image = null;
-//		try {
-//			image = ImageIO.read(new File("/Images/2 eskimo.png"));
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-        background = new JLabel(new ImageIcon("Images/snow.png"));
-        background.setLayout(new FlowLayout());
+		if(iceberg.getCapacity() == 0)
+			background.setIcon(new ImageIcon("Images/water.png"));
+		else if(iceberg.getSnow() == 0)
+			background.setIcon(new ImageIcon("Images/snow.png"));
+		else
+			background.setIcon(new ImageIcon("Images/ice.png"));
+        
 	}
 	/*
 	 * Draw figure on the iceberg
 	 * */
 	void drawFigure() {
-		BufferedImage image = null;
-//		try {
-//			image = ImageIO.read(new File("/Images/newIce.jpg"));
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-        figureLabel = new JLabel(new ImageIcon("Images/explorer.png"));
-        background.add(figureLabel);
+        //if(iceberg.getFigures().size() > )
+        this.figureLabel.setIcon(new ImageIcon("Images/explorer.png"));
 	}
 //	
 //	/*
