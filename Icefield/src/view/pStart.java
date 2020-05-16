@@ -62,7 +62,7 @@ public class pStart extends JPanel
 		
 		bExit = new JButton("EXIT");
 		bExit.setAlignmentX(Component.CENTER_ALIGNMENT);
-		bExit.setMaximumSize(new Dimension(60,20));
+		bExit.setMaximumSize(new Dimension(60,40));
 		bExit.setBackground(Color.cyan);
 		
 		tNumberPlayer = new JTextField();

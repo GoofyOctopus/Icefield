@@ -52,7 +52,7 @@ public class GameFrame extends JFrame implements IView{
 		bgContainer.add(mainPanel, "GamePanel");
 		bgContainer.add(blizPanel, "BlizzardPanel");
 		
-		cardLayout.show(bgContainer, "BlizzardPanel");
+		cardLayout.show(bgContainer, "Gamepanel");
 		
 		//the action has to occure here to switch to the blizpanel?????
 		

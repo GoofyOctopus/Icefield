@@ -54,30 +54,30 @@ public class pSelect extends JPanel
 		tName.setMaximumSize(new Dimension(80,20));
 		
 		bEskimoo = new JButton();
-		bEskimoo.setIcon(new ImageIcon("Images/Eskimo.jpg"));
+		bEskimoo.setIcon(new ImageIcon("Images/eskimoButton.jpg"));
 		bEskimoo.setAlignmentX(Component.CENTER_ALIGNMENT);
-		bEskimoo.setMaximumSize(new Dimension(50,50));
+		bEskimoo.setPreferredSize(new Dimension(100,100));
 		validate();
 	
 		bExplorer = new JButton();
 
-		bExplorer.setIcon(new ImageIcon("Images/bpolar.png"));
+		bExplorer.setIcon(new ImageIcon("Images/explorerButton.jpg"));
 		bExplorer.setAlignmentX(Component.CENTER_ALIGNMENT);
-		bExplorer.setMaximumSize(new Dimension(50, 50));
+		bExplorer.setPreferredSize(new Dimension(100, 100));
 		validate();
 		
 		buttonsPanel.setLayout(new BorderLayout());
 		buttonsPanel.add(bEskimoo, BorderLayout.WEST);
 		buttonsPanel.add(bExplorer, BorderLayout.EAST);
-		buttonsPanel.setMaximumSize(new Dimension(600,120));
+		buttonsPanel.setMaximumSize(new Dimension(450,100));
 		buttonsPanel.setOpaque(false);
 		
 		backGround.add(title);
-		backGround.add(Box.createRigidArea(new Dimension(0,15)));
+		backGround.add(Box.createRigidArea(new Dimension(0, 15)));
 		backGround.add(select);
-		backGround.add(Box.createRigidArea(new Dimension(0,20)));
+		backGround.add(Box.createRigidArea(new Dimension(0, 10)));
 		backGround.add(tName);
-		backGround.add(Box.createRigidArea(new Dimension(0,100)));
+		backGround.add(Box.createRigidArea(new Dimension(0, 20)));
 		backGround.add(buttonsPanel);
 
 
