@@ -91,7 +91,7 @@ public class Game{
     	}
     	Figure currPl = figures.get(currentFigure);
     	if(currPl.isDrowning() && currPl.getRoundOfDrowning() < roundCounter) {
-			endGame();
+			finished = true;
 			return false;
 		}
     	System.out.println("Current figure "+currentFigure);

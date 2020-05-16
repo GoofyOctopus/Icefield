@@ -82,6 +82,7 @@ public class Controller {
 			/*
 			 * switch case based on it change the model
 			 */
+			if(mGame.finished!=true) {
 			if(e.getKeyCode() == KeyEvent.VK_W) {
 				mGame.madeMove("w");
 	        }
@@ -119,10 +120,10 @@ public class Controller {
 	            if(firstinput!=null && firstinput.equalsIgnoreCase("Use")) {
 	            	mGame.madeMove("ef");
 	            	firstinput = null;
-	            }
+	            	}
 	            	
-	        }
-			
+	        	}
+			}
 			
 			update();
 		}
