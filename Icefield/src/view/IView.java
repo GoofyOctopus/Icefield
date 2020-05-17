@@ -14,4 +14,5 @@ public interface IView {
 	 */
 	public void addBtnListener(ActionListener myListener);
 	public void addKeyListener(KeyListener myListener);
+	public void blizzSwap(); 
 }

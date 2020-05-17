@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.HashMap;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -205,6 +206,14 @@ public class Controller {
 	            	firstinput = null;
 	            	}
 	        	}
+			}
+			
+			if(new Random().nextInt(100) > 80) {
+				//add the following method to the interface
+				view.blizzSwap(); 
+				for(int i=0; i < 10; i++)
+					for(int j = 0; j < 10; j++)
+						mGame.icf.generateBlizzards(i, j);
 			}
 			
 			update();
