@@ -91,6 +91,7 @@ public class GameFrame extends JFrame implements IView{
 			icefieldPanel.setFocusable(true);
 			icefieldPanel.requestFocusInWindow();
 			
+			
 		}
 		blizzard = !blizzard ;
 //		java.util.Timer timer = new java.util.Timer();
