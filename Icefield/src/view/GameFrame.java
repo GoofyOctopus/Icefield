@@ -25,10 +25,9 @@ public class GameFrame extends JFrame implements IView{
 	private Game mGame;
 	private pIcefield icefieldPanel;
 	private pStats statsPanel;
+	private pBlizzard blizPanel;
 	private JPanel bgContainer = new JPanel();//container panel for the game and blizzard panel
-	private JPanel blizPanel = new JPanel();//blizzard panel
-	private JLabel blizLable = new JLabel(new ImageIcon("Images/Blizzard.gif"));
-	private JTextField blizHappen = new JTextField("BLIZZARD IS HAPPENING");
+	
 	CardLayout cardLayout = new CardLayout();
 	
 	public GameFrame(Game mGame, Controller controller) {
@@ -36,11 +35,7 @@ public class GameFrame extends JFrame implements IView{
 		this.controller = controller;
 		icefieldPanel = new pIcefield(mGame.icf);
 		statsPanel = new pStats();
-		blizPanel.setLayout(new FlowLayout());
-		blizLable.setSize(new Dimension(580, 580));
-		blizPanel.add(blizLable);
-		blizPanel.add(blizHappen);
-		blizPanel.setSize(580, 580);
+		blizPanel = new pBlizzard();
 		bgContainer.setLayout(cardLayout);
 		
 		//pIceberg p1 = new pIceberg(mGame.icf.getIceberg(1, 0));
@@ -52,7 +47,7 @@ public class GameFrame extends JFrame implements IView{
 		bgContainer.add(mainPanel, "GamePanel");
 		bgContainer.add(blizPanel, "BlizzardPanel");
 		
-		cardLayout.show(bgContainer, "Gamepanel");
+		cardLayout.show(bgContainer, "GamePanel");
 		
 		//the action has to occure here to switch to the blizpanel?????
 		
