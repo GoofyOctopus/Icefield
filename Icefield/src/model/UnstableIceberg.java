@@ -8,7 +8,7 @@ import Item.IItem;
 public class UnstableIceberg extends Iceberg{
 	private int capacity;
 	private Random random;
-	
+	private boolean collapsed = false;
 	public UnstableIceberg(int x, int y) 
 	{ 
 		super(x,y);
@@ -69,5 +69,8 @@ public class UnstableIceberg extends Iceberg{
 	 * */
 	public void setWater() {
 		water = true;
+	}
+	public boolean getCollapsed() {
+		return collapsed;
 	}
 }

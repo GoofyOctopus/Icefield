@@ -76,8 +76,8 @@ public class GameFrame extends JFrame implements IView{
 		icefieldPanel.update();
 		//update statspanel also should be done
 		statsPanel.PlayerChange(mGame.figures.get(mGame.currentFigure));
-		//statsPanel.IcebergChange( mGame.icf.getIceberg(mGame.figures.get(mGame.currentFigure).getIceberg().getX(),
-			//	mGame.figures.get(mGame.currentFigure).getIceberg().getY()));
+		statsPanel.IcebergChange( mGame.icf.getIceberg(mGame.figures.get(mGame.currentFigure).getIceberg().getX(),
+				mGame.figures.get(mGame.currentFigure).getIceberg().getY()));
 		
 	}
 	

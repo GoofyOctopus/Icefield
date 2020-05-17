@@ -79,8 +79,24 @@ public class Game{
     	}
     }
     
-    public boolean madeMove(String input) {
+    public void madeMove(String input) {
+    	int numberOfDrowning = 0;
     	
+    	for(int i=0 ; i<figures.size() ; i++) {
+    		if(figures.get(i).isDrowning())
+    			numberOfDrowning++;
+    	}
+    	System.out.println("Number of drowning figures: "+numberOfDrowning);
+    	if(numberOfDrowning>=numberOfFigures) {
+    		finished = true;
+    		return;
+    	}
+    	
+    	
+    	while(figures.get(currentFigure).isDrowning()==true) {
+    		currentFigure++;
+    		numberOfMoves = 0;
+    	}
     	if(numberOfMoves==4) {
     		currentFigure++;
     		numberOfMoves=0;
@@ -90,14 +106,20 @@ public class Game{
     		currentFigure = currentFigure % numberOfFigures;
     	}
     	Figure currPl = figures.get(currentFigure);
-    	if(currPl.isDrowning() && currPl.getRoundOfDrowning() < roundCounter) {
-			finished = true;
-			return false;
-		}
+//    	if(currPl.isDrowning() && currPl.getRoundOfDrowning() < roundCounter) {
+//			finished = true;
+//			return false;
+//		}
+    	for(int i=0 ; i<figures.size();i++) {
+    		if(figures.get(i).isDrowning() && figures.get(i).getRoundOfDrowning()+1 < roundCounter ) {
+    			finished = true;
+    			return;
+    		}
+    	}
     	System.out.println("Current figure "+currentFigure);
     	Move move = Move.valueOf(input.toUpperCase());
     	try {
-			if(!makeMove(currPl, move)) return false;
+			if(!makeMove(currPl, move)) return;
 		} catch (IllegalArgumentException e) {
 			System.out.println("Invalid input");
 		} catch (Exception e) {
@@ -105,7 +127,6 @@ public class Game{
 			System.out.println("Something went wrong while making a move!");
 		}
     	System.out.println("Current numberOfMoves "+ numberOfMoves +"\n");
-    	return true;
 		}
     /*
      *Gets number of players, lets them choose figures, creates
@@ -277,13 +298,7 @@ public class Game{
      * */
     public boolean makeMove(Figure currPl, Move move) throws Exception {
     	//If player is in the water, we change the current player
-    	Iceberg ib = currPl.getIceberg();
-    	if(ib instanceof UnstableIceberg) {
-    		if(((UnstableIceberg) ib).getCapacity() == 0) {
-    			numberOfMoves = 4;
-    			System.out.println("Figure " + currentFigure+" is drowning");
-    		}
-    	}
+    	
     	System.out.println("makemove called !");
     	
     	switch(move) {
@@ -346,6 +361,13 @@ public class Game{
 	    		
     	}
     	numberOfMoves++;
+//    	Iceberg ib = currPl.getIceberg();
+//    	if(ib instanceof UnstableIceberg) {
+//    		if(((UnstableIceberg) ib).getCapacity() == 0) {
+//    			numberOfMoves = 4;
+//    			System.out.println("Figure " + currentFigure+" is drowning");
+//    		}
+//    	}
     	//Ends game if player died
     	if(currPl.getBodyHeatUnit() == 0) {
     		finished = true;
