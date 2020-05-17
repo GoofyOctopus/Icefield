@@ -26,7 +26,7 @@ public class GameFrame extends JFrame implements IView{
 	private pIcefield icefieldPanel;
 	private pStats statsPanel;
 	private pBlizzard blizPanel;
-	private JPanel bgContainer = new JPanel();//container panel for the game and blizzard panel
+	private JPanel mainPanel = new JPanel();
 	
 	CardLayout cardLayout = new CardLayout();
 	
@@ -36,18 +36,12 @@ public class GameFrame extends JFrame implements IView{
 		icefieldPanel = new pIcefield(mGame.icf);
 		statsPanel = new pStats();
 		blizPanel = new pBlizzard();
-		bgContainer.setLayout(cardLayout);
 		
-		//pIceberg p1 = new pIceberg(mGame.icf.getIceberg(1, 0));
-		JPanel mainPanel = new JPanel();
+		//pIceberg p1 = new pIceberg(mGame.icf.getIceberg(1, 0))
 		
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 		mainPanel.add(icefieldPanel);
 		mainPanel.add(statsPanel);
-		bgContainer.add(mainPanel, "GamePanel");
-		bgContainer.add(blizPanel, "BlizzardPanel");
-		
-		cardLayout.show(bgContainer, "GamePanel");
 		
 		//the action has to occure here to switch to the blizpanel?????
 		
@@ -57,7 +51,8 @@ public class GameFrame extends JFrame implements IView{
 		this.setSize(650,700);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.add(bgContainer);
+		this.add(mainPanel);
+
 		this.setVisible(true);
 		//---------------------------
 		icefieldPanel.setFocusable(true);
@@ -77,25 +72,42 @@ public class GameFrame extends JFrame implements IView{
 		//update statspanel also should be done
 		statsPanel.playerChange(mGame.figures.get(mGame.currentFigure));
 		//statsPanel.IcebergChange( mGame.icf.getIceberg(mGame.figures.get(mGame.currentFigure).getIceberg().getX(),
-		//		mGame.figures.get(mGame.currentFigure).getIceberg().getY()));
+			//	mGame.figures.get(mGame.currentFigure).getIceberg().getY()));
 		
 	}
 	
-	
+	boolean blizzard = true;
 	public void blizzSwap()
 	{
-		java.util.Timer timer = new java.util.Timer();
-		timer.schedule
-		(
-				new java.util.TimerTask()
-				{
-					@Override
-					public void run()
-					{cardLayout.show(bgContainer, "BlizzardPanel");}
-				}
-				, 3000);
-		timer.cancel();
-		cardLayout.show(bgContainer, "GamePanel");
+		if(blizzard)
+		{
+			this.add(blizPanel);
+			
+			blizPanel.setVisible(true);
+		}
+		else {
+			blizPanel.setVisible(false);
+			this.add(mainPanel);
+			icefieldPanel.setFocusable(true);
+			icefieldPanel.requestFocusInWindow();
+			
+		}
+		blizzard = !blizzard ;
+//		java.util.Timer timer = new java.util.Timer();
+//		timer.schedule
+//		(
+//				new java.util.TimerTask()
+//				{
+//					@Override
+//					public void run()
+//					{
+//						mainPanel.setVisible(false);
+//						blizPanel.setVisible(true);
+//					}
+//				}
+//				, 3000);
+//		timer.cancel();
+//		mainPanel.setVisible(true);
 	}
 	
 }
