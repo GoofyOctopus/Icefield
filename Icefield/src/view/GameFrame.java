@@ -59,7 +59,8 @@ public class GameFrame extends JFrame implements IView{
 		
 		
 		this.pack();
-		this.setSize(580,580);
+		this.setSize(650,700);
+		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.add(bgContainer);
 		this.setVisible(true);

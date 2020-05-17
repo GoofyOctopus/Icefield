@@ -66,23 +66,26 @@ public class MainFrame extends JFrame implements IView{
 						 * and their type/
 						 */
 		
-						pselect.bEskimoo.addActionListener(new ActionListener() 
-						{
-							@Override
-							public void actionPerformed(ActionEvent e) 
-							{
+						pselect.bEskimoo.addActionListener(
+								e-> {
+								if (figureNames.containsKey(pselect.tName.getText())) {
+									JOptionPane.showMessageDialog(this,"This name is assigned to another player");
+									return;
+								}
 								createFigures(pselect.tName.getText(), "Eskimoo");
 								pselect.tName.setText("");//removing the entered name from the textField after the button has been pressed
-							}
-						});
-						pselect.bExplorer.addActionListener(new ActionListener()
-						{	
-							@Override
-							public void actionPerformed(ActionEvent e) 
-							{
+							
+								});
+						pselect.bExplorer.addActionListener(
+						e->{	
+							
+								if (figureNames.containsKey(pselect.tName.getText())) {
+									JOptionPane.showMessageDialog(this, "This name is assigned to another player");
+									return;
+								}
 								createFigures(pselect.tName.getText(), "Explorer");
 								pselect.tName.setText("");
-							}
+							
 						});
 					}
 				});
@@ -92,6 +95,7 @@ public class MainFrame extends JFrame implements IView{
 		});
 		
 		this.setSize(580,580);
+		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
 		/*  For testing purpose dont delete
