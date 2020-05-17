@@ -1,6 +1,7 @@
 package view;
 //Erdene
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JList;
 
@@ -13,6 +14,7 @@ import model.Iceberg;
 
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
+import java.rmi.activation.Activator;
 import java.util.ArrayList;
 import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
@@ -31,9 +33,11 @@ public class pStats extends JPanel {
 	private JPanel pBottomRight;
 	private JLabel lStats;
 	private JLabel lRope, lFood, lSuit, lShovel, lGun, lFlare, lCharge;
+	
 	private ArrayList<JLabel> items;
 	private JList<String> listBox; 
-	private DefaultListModel<String> l1;
+	
+	private DefaultListModel<String> listModel;
 	private JPanel itemPanel; 
 	/**
 	 * Create the panel.
@@ -56,16 +60,9 @@ public class pStats extends JPanel {
 		
 		items = new ArrayList<JLabel>();
 		
-
-		
-		
 		//making jlist
-		
-		l1 = new DefaultListModel<>();  
-
-  
-        listBox = new JList<>(l1); 
-        
+		listModel = new DefaultListModel<>();  
+		listBox = new JList<>(listModel); 
         
 		lName = new JLabel("Name: Figure1             ");
 		lHealth = new JLabel("Body heath:             ");
@@ -75,10 +72,11 @@ public class pStats extends JPanel {
 		pBottomRight.add(lStats);
 		pBottomRight.add(listBox);
 		itemPanel = new JPanel();
-		for(int i = 0; i <items.size();i++)
+		for(int i = 0; i < items.size(); i++)
 		{
 			itemPanel.add(items.get(i));
 		}
+		
 		pBottomRight.add(itemPanel); 
 		pBottom.setLayout(new BorderLayout(0, 0));
 		pBottom.add(lName, BorderLayout.WEST);	
@@ -94,110 +92,190 @@ public class pStats extends JPanel {
 	public void ShowStats(int move) {
 		lStats.setText("Stats: move " + move);
 	}
-	public void IcebergChange(Iceberg iceberg)
-	{
-		l1.clear();
-		items.clear();
-		itemPanel.removeAll(); 
-		for(int i = 0; i < iceberg.getItems().size(); i++)
+	
+	public void playerChange(Figure figure){
+		itemPanel.removeAll();
+		listModel.clear();
+		
+		lName.setText("Name: " + figure.getName() + "       ");
+		HealthChange(figure.getBodyHeatUnit());		
+
+		for(int i = 0; i < figure.getInventory().size(); i++)
 		{
-			if(iceberg.getItems().get(i) instanceof Rope)
+			listModel.addElement(figure.getInventory().get(i).getClass().toString().replaceAll("class Item.", ""));		
+			if(figure.getInventory().get(i) instanceof Rope)
 			{
-				items.add(lRope);
-				l1.addElement("Rope");
+				itemPanel.add(lRope);
 			}
-			if(iceberg.getItems().get(i) instanceof Food)
+			if(figure.getInventory().get(i) instanceof Food)
 			{
-				items.add(lFood);
-				l1.addElement("Food");
+				itemPanel.add(lFood);
 			}
-			if(iceberg.getItems().get(i) instanceof Shovel)
+			if(figure.getInventory().get(i) instanceof Shovel)
 			{
-				items.add(lShovel);
-				l1.addElement("Shovel");
+				itemPanel.add(lShovel);
 			}
-			if(iceberg.getItems().get(i) instanceof DivingSuit)
+			if(figure.getInventory().get(i) instanceof DivingSuit)
 			{
-				items.add(lSuit);
-				l1.addElement("Suit");
+				itemPanel.add(lSuit);
 			}
-			if(iceberg.getItems().get(i) instanceof Gun)
+			if(figure.getInventory().get(i) instanceof Gun)
 			{
-				items.add(lGun);
-				l1.addElement("Gun");
+				itemPanel.add(lGun);
 			}
-			if(iceberg.getItems().get(i) instanceof Flare)
+			if(figure.getInventory().get(i) instanceof Flare)
 			{
-				items.add(lFlare);
-				l1.addElement("Flare");
+				itemPanel.add(lFlare);
 			}
-			if(iceberg.getItems().get(i) instanceof Charge)
+			if(figure.getInventory().get(i) instanceof Charge)
 			{
-				items.add(lCharge);
-				l1.addElement("Charge");
+				itemPanel.add(lCharge);
 			}
 		}
-		listBox = new JList<>(l1); 
-		for(int i = 0; i <items.size();i++)
+
+		for(int i = 0; i < figure.getIceberg().getItems().size(); i++)
 		{
-			itemPanel.add(items.get(i));
+			listModel.addElement("In this iceberg: " + figure.getIceberg().getItems().get(i).getClass().toString().replaceAll("class Item.", ""));
+			//if the following lines are active we will not differentiate 
+			//between what is in the inventory and what is on the iceberg
+//			if(figure.getIceberg().getItems().get(i) instanceof Rope)
+//			{
+//				itemPanel.add(lRope);
+//			}
+//			if(figure.getIceberg().getItems().get(i) instanceof Food)
+//			{
+//				itemPanel.add(lFood);
+//			}
+//			if(figure.getIceberg().getItems().get(i) instanceof Shovel)
+//			{
+//				itemPanel.add(lShovel);
+//			}
+//			if(figure.getIceberg().getItems().get(i) instanceof DivingSuit)
+//			{
+//				itemPanel.add(lSuit);
+//			}
+//			if(figure.getIceberg().getItems().get(i) instanceof Gun)
+//			{
+//				itemPanel.add(lGun);
+//			}
+//			if(figure.getIceberg().getItems().get(i) instanceof Flare)
+//			{
+//				itemPanel.add(lFlare);
+//			}
+//			if(figure.getIceberg().getItems().get(i) instanceof Charge)
+//			{
+//				itemPanel.add(lCharge);
+//			}
 		}
 		pBottomRight.add(itemPanel); 
 	}
-	public void PlayerChange(Figure eskimo) {
-		lName.setText("Name: " + eskimo.getName() + "       ");
-		HealthChange(eskimo.getBodyHeatUnit());
-		
-		l1.clear();
-		
-		items.clear();
-		itemPanel.removeAll(); 
-		for(int i = 0; i < eskimo.getInventory().size(); i++)
-		{
-			if(eskimo.getInventory().get(i) instanceof Rope)
-			{
-				items.add(lRope);
-				l1.addElement("Rope");
-			}
-			if(eskimo.getInventory().get(i) instanceof Food)
-			{
-				items.add(lFood);
-				l1.addElement("Food");
-			}
-			if(eskimo.getInventory().get(i) instanceof Shovel)
-			{
-				items.add(lShovel);
-				l1.addElement("Shovel");
-			}
-			if(eskimo.getInventory().get(i) instanceof DivingSuit)
-			{
-				items.add(lSuit);
-				l1.addElement("Suit");
-			}
-			if(eskimo.getInventory().get(i) instanceof Gun)
-			{
-				items.add(lGun);
-				l1.addElement("Gun");
-			}
-			if(eskimo.getInventory().get(i) instanceof Flare)
-			{
-				items.add(lFlare);
-				l1.addElement("Flare");
-			}
-			if(eskimo.getInventory().get(i) instanceof Charge)
-			{
-				items.add(lCharge);
-				l1.addElement("Charge");
-			}
-		}
-		listBox = new JList<>(l1); 
-		for(int i = 0; i <items.size();i++)
-		{
-			itemPanel.add(items.get(i));
-		}
-		pBottomRight.add(itemPanel); 
-	}
-
-
-
+	
+	
+//	public void IcebergChange(Iceberg iceberg)
+//	{
+//		listModel.clear();
+//		items.clear();
+//		itemPanel.removeAll(); 
+//		
+//		for(int i = 0; i < iceberg.getItems().size(); i++)
+//		{
+//			//listModel.addElement(iceberg.getItems().get(i).getClass().toString());
+//			if(iceberg.getItems().get(i) instanceof Rope)
+//			{
+//				items.add(lRope);
+//				listModel.addElement("Rope");
+//			}
+//			if(iceberg.getItems().get(i) instanceof Food)
+//			{
+//				items.add(lFood);
+//				listModel.addElement("Food");
+//			}
+//			if(iceberg.getItems().get(i) instanceof Shovel)
+//			{
+//				items.add(lShovel);
+//				listModel.addElement("Shovel");
+//			}
+//			if(iceberg.getItems().get(i) instanceof DivingSuit)
+//			{
+//				items.add(lSuit);
+//				listModel.addElement("Suit");
+//			}
+//			if(iceberg.getItems().get(i) instanceof Gun)
+//			{
+//				items.add(lGun);
+//				listModel.addElement("Gun");
+//			}
+//			if(iceberg.getItems().get(i) instanceof Flare)
+//			{
+//				items.add(lFlare);
+//				listModel.addElement("Flare");
+//			}
+//			if(iceberg.getItems().get(i) instanceof Charge)
+//			{
+//				items.add(lCharge);
+//				listModel.addElement("Charge");
+//			}
+//		}
+//		listBox = new JList<>(listModel); 
+//		for(int i = 0; i <items.size();i++)
+//		{
+//			itemPanel.add(items.get(i));
+//		}
+//		pBottomRight.add(itemPanel); 
+//	}
+//	
+//	public void PlayerChange(Figure figure) {
+//		listModel.addElement("THIS IS A TEST PLEASE RUN");
+//		lName.setText("Name: " + figure.getName() + "       ");
+//		HealthChange(figure.getBodyHeatUnit());
+//		
+//		listModel.clear();
+//		
+//		items.clear();
+//		itemPanel.removeAll(); 
+//		for(int i = 0; i < figure.getInventory().size(); i++)
+//		{
+//			if(figure.getInventory().get(i) instanceof Rope)
+//			{
+//				items.add(lRope);
+//				listModel.addElement("Rope");
+//			}
+//			if(figure.getInventory().get(i) instanceof Food)
+//			{
+//				items.add(lFood);
+//				listModel.addElement("Food");
+//			}
+//			if(figure.getInventory().get(i) instanceof Shovel)
+//			{
+//				items.add(lShovel);
+//				listModel.addElement("Shovel");
+//			}
+//			if(figure.getInventory().get(i) instanceof DivingSuit)
+//			{
+//				items.add(lSuit);
+//				listModel.addElement("Suit");
+//			}
+//			if(figure.getInventory().get(i) instanceof Gun)
+//			{
+//				items.add(lGun);
+//				listModel.addElement("Gun");
+//			}
+//			if(figure.getInventory().get(i) instanceof Flare)
+//			{
+//				items.add(lFlare);
+//				listModel.addElement("Flare");
+//			}
+//			if(figure.getInventory().get(i) instanceof Charge)
+//			{
+//				items.add(lCharge);
+//				listModel.addElement("Charge");
+//			}
+//		}
+//		listBox = new JList<>(listModel); 
+//		for(int i = 0; i <items.size();i++)
+//		{
+//			itemPanel.add(items.get(i));
+//		}
+//		pBottomRight.add(itemPanel); 
+//	}
 }
