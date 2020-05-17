@@ -130,7 +130,8 @@ public class Controller {
 					mGame.madeMove("usd");
 					firstinput = null;
 				}
-	        	mGame.madeMove("d");
+				else
+					mGame.madeMove("d");
 	        }
 
 	        if(e.getKeyCode() == KeyEvent.VK_A) {
@@ -142,7 +143,8 @@ public class Controller {
 					mGame.madeMove("usa");
 					firstinput = null;
 				}
-	        	mGame.madeMove("a");
+				else
+					mGame.madeMove("a");
 	        }
 	        
 	        if(e.getKeyCode() == KeyEvent.VK_C) {
