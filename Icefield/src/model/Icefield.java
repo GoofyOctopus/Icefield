@@ -43,7 +43,7 @@ public class Icefield {
 					icebergs[i][j].setBorderingIceberg(Direction.LEFT, icebergs[i-1][j]);
 					icebergs[i-1][j].setBorderingIceberg(Direction.RIGHT, icebergs[i][j]);
 				}
-			/*	if(j%2==0)
+				if(j%2==0)
 				{
 					icebergs[i][j].addItem(new Food());
 				}
@@ -71,7 +71,7 @@ public class Icefield {
 				{
 					icebergs[i][j].addItem(new DivingSuit()); 
 				}
-				*/
+				
 			}
 		}
 		

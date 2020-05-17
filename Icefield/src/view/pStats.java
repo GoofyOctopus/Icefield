@@ -5,9 +5,11 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 
 import Figures.Eskimo;
+import Figures.Figure;
 import Figures.PolarExplorer;
 import Item.*;
 import model.Game;
+import model.Iceberg;
 
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
@@ -32,6 +34,7 @@ public class pStats extends JPanel {
 	private ArrayList<JLabel> items;
 	private JList<String> listBox; 
 	private DefaultListModel<String> l1;
+	private JPanel itemPanel; 
 	/**
 	 * Create the panel.
 	 */
@@ -71,10 +74,12 @@ public class pStats extends JPanel {
 
 		pBottomRight.add(lStats);
 		pBottomRight.add(listBox);
+		itemPanel = new JPanel();
 		for(int i = 0; i <items.size();i++)
 		{
-			pBottomRight.add(items.get(i));
+			itemPanel.add(items.get(i));
 		}
+		pBottomRight.add(itemPanel); 
 		pBottom.setLayout(new BorderLayout(0, 0));
 		pBottom.add(lName, BorderLayout.WEST);	
 		pBottom.add(lHealth, BorderLayout.CENTER);
@@ -89,14 +94,64 @@ public class pStats extends JPanel {
 	public void ShowStats(int move) {
 		lStats.setText("Stats: move " + move);
 	}
-	
-	public void PlayerChange(Eskimo eskimo) {
+	public void IcebergChange(Iceberg iceberg)
+	{
+		l1.clear();
+		items.clear();
+		itemPanel.removeAll(); 
+		for(int i = 0; i < iceberg.getItems().size(); i++)
+		{
+			if(iceberg.getItems().get(i) instanceof Rope)
+			{
+				items.add(lRope);
+				l1.addElement("Rope");
+			}
+			if(iceberg.getItems().get(i) instanceof Food)
+			{
+				items.add(lFood);
+				l1.addElement("Food");
+			}
+			if(iceberg.getItems().get(i) instanceof Shovel)
+			{
+				items.add(lShovel);
+				l1.addElement("Shovel");
+			}
+			if(iceberg.getItems().get(i) instanceof DivingSuit)
+			{
+				items.add(lSuit);
+				l1.addElement("Suit");
+			}
+			if(iceberg.getItems().get(i) instanceof Gun)
+			{
+				items.add(lGun);
+				l1.addElement("Gun");
+			}
+			if(iceberg.getItems().get(i) instanceof Flare)
+			{
+				items.add(lFlare);
+				l1.addElement("Flare");
+			}
+			if(iceberg.getItems().get(i) instanceof Charge)
+			{
+				items.add(lCharge);
+				l1.addElement("Charge");
+			}
+		}
+		listBox = new JList<>(l1); 
+		for(int i = 0; i <items.size();i++)
+		{
+			itemPanel.add(items.get(i));
+		}
+		pBottomRight.add(itemPanel); 
+	}
+	public void PlayerChange(Figure eskimo) {
 		lName.setText("Name: " + eskimo.getName() + "       ");
 		HealthChange(eskimo.getBodyHeatUnit());
 		
 		l1.clear();
 		
 		items.clear();
+		itemPanel.removeAll(); 
 		for(int i = 0; i < eskimo.getInventory().size(); i++)
 		{
 			if(eskimo.getInventory().get(i) instanceof Rope)
@@ -138,58 +193,11 @@ public class pStats extends JPanel {
 		listBox = new JList<>(l1); 
 		for(int i = 0; i <items.size();i++)
 		{
-			pBottomRight.add(items.get(i));
+			itemPanel.add(items.get(i));
 		}
+		pBottomRight.add(itemPanel); 
 	}
-	public void PlayerChange(PolarExplorer polarExplorer) {
-		lName.setText("Name: " + polarExplorer.getName() + "       ");
-		HealthChange(polarExplorer.getBodyHeatUnit());
-		l1.clear();
-		items.clear();
-		for(int i = 0; i < polarExplorer.getInventory().size(); i++)
-		{
-			if(polarExplorer.getInventory().get(i) instanceof Rope)
-			{
-				items.add(lRope);
-				l1.addElement("Rope");
-			}
-			if(polarExplorer.getInventory().get(i) instanceof Food)
-			{
-				items.add(lFood);
-				l1.addElement("Food");
-			}
-			if(polarExplorer.getInventory().get(i) instanceof Shovel)
-			{
-				items.add(lShovel);
-				l1.addElement("Shovel");
-			}
-			if(polarExplorer.getInventory().get(i) instanceof DivingSuit)
-			{
-				items.add(lSuit);
-				l1.addElement("Suit");
-			}
-			if(polarExplorer.getInventory().get(i) instanceof Gun)
-			{
-				items.add(lGun);
-				l1.addElement("Gun");
-			}
-			if(polarExplorer.getInventory().get(i) instanceof Flare)
-			{
-				items.add(lFlare);
-				l1.addElement("Flare");
-			}
-			if(polarExplorer.getInventory().get(i) instanceof Charge)
-			{
-				items.add(lCharge);
-				l1.addElement("Charge");
-			}
-		}
-		listBox = new JList<>(l1); 
-		for(int i = 0; i <items.size();i++)
-		{
-			pBottomRight.add(items.get(i));
-		}
-	}
+
 
 
 }
