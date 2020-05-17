@@ -74,6 +74,9 @@ public class Icefield {
 				
 			}
 		}
+		setCapacity(2,2,1);
+		setCapacity(2,4,0);
+		System.out.println("iceberg 2 2 has capacity: "+icebergs[2][2].getCapacity()  );
 		
 		for(int i = 0; i < figures.size(); i++)
 		{
@@ -98,7 +101,6 @@ public class Icefield {
 			}
 		}
 		//((UnstableIceberg) icebergs[2][4]).sethasIgloos(true);
-		setCapacity(2,2,1);
 		
 	}
 	/*

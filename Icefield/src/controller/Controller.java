@@ -1,4 +1,5 @@
 package controller;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -7,6 +8,7 @@ import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import model.Game;
 import view.GameFrame;
@@ -129,7 +131,10 @@ public class Controller {
 		}
 
 		@Override
-		public void keyReleased(KeyEvent e) { }
+		public void keyReleased(KeyEvent e) {
+			if(mGame.finished)
+				JOptionPane.showMessageDialog((Component) view, "Game over");
+		}
 	}	
 	/*
 	 * updates the view

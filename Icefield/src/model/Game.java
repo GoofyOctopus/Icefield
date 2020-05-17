@@ -80,22 +80,16 @@ public class Game{
     }
     
     public void madeMove(String input) {
-    	int numberOfDrowning = 0;
-    	
+    	int numberOfDrowningBefore = 0;
+    	int numberOfDrowningAfter = 0;
     	for(int i=0 ; i<figures.size() ; i++) {
     		if(figures.get(i).isDrowning())
-    			numberOfDrowning++;
+    			numberOfDrowningBefore++;
     	}
-    	System.out.println("Number of drowning figures: "+numberOfDrowning);
-    	if(numberOfDrowning>=numberOfFigures) {
+    	System.out.println("Number of drowning figures before the move: "+numberOfDrowningBefore);
+    	if(numberOfDrowningBefore>=numberOfFigures) {
     		finished = true;
     		return;
-    	}
-    	
-    	
-    	while(figures.get(currentFigure).isDrowning()==true) {
-    		currentFigure++;
-    		numberOfMoves = 0;
     	}
     	if(numberOfMoves==4) {
     		currentFigure++;
@@ -105,6 +99,16 @@ public class Game{
     		roundCounter++;
     		currentFigure = currentFigure % numberOfFigures;
     	}
+    	
+    	while(figures.get(currentFigure).isDrowning()==true) {
+    		currentFigure++;
+    		if(currentFigure >= figures.size()) {
+    			currentFigure = currentFigure % numberOfFigures;
+    			roundCounter++;
+    		}
+    		numberOfMoves = 0;
+    	}
+    	
     	Figure currPl = figures.get(currentFigure);
 //    	if(currPl.isDrowning() && currPl.getRoundOfDrowning() < roundCounter) {
 //			finished = true;
@@ -126,8 +130,13 @@ public class Game{
 			// TODO Auto-generated catch block
 			System.out.println("Something went wrong while making a move!");
 		}
-    	System.out.println("Current numberOfMoves "+ numberOfMoves +"\n");
-		}
+    	System.out.println("Current numberOfMoves "+ numberOfMoves);
+    	for(int i=0 ; i<figures.size() ; i++) {
+    		if(figures.get(i).isDrowning())
+    			numberOfDrowningAfter++;
+    	}
+    	System.out.println("Number of drowning figures after the move: "+numberOfDrowningAfter +"\n");
+	}
     /*
      *Gets number of players, lets them choose figures, creates
      *icefield and sets roundCounter and numberOfMoves to 0.
