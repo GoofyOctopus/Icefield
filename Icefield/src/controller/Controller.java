@@ -157,6 +157,9 @@ public class Controller {
 	            mGame.madeMove("use");
 	        }
 	        if(e.getKeyCode() == KeyEvent.VK_V) {
+	        	/*
+	        	 * Tell the user that "Please select the direction to check Capacity"
+	        	 */
 	        	firstinput = "Skill";
 	        }
 
@@ -164,15 +167,20 @@ public class Controller {
 	            mGame.madeMove("ri");
 	        }
 	        if(e.getKeyCode() == KeyEvent.VK_H) {
+	        	/*
+	        	 * Tell the user that "Please select the direction to use rope"
+	        	 */
 	        	firstinput = "Help";
 	        }
 
 	        if(e.getKeyCode() == KeyEvent.VK_U) {
+	        	/*
+	        	 * Tell the user that "Please select which item to use"
+	        	 */
 	        	firstinput = "Use";
 	        }
 	        
 	        if(e.getKeyCode() == KeyEvent.VK_1) {
-	        	//mGame.figures.get(mGame.currentFigure).getInventory().get(0);
 	            if(firstinput!=null && firstinput.equalsIgnoreCase("Use")) {
 	            	
 	            	mGame.madeMove("u1");
@@ -180,7 +188,6 @@ public class Controller {
 	            	}
 	        	}
 	        if(e.getKeyCode() == KeyEvent.VK_2) {
-	        	//mGame.figures.get(mGame.currentFigure).getInventory().get(0);
 	            if(firstinput!=null && firstinput.equalsIgnoreCase("Use")) {
 	            	
 	            	mGame.madeMove("u2");
@@ -188,7 +195,6 @@ public class Controller {
 	            	}
 	        	}
 	        if(e.getKeyCode() == KeyEvent.VK_3) {
-	        	//mGame.figures.get(mGame.currentFigure).getInventory().get(0);
 	            if(firstinput!=null && firstinput.equalsIgnoreCase("Use")) {
 	            	
 	            	mGame.madeMove("u3");
@@ -196,7 +202,6 @@ public class Controller {
 	            	}
 	        	}
 	        if(e.getKeyCode() == KeyEvent.VK_4) {
-	        	//mGame.figures.get(mGame.currentFigure).getInventory().get(0);
 	            if(firstinput!=null && firstinput.equalsIgnoreCase("Use")) {
 	            	
 	            	mGame.madeMove("u4");
@@ -204,7 +209,6 @@ public class Controller {
 	            	}
 	        	}
 	        if(e.getKeyCode() == KeyEvent.VK_5) {
-	        	//mGame.figures.get(mGame.currentFigure).getInventory().get(0);
 	            if(firstinput!=null && firstinput.equalsIgnoreCase("Use")) {
 	            	
 	            	mGame.madeMove("u5");
@@ -212,7 +216,6 @@ public class Controller {
 	            	}
 	        	}
 	        if(e.getKeyCode() == KeyEvent.VK_6) {
-	        	//mGame.figures.get(mGame.currentFigure).getInventory().get(0);
 	            if(firstinput!=null && firstinput.equalsIgnoreCase("Use")) {
 	            	
 	            	mGame.madeMove("u6");

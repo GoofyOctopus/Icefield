@@ -26,11 +26,7 @@ public class Game{
     private boolean test;
     /*
      * Shortcuts for possible moves:
-     * W,S,D,A - for stepping(up,down,right,left), UR - use rope,
-     * USH - use shovel, RS - remove snow, EF - eat food, 
-     * UD - use diving suit, UF - use flare gun, RI - retrieve item
-     * US - use skill;
-     * */
+     */
     public enum Move{
     	W,S,D,A, RS, RI, USE, CW, U1, U2, U3, U4, U5, U6, URW, URS, URD ,URA ,USW, USA, USD, USS;
     }
@@ -48,40 +44,12 @@ public class Game{
     public Game(boolean testCases) {
     	test = testCases;
     	startGame();
-    	//gameLoop();
-
-    	/*
-    	 * The basic idea to separate the threads is here
-    	 * let's not delete the test and override the code
-    	 * instead of calling the starting and looping methods, 
-    	 * we wait to be told from the Main. Otherwise, the whole class should be modified
-    	 * in a way that it just do the logic and the calculations(what I prefer)
-    	 */
-    	//startGame(); 
-    	//if(!testCases)
-    	//	gameLoop();
     }
-   
     /*
-     * If user doesn't want to test the game, game loop
-     * starts. Players start to make their moves, until
-     * game is finished.
-     * */
-    public void gameLoop() {
-    	
-    	boolean finished = false;
-    	while(!finished) {
-    		for(int i = 0; i < numberOfFigures; i++) {
-    			if(!nextPlayer(figures.get(i)))
-    				finished = true;
-    		}
-        	roundCounter++;
-    	}
-    }
-    
+     * Method that makes change to Game class when user give input
+     */
     public void madeMove(String input) {
     	int numberOfDrowningBefore = 0;
-    	int numberOfDrowningAfter = 0;
     	for(int i=0 ; i<figures.size() ; i++) {
     		if(figures.get(i).isDrowning())
     			numberOfDrowningBefore++;
@@ -109,10 +77,6 @@ public class Game{
     	}
     	
     	Figure currPl = figures.get(currentFigure);
-//    	if(currPl.isDrowning() && currPl.getRoundOfDrowning() < roundCounter) {
-//			finished = true;
-//			return false;
-//		}
     	for(int i=0 ; i<figures.size();i++) {
     		if(figures.get(i).isDrowning() && figures.get(i).getRoundOfDrowning()+1 < roundCounter ) {
     			finished = true;
@@ -129,15 +93,10 @@ public class Game{
 			// TODO Auto-generated catch block
 			System.out.println("Something went wrong while making a move!");
 		}
-    	System.out.println("Current numberOfMoves "+ numberOfMoves);
-    	for(int i=0 ; i<figures.size() ; i++) {
-    		if(figures.get(i).isDrowning())
-    			numberOfDrowningAfter++;
-    	}
 	}
     /*
-     *Gets number of players, lets them choose figures, creates
-     *icefield and sets roundCounter and numberOfMoves to 0.
+     *Starts the game
+     * and sets roundCounter and numberOfMoves to 0.
      * */
     public void startGame(){
     	roundCounter = 0;
@@ -155,29 +114,12 @@ public class Game{
 //            }
 //        }
         figures = new ArrayList<Figure>();
-        /*
-        if(!test) {
-         for(int i = 0; i < numberOfFigures; i++) {
-             	figures.add(chooseFigure()); 
-             }
-        }
-        */
-        //icf = new Icefield(figures);
     }
     
     public void addFigure(HashMap<String, String> figureNames) {
-//    	if(figures.size()<numberOfFigures) {
-//    		if(name.equalsIgnoreCase("Eskimo")) {
-//    			figures.add(new Eskimo(""));
-//    			System.out.println("Eskimo chosen");
-//    			System.out.println(figures.size());
-//    		}
-//    		if(name.equalsIgnoreCase("Explorer")) {
-//    			figures.add(new PolarExplorer(""));
-//    			System.out.println("Explorer chosen");
-//    			System.out.println(figures.size());
-//    		}
-//    	}
+    	/*
+    	 * Method that creates figures on icefield and generate it.    
+    	 */
     	for (String key : figureNames.keySet()) {
  		   if(figureNames.get(key).equals("Eskimoo"))
  			   figures.add(new Eskimo(key));
@@ -190,30 +132,6 @@ public class Game{
     	
     }
     
-    /*
-     * Each player chooses a figure to play
-     * */
-    public Figure chooseFigure(){
-    	System.out.println("ChooseFigure function has been called");
-    	System.out.println("Type 'E' for Eskimo");
-    	System.out.println("Type 'P' for Polar explorer");
-    	System.out.println("Please, choose the figure:");
-    	Scanner in = new Scanner(System.in);
-    	String answer;
-    	while(true) {
-    		answer = in.next();
-    		if(answer.toLowerCase().equals("e")) {
-    	    	System.out.println("You have chosen Eskimo");
-    			Eskimo es = new Eskimo("");
-    			return es;
-    		}else if(answer.toLowerCase().equals("p")) {
-    			System.out.println("You have chosen Polar Explorer");
-    			PolarExplorer pe = new PolarExplorer("");
-    			return pe;
-    		}
-    		System.out.println("Invalid arguments");
-    	}
-    }
     /*
      * Checks if flare gun is collected and
      * if all the figures are on the same iceberg
@@ -236,22 +154,11 @@ public class Game{
     	return false;
     }
     
-    /*
-     * If players managed to collect flare gun and
-     * step all the figures on the same iceberg, they win and
-     * this method finishes the game
-     * */
-    public void winGame(){
-    	System.out.println("WinGame function has been called");
-    	System.out.println("You have won!!!");
-    }
     
     /*
-     * There are two scenarios:
-     * 1.Use = true, checks if item is in current player's inventory
-     * and uses.
-     * 2.Use = false, Checks if item is on the iceberg and player can retrieve
-     **/
+     * Method called when item is used 
+     * It also calls methods of Items and make change to them
+     */
     public void useItem(Figure currPl, int j) {
     	List<IItem> items;
     	//if(use)
@@ -262,50 +169,12 @@ public class Game{
     		((Item) items.get(j)).useItem();
     	else
 			numberOfMoves--;
-    	//for(int j = 0; j < items.size(); j++) {
-    		
-    		//if(items.get(j).getClass() == i.getClass()) {
-    			//if(use)
-    			//	((Item) items.get(j)).useItem();
-    			//else
-    				//currPl.retrieveItem(items.get(j));
-    		//}
-    	//}
-
     }
-    /*
-     * 
-    public void grabItem(Figure currPl,Items it) {
-    	switch(it) {
-    	case ROPE:
-    		checkItem(currPl, new Rope(), false);
-	    	break;
-	    case SHOVEL:
-	    	checkItem(currPl, new Shovel(), false);
-	    	break;
-	    case FOOD:
-	    	checkItem(currPl, new Food(),false);
-	    	break;
-	    case SUIT:
-	    	checkItem(currPl, new DivingSuit(),false);
-	    	break;
-	    case FLARE:
-	    	checkItem(currPl, new Flare(),false);
-	    	break;
-	    case GUN:
-	    	checkItem(currPl, new Gun(),false);
-	    	break;
-	    default:
-	    	checkItem(currPl, new Charge(),false);
-	    	break;
-    	}
-    }
-    */
+    
     /*
      * Current player makes move. It can step,remove snow, eat,
      * use shovel, rope, diving suit, flare gun or grab 
      * an item.
-     * Returns false - if game finished, true - otherwise
      * */
     public boolean makeMove(Figure currPl, Move move) throws Exception {
     	//If player is in the water, we change the current player
@@ -421,13 +290,7 @@ public class Game{
     	}
     	
     	numberOfMoves++;
-//    	Iceberg ib = currPl.getIceberg();
-//    	if(ib instanceof UnstableIceberg) {
-//    		if(((UnstableIceberg) ib).getCapacity() == 0) {
-//    			numberOfMoves = 4;
-//    			System.out.println("Figure " + currentFigure+" is drowning");
-//    		}
-//    	}
+    	//If this condition is satisfied, we can know that we have won
     	if(checkFlareGun()) {
     		won = true;
     		finished = true;
@@ -437,7 +300,6 @@ public class Game{
     		finished = true;
     		return false;
     	}
-    	//Player fell into the water
     	
     	return true;
     }
@@ -481,11 +343,5 @@ public class Game{
     	}
     	return true;
     }
-    /*
-     * Ends the game if anybody's heat went to 0 or anyone drowned
-     * into the water
-     * */
-    public void endGame(){
-    	System.out.println("You have lost :(");
-    }
+
 }
