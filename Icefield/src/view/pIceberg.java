@@ -50,10 +50,13 @@ public class pIceberg extends JPanel{
 	void createBackground() {
 		if(iceberg.getWater() || (iceberg.getCapacity() == 0 && iceberg.getHoleDiscovered()))
 			background.setIcon(new ImageIcon("Images/water.png"));
+		else if(iceberg.ishasIgloos())
+			background.setIcon(new ImageIcon("Images/igloo.png"));
 		else if(iceberg.getSnow() == 0)
 			background.setIcon(new ImageIcon("Images/ice.png"));
 		else
 			background.setIcon(new ImageIcon("Images/snow.png"));
+		
         
 	}
 	/*

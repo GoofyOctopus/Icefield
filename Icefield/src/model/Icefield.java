@@ -97,7 +97,7 @@ public class Icefield {
 				}
 			}
 		}
-		((UnstableIceberg) icebergs[2][2]).setCapacity(1);
+		//((UnstableIceberg) icebergs[2][4]).sethasIgloos(true);
 		
 	}
 	/*
