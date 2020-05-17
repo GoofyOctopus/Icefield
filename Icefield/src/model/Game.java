@@ -336,24 +336,32 @@ public class Game{
 	    	currPl.retrieveItem();
 	    	break;
 	    case URA:
+	    	if(currPl.getIceberg().getNeighbor(Direction.UP).getCapacity()==0) {
 	    		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.UP).getFigures().size();i++) {
 	    			currPl.getIceberg().getNeighbor(Direction.UP).getFigures().get(i).help(currPl.getIceberg());
 	    		}
+	    	}
 	    	break;
 	    case URW:
+	    	if(currPl.getIceberg().getNeighbor(Direction.UP).getCapacity()==0) {
     		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.LEFT).getFigures().size();i++) {
     			currPl.getIceberg().getNeighbor(Direction.LEFT).getFigures().get(i).help(currPl.getIceberg());
     		}
+	    	}
     	break;
 	    case URD:
+	    	if(currPl.getIceberg().getNeighbor(Direction.UP).getCapacity()==0) {
     		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.DOWN).getFigures().size();i++) {
     			currPl.getIceberg().getNeighbor(Direction.DOWN).getFigures().get(i).help(currPl.getIceberg());
     		}
+	    	}
     	break;
 	    case URS:
+	    	if(currPl.getIceberg().getNeighbor(Direction.UP).getCapacity()==0) {
     		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.RIGHT).getFigures().size();i++) {
     			currPl.getIceberg().getNeighbor(Direction.RIGHT).getFigures().get(i).help(currPl.getIceberg());
     		}
+	    	}
     	break;
 	    case U1:
 	    	useItem(currPl, 0 );

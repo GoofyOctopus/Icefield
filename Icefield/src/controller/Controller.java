@@ -81,6 +81,7 @@ public class Controller {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
+			/*
 			if(Math.random() > 0.9) {
 				//add the following method to the interface
 				System.out.println("Generating blizaard");
@@ -88,7 +89,7 @@ public class Controller {
 				for(int i=0; i < 10; i++)
 					for(int j = 0; j < 10; j++)
 						mGame.icf.generateBlizzards(i, j);
-			}
+			}*/
 			int code = e.getKeyCode();
 			System.out.println("   Code: " + KeyEvent.getKeyText(code));
 			/*
