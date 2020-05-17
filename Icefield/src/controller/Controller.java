@@ -86,31 +86,72 @@ public class Controller {
 			 */
 			if(mGame.finished!=true) {
 			if(e.getKeyCode() == KeyEvent.VK_W) {
-				mGame.madeMove("w");
+				if(firstinput!=null && firstinput.equalsIgnoreCase("Help")) {
+					mGame.madeMove("ura");
+					firstinput = null;
+				}
+				else if(firstinput!=null && firstinput.equalsIgnoreCase("Skill")) {
+					mGame.madeMove("usa");
+					firstinput = null;
+				}
+				else
+					mGame.madeMove("a");
 	        }
 
 	        if(e.getKeyCode() == KeyEvent.VK_S) {
-	            mGame.madeMove("s");
+	        	if(firstinput!=null && firstinput.equalsIgnoreCase("Help")) {
+					mGame.madeMove("urd");
+					firstinput = null;
+				}
+				else if(firstinput!=null && firstinput.equalsIgnoreCase("Skill")) {
+					mGame.madeMove("usd");
+					firstinput = null;
+				}
+				else
+					mGame.madeMove("d");
 	        }
 
 	        if(e.getKeyCode() == KeyEvent.VK_D) {
-	        	mGame.madeMove("d");
+	        	if(firstinput!=null && firstinput.equalsIgnoreCase("Help")) {
+					mGame.madeMove("urs");
+					firstinput = null;
+				}
+				else if(firstinput!=null && firstinput.equalsIgnoreCase("Skill")) {
+					mGame.madeMove("uss");
+					firstinput = null;
+				}
+	        	mGame.madeMove("s");
 	        }
 
 	        if(e.getKeyCode() == KeyEvent.VK_A) {
-	        	mGame.madeMove("a");
+	        	if(firstinput!=null && firstinput.equalsIgnoreCase("Help")) {
+					mGame.madeMove("urw");
+					firstinput = null;
+				}
+				else if(firstinput!=null && firstinput.equalsIgnoreCase("Skill")) {
+					mGame.madeMove("usw");
+					firstinput = null;
+				}
+	        	mGame.madeMove("w");
 	        }
 	        
 	        if(e.getKeyCode() == KeyEvent.VK_C) {
 	        	mGame.madeMove("rs");
 	        }
 
+	        if(e.getKeyCode() == KeyEvent.VK_E) {
+	            mGame.madeMove("use");
+	        }
 	        if(e.getKeyCode() == KeyEvent.VK_V) {
-	            mGame.madeMove("us");
+	        	firstinput = "Skill";
+	            mGame.madeMove("uspe");
 	        }
 
 	        if(e.getKeyCode() == KeyEvent.VK_R) {
 	            mGame.madeMove("ri");
+	        }
+	        if(e.getKeyCode() == KeyEvent.VK_H) {
+	        	firstinput = "Help";
 	        }
 
 	        if(e.getKeyCode() == KeyEvent.VK_U) {
@@ -120,10 +161,50 @@ public class Controller {
 	        if(e.getKeyCode() == KeyEvent.VK_1) {
 	        	//mGame.figures.get(mGame.currentFigure).getInventory().get(0);
 	            if(firstinput!=null && firstinput.equalsIgnoreCase("Use")) {
-	            	mGame.madeMove("ef");
+	            	
+	            	mGame.madeMove("u1");
 	            	firstinput = null;
 	            	}
+	        	}
+	        if(e.getKeyCode() == KeyEvent.VK_2) {
+	        	//mGame.figures.get(mGame.currentFigure).getInventory().get(0);
+	            if(firstinput!=null && firstinput.equalsIgnoreCase("Use")) {
 	            	
+	            	mGame.madeMove("u2");
+	            	firstinput = null;
+	            	}
+	        	}
+	        if(e.getKeyCode() == KeyEvent.VK_3) {
+	        	//mGame.figures.get(mGame.currentFigure).getInventory().get(0);
+	            if(firstinput!=null && firstinput.equalsIgnoreCase("Use")) {
+	            	
+	            	mGame.madeMove("u3");
+	            	firstinput = null;
+	            	}
+	        	}
+	        if(e.getKeyCode() == KeyEvent.VK_4) {
+	        	//mGame.figures.get(mGame.currentFigure).getInventory().get(0);
+	            if(firstinput!=null && firstinput.equalsIgnoreCase("Use")) {
+	            	
+	            	mGame.madeMove("u4");
+	            	firstinput = null;
+	            	}
+	        	}
+	        if(e.getKeyCode() == KeyEvent.VK_5) {
+	        	//mGame.figures.get(mGame.currentFigure).getInventory().get(0);
+	            if(firstinput!=null && firstinput.equalsIgnoreCase("Use")) {
+	            	
+	            	mGame.madeMove("u5");
+	            	firstinput = null;
+	            	}
+	        	}
+	        if(e.getKeyCode() == KeyEvent.VK_6) {
+	        	//mGame.figures.get(mGame.currentFigure).getInventory().get(0);
+	            if(firstinput!=null && firstinput.equalsIgnoreCase("Use")) {
+	            	
+	            	mGame.madeMove("u6");
+	            	firstinput = null;
+	            	}
 	        	}
 			}
 			

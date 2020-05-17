@@ -30,5 +30,6 @@ public class Eskimo extends Figure {
 	@Override
 	public void useSkill() {
 		iceberg.sethasIgloos(true);
+		System.out.println("Created igloo");
 	}
 }

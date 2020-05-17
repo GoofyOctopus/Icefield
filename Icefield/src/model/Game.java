@@ -22,7 +22,6 @@ public class Game{
     public boolean finished = false;
     public ArrayList<Figure> figures;
     public Icefield icf;
-    Direction chosendir = null;
     private boolean test;
     /*
      * Shortcuts for possible moves:
@@ -32,7 +31,7 @@ public class Game{
      * US - use skill;
      * */
     public enum Move{
-    	W,S,D,A, UR, USH, RS, EF, UD, UF, RI, USE, CW, USPE;
+    	W,S,D,A, RS, RI, USE, CW, U1, U2, U3, U4, U5, U6, URW, URS, URD ,URA ,USW, USA, USD, USS;
     }
     /*
      * Enum for items to easily compare user input
@@ -254,22 +253,24 @@ public class Game{
      * and uses.
      * 2.Use = false, Checks if item is on the iceberg and player can retrieve
      **/
-    public void useItem(Figure currPl, IItem i) {
+    public void useItem(Figure currPl, int j) {
     	List<IItem> items;
     	//if(use)
     	items = currPl.getInventory();
     	//else
     	//items = currPl.getIceberg().getItems();
-    	
-    	for(int j = 0; j < items.size(); j++) {
+    	if(items.get(j) instanceof Shovel || items.get(j) instanceof Food || items.get(j) instanceof DivingSuit)
+    		((Item) items.get(j)).useItem();
+    	//for(int j = 0; j < items.size(); j++) {
     		
-    		if(items.get(j).getClass() == i.getClass()) {
+    		//if(items.get(j).getClass() == i.getClass()) {
     			//if(use)
-    				((Item) items.get(j)).useItem();
+    			//	((Item) items.get(j)).useItem();
     			//else
     				//currPl.retrieveItem(items.get(j));
-    		}
-    	}
+    		//}
+    	//}
+
     }
     /*
      * 
@@ -313,19 +314,19 @@ public class Game{
     	switch(move) {
 	    case W:
 	    	System.out.println("Moved up");
-	        currPl.step(Direction.LEFT);
+	        currPl.step(Direction.UP);
 	        break;
 	    case S:
 	    	System.out.println("Moved down");
-	        currPl.step(Direction.RIGHT);
+	        currPl.step(Direction.DOWN);
 	        break;
 	    case D:
 	    	System.out.println("Moved right");
-	        currPl.step(Direction.DOWN);
+	        currPl.step(Direction.RIGHT);
 	        break;
 	    case A:
 	    	System.out.println("Moved left");
-	        currPl.step(Direction.UP);
+	        currPl.step(Direction.LEFT);
 	        break;
 	    case RS:
 	    	System.out.println("Removed snow");
@@ -334,34 +335,69 @@ public class Game{
 	    case RI:
 	    	currPl.retrieveItem();
 	    	break;
-	    case UR:
-	    	if(chosendir!=null) {
-	    		for(int i=0;i<currPl.getIceberg().getNeighbor(chosendir).getFigures().size();i++) {
-	    			currPl.getIceberg().getNeighbor(chosendir).getFigures().get(i).help(currPl.getIceberg());
+	    case URA:
+	    		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.LEFT).getFigures().size();i++) {
+	    			currPl.getIceberg().getNeighbor(Direction.LEFT).getFigures().get(i).help(currPl.getIceberg());
 	    		}
-	    		chosendir = null;
-	    	}
 	    	break;
-	    case USH:
-	    	useItem(currPl,new Shovel());
+	    case URW:
+    		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.UP).getFigures().size();i++) {
+    			currPl.getIceberg().getNeighbor(Direction.UP).getFigures().get(i).help(currPl.getIceberg());
+    		}
+    	break;
+	    case URD:
+    		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.RIGHT).getFigures().size();i++) {
+    			currPl.getIceberg().getNeighbor(Direction.RIGHT).getFigures().get(i).help(currPl.getIceberg());
+    		}
+    	break;
+	    case URS:
+    		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.DOWN).getFigures().size();i++) {
+    			currPl.getIceberg().getNeighbor(Direction.DOWN).getFigures().get(i).help(currPl.getIceberg());
+    		}
+    	break;
+	    case U1:
+	    	useItem(currPl, 0 );
 	    	break;
-	    case EF:
-	    	useItem(currPl,new Food());
+	    case U2:
+	    	useItem(currPl, 1);
 	    	break;
-	    case UD:
-	    	useItem(currPl,new DivingSuit());
+	    case U3:
+	    	useItem(currPl, 2);
+	    	break;
+	    case U4:
+	    	useItem(currPl, 3);
+	    	break;
+	    case U5:
+	    	useItem(currPl, 4);
+	    	break;
+	    case U6:
+	    	useItem(currPl, 5);
 	    	break;
 	    case USE:
-	    	if(currPl instanceof Eskimo) 
+	    	if(currPl instanceof Eskimo) {
 	    		currPl.useSkill();
+	    	}
 	    	break;
-	    case USPE:
-	    	if(chosendir!=null)
+	    case USW:
 	    		if(currPl instanceof PolarExplorer) {
-	    			currPl.useSkill(chosendir);
-	    			chosendir=null;
+	    			currPl.useSkill(Direction.UP);
 	    		}
 	    	break;
+	    case USS:
+    		if(currPl instanceof PolarExplorer) {
+    			currPl.useSkill(Direction.DOWN);
+    		}
+    	break;
+	    case USD:
+    		if(currPl instanceof PolarExplorer) {
+    			currPl.useSkill(Direction.RIGHT);
+    		}
+    	break;
+	    case USA:
+    		if(currPl instanceof PolarExplorer) {
+    			currPl.useSkill(Direction.LEFT);
+    		}
+    	break;
 	    case CW:
 	    	//Players won
 	    	return(checkFlareGun());

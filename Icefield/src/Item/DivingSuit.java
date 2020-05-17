@@ -14,6 +14,7 @@ public class DivingSuit extends Item
 	{
 		figure.setWearingDivingSuit(true); /* making the isWearingDivingSuit to true
 		 to show that the figure has the diving suit on it*/
+		System.out.println("Diving suit used");
 		destroy();
 	}
 	

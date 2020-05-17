@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import Item.Food;
 import Item.IItem;
+import Item.Rope;
 import model.Direction;
 import model.Iceberg;
 
@@ -35,6 +36,7 @@ public abstract class Figure{
 		this.roundOfDrowning = 0;
 		this.isWearingDivingSuit = false;
 		this.inventory = new ArrayList<IItem>();
+		inventory.add(new Rope());
 		this.name = name;
 	}
 	/*
