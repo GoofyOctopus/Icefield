@@ -314,19 +314,19 @@ public class Game{
     	switch(move) {
 	    case W:
 	    	System.out.println("Moved up");
-	        currPl.step(Direction.UP);
+	        currPl.step(Direction.LEFT);
 	        break;
 	    case S:
 	    	System.out.println("Moved down");
-	        currPl.step(Direction.DOWN);
+	        currPl.step(Direction.RIGHT);
 	        break;
 	    case D:
 	    	System.out.println("Moved right");
-	        currPl.step(Direction.RIGHT);
+	        currPl.step(Direction.DOWN);
 	        break;
 	    case A:
 	    	System.out.println("Moved left");
-	        currPl.step(Direction.LEFT);
+	        currPl.step(Direction.UP);
 	        break;
 	    case RS:
 	    	System.out.println("Removed snow");
@@ -336,23 +336,23 @@ public class Game{
 	    	currPl.retrieveItem();
 	    	break;
 	    case URA:
-	    		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.LEFT).getFigures().size();i++) {
-	    			currPl.getIceberg().getNeighbor(Direction.LEFT).getFigures().get(i).help(currPl.getIceberg());
+	    		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.UP).getFigures().size();i++) {
+	    			currPl.getIceberg().getNeighbor(Direction.UP).getFigures().get(i).help(currPl.getIceberg());
 	    		}
 	    	break;
 	    case URW:
-    		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.UP).getFigures().size();i++) {
-    			currPl.getIceberg().getNeighbor(Direction.UP).getFigures().get(i).help(currPl.getIceberg());
+    		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.LEFT).getFigures().size();i++) {
+    			currPl.getIceberg().getNeighbor(Direction.LEFT).getFigures().get(i).help(currPl.getIceberg());
     		}
     	break;
 	    case URD:
-    		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.RIGHT).getFigures().size();i++) {
-    			currPl.getIceberg().getNeighbor(Direction.RIGHT).getFigures().get(i).help(currPl.getIceberg());
+    		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.DOWN).getFigures().size();i++) {
+    			currPl.getIceberg().getNeighbor(Direction.DOWN).getFigures().get(i).help(currPl.getIceberg());
     		}
     	break;
 	    case URS:
-    		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.DOWN).getFigures().size();i++) {
-    			currPl.getIceberg().getNeighbor(Direction.DOWN).getFigures().get(i).help(currPl.getIceberg());
+    		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.RIGHT).getFigures().size();i++) {
+    			currPl.getIceberg().getNeighbor(Direction.RIGHT).getFigures().get(i).help(currPl.getIceberg());
     		}
     	break;
 	    case U1:
@@ -380,22 +380,22 @@ public class Game{
 	    	break;
 	    case USW:
 	    		if(currPl instanceof PolarExplorer) {
-	    			currPl.useSkill(Direction.UP);
+	    			currPl.useSkill(Direction.LEFT);
 	    		}
 	    	break;
 	    case USS:
     		if(currPl instanceof PolarExplorer) {
-    			currPl.useSkill(Direction.DOWN);
+    			currPl.useSkill(Direction.RIGHT);
     		}
     	break;
 	    case USD:
     		if(currPl instanceof PolarExplorer) {
-    			currPl.useSkill(Direction.RIGHT);
+    			currPl.useSkill(Direction.DOWN);
     		}
     	break;
 	    case USA:
     		if(currPl instanceof PolarExplorer) {
-    			currPl.useSkill(Direction.LEFT);
+    			currPl.useSkill(Direction.UP);
     		}
     	break;
 	    case CW:

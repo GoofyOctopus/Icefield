@@ -87,31 +87,18 @@ public class Controller {
 			if(mGame.finished!=true) {
 			if(e.getKeyCode() == KeyEvent.VK_W) {
 				if(firstinput!=null && firstinput.equalsIgnoreCase("Help")) {
-					mGame.madeMove("ura");
+					mGame.madeMove("urw");
 					firstinput = null;
 				}
 				else if(firstinput!=null && firstinput.equalsIgnoreCase("Skill")) {
-					mGame.madeMove("usa");
+					mGame.madeMove("usw");
 					firstinput = null;
 				}
 				else
-					mGame.madeMove("a");
+					mGame.madeMove("w");
 	        }
 
 	        if(e.getKeyCode() == KeyEvent.VK_S) {
-	        	if(firstinput!=null && firstinput.equalsIgnoreCase("Help")) {
-					mGame.madeMove("urd");
-					firstinput = null;
-				}
-				else if(firstinput!=null && firstinput.equalsIgnoreCase("Skill")) {
-					mGame.madeMove("usd");
-					firstinput = null;
-				}
-				else
-					mGame.madeMove("d");
-	        }
-
-	        if(e.getKeyCode() == KeyEvent.VK_D) {
 	        	if(firstinput!=null && firstinput.equalsIgnoreCase("Help")) {
 					mGame.madeMove("urs");
 					firstinput = null;
@@ -120,19 +107,32 @@ public class Controller {
 					mGame.madeMove("uss");
 					firstinput = null;
 				}
-	        	mGame.madeMove("s");
+				else
+					mGame.madeMove("s");
+	        }
+
+	        if(e.getKeyCode() == KeyEvent.VK_D) {
+	        	if(firstinput!=null && firstinput.equalsIgnoreCase("Help")) {
+					mGame.madeMove("urd");
+					firstinput = null;
+				}
+				else if(firstinput!=null && firstinput.equalsIgnoreCase("Skill")) {
+					mGame.madeMove("usd");
+					firstinput = null;
+				}
+	        	mGame.madeMove("d");
 	        }
 
 	        if(e.getKeyCode() == KeyEvent.VK_A) {
 	        	if(firstinput!=null && firstinput.equalsIgnoreCase("Help")) {
-					mGame.madeMove("urw");
+					mGame.madeMove("ura");
 					firstinput = null;
 				}
 				else if(firstinput!=null && firstinput.equalsIgnoreCase("Skill")) {
-					mGame.madeMove("usw");
+					mGame.madeMove("usa");
 					firstinput = null;
 				}
-	        	mGame.madeMove("w");
+	        	mGame.madeMove("a");
 	        }
 	        
 	        if(e.getKeyCode() == KeyEvent.VK_C) {
@@ -144,7 +144,6 @@ public class Controller {
 	        }
 	        if(e.getKeyCode() == KeyEvent.VK_V) {
 	        	firstinput = "Skill";
-	            mGame.madeMove("uspe");
 	        }
 
 	        if(e.getKeyCode() == KeyEvent.VK_R) {
