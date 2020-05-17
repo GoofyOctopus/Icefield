@@ -228,8 +228,14 @@ public class Controller {
 
 		@Override
 		public void keyReleased(KeyEvent e) {
-			if(mGame.finished)
-				JOptionPane.showMessageDialog((Component) view, "Game over");
+			if(mGame.won) {
+				JOptionPane.showMessageDialog((Component) view, "You have won!");
+				view.close();
+			}
+			if(!mGame.won && mGame.finished) {
+				JOptionPane.showMessageDialog((Component) view, "Game over!");
+				view.close();
+			}
 		}
 	}	
 	/*

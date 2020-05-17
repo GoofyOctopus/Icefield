@@ -59,7 +59,10 @@ public class GameFrame extends JFrame implements IView{
 		icefieldPanel.setFocusable(true);
 		icefieldPanel.requestFocusInWindow();
 	}
-	
+	public void close() {
+		this.setVisible(false);
+		this.dispose();
+	}
 
 	public void addKeyListener(KeyListener myListener) {
 		

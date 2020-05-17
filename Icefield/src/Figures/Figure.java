@@ -6,7 +6,10 @@ package Figures;
 
 import java.util.ArrayList;
 
+import Item.Charge;
+import Item.Flare;
 import Item.Food;
+import Item.Gun;
 import Item.IItem;
 import Item.Rope;
 import model.Direction;
@@ -19,13 +22,13 @@ import model.Iceberg;
 	 */
 
 public abstract class Figure{
-	boolean isDrowning;
-	int roundOfDrowning;
-	int bodyHeatUnit;
-	boolean isWearingDivingSuit;
+	public boolean isDrowning;
+	public int roundOfDrowning;
+	public int bodyHeatUnit;
+	public boolean isWearingDivingSuit;
 	String name;
 	Iceberg iceberg;
-	ArrayList<IItem> inventory;
+	public ArrayList<IItem> inventory;
 	/*
 	 * Constructor for Fifgure class.
 	 * When it is initialized, it will have no item
@@ -36,7 +39,6 @@ public abstract class Figure{
 		this.roundOfDrowning = 0;
 		this.isWearingDivingSuit = false;
 		this.inventory = new ArrayList<IItem>();
-		inventory.add(new Rope());
 		this.name = name;
 	}
 	/*
@@ -68,7 +70,8 @@ public abstract class Figure{
 	 */
 	public void increaseHeatUnit() {
 		System.out.println("increasing heat unit");
-		bodyHeatUnit++;
+		if(bodyHeatUnit<6)
+			bodyHeatUnit++;
 	}
 	/*
 	 *  Method that decreases snow of iceberg by one unit.
@@ -88,6 +91,7 @@ public abstract class Figure{
 	public void retrieveItem() {
 		for(int j=0; j<iceberg.getItems().size(); j++) {
 			inventory.add(iceberg.getItems().get(j));
+			iceberg.getItems().get(j).setFigure(this);
 		}
 		iceberg.retrievedAllItem();
 	}
@@ -98,6 +102,7 @@ public abstract class Figure{
 	 */
 	public void help(Iceberg i1) {
 		iceberg.remove(this);
+		isDrowning = false;
 		i1.accept(this);
 		roundOfDrowning = 0;
 	}
@@ -105,7 +110,8 @@ public abstract class Figure{
 	 * States that figure has started drowning.
 	 */
 	public void drown() {
-		isDrowning = true;
+		if(!isWearingDivingSuit)
+			isDrowning = true;
 	}
 	/*
 	 * It is special skill method of figures.

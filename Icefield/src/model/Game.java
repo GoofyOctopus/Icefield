@@ -20,6 +20,7 @@ public class Game{
     
     public int currentFigure = 0;
     public boolean finished = false;
+    public boolean won = false;
     public ArrayList<Figure> figures;
     public Icefield icf;
     private boolean test;
@@ -85,7 +86,6 @@ public class Game{
     		if(figures.get(i).isDrowning())
     			numberOfDrowningBefore++;
     	}
-    	System.out.println("Number of drowning figures before the move: "+numberOfDrowningBefore);
     	if(numberOfDrowningBefore>=numberOfFigures) {
     		finished = true;
     		return;
@@ -134,7 +134,6 @@ public class Game{
     		if(figures.get(i).isDrowning())
     			numberOfDrowningAfter++;
     	}
-    	System.out.println("Number of drowning figures after the move: "+numberOfDrowningAfter +"\n");
 	}
     /*
      *Gets number of players, lets them choose figures, creates
@@ -232,7 +231,7 @@ public class Game{
     				flare++;
     		}
     	}
-    	if(flare == 3)
+    	if(flare >= 3)
     		return true;
     	return false;
     }
@@ -261,6 +260,8 @@ public class Game{
     	//items = currPl.getIceberg().getItems();
     	if(items.get(j) instanceof Shovel || items.get(j) instanceof Food || items.get(j) instanceof DivingSuit)
     		((Item) items.get(j)).useItem();
+    	else
+			numberOfMoves--;
     	//for(int j = 0; j < items.size(); j++) {
     		
     		//if(items.get(j).getClass() == i.getClass()) {
@@ -309,8 +310,6 @@ public class Game{
     public boolean makeMove(Figure currPl, Move move) throws Exception {
     	//If player is in the water, we change the current player
     	
-    	System.out.println("makemove called !");
-    	
     	switch(move) {
 	    case W:
 	    	System.out.println("Moved up");
@@ -343,21 +342,21 @@ public class Game{
 	    	}
 	    	break;
 	    case URW:
-	    	if(currPl.getIceberg().getNeighbor(Direction.UP).getCapacity()==0) {
+	    	if(currPl.getIceberg().getNeighbor(Direction.LEFT).getCapacity()==0) {
     		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.LEFT).getFigures().size();i++) {
     			currPl.getIceberg().getNeighbor(Direction.LEFT).getFigures().get(i).help(currPl.getIceberg());
     		}
 	    	}
     	break;
 	    case URD:
-	    	if(currPl.getIceberg().getNeighbor(Direction.UP).getCapacity()==0) {
+	    	if(currPl.getIceberg().getNeighbor(Direction.DOWN).getCapacity()==0) {
     		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.DOWN).getFigures().size();i++) {
     			currPl.getIceberg().getNeighbor(Direction.DOWN).getFigures().get(i).help(currPl.getIceberg());
     		}
 	    	}
     	break;
 	    case URS:
-	    	if(currPl.getIceberg().getNeighbor(Direction.UP).getCapacity()==0) {
+	    	if(currPl.getIceberg().getNeighbor(Direction.RIGHT).getCapacity()==0) {
     		for(int i=0;i<currPl.getIceberg().getNeighbor(Direction.RIGHT).getFigures().size();i++) {
     			currPl.getIceberg().getNeighbor(Direction.RIGHT).getFigures().get(i).help(currPl.getIceberg());
     		}
@@ -385,34 +384,42 @@ public class Game{
 	    	if(currPl instanceof Eskimo) {
 	    		currPl.useSkill();
 	    	}
+	    	else
+    			numberOfMoves--;
 	    	break;
 	    case USW:
 	    		if(currPl instanceof PolarExplorer) {
 	    			currPl.useSkill(Direction.LEFT);
 	    		}
+	    		else
+	    			numberOfMoves--;
 	    	break;
 	    case USS:
     		if(currPl instanceof PolarExplorer) {
     			currPl.useSkill(Direction.RIGHT);
     		}
+    		else
+    			numberOfMoves--;
     	break;
 	    case USD:
     		if(currPl instanceof PolarExplorer) {
     			currPl.useSkill(Direction.DOWN);
     		}
+    		else
+    			numberOfMoves--;
     	break;
 	    case USA:
     		if(currPl instanceof PolarExplorer) {
     			currPl.useSkill(Direction.UP);
     		}
+    		else
+    			numberOfMoves--;
     	break;
-	    case CW:
-	    	//Players won
-	    	return(checkFlareGun());
 	    default:
 	    	return false;
 	    		
     	}
+    	
     	numberOfMoves++;
 //    	Iceberg ib = currPl.getIceberg();
 //    	if(ib instanceof UnstableIceberg) {
@@ -421,6 +428,10 @@ public class Game{
 //    			System.out.println("Figure " + currentFigure+" is drowning");
 //    		}
 //    	}
+    	if(checkFlareGun()) {
+    		won = true;
+    		finished = true;
+    	}
     	//Ends game if player died
     	if(currPl.getBodyHeatUnit() == 0) {
     		finished = true;

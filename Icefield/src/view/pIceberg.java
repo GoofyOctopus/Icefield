@@ -48,7 +48,7 @@ public class pIceberg extends JPanel{
 	 * Creating background image
 	 * */
 	void createBackground() {
-		if(iceberg.getWater() || (iceberg.getCapacity() == 0 && iceberg.getHoleDiscovered()))
+		if(iceberg.getWater() || (iceberg.getCapacity() == 0 && iceberg.getHoleDiscovered())||(iceberg.isCollapsed()))
 			background.setIcon(new ImageIcon("Images/water.png"));
 		else if(iceberg.ishasIgloos())
 			background.setIcon(new ImageIcon("Images/igloo.png"));

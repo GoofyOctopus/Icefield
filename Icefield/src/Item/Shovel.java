@@ -11,7 +11,6 @@ public class Shovel extends Item
 	@Override
 	public void useItem()
 	{
-		System.out.println("Used shovel");
 		//how to implement that we have to make the remove snow by 2 unit instead of 1
 		iceberg.decreaseSnow(2);
 	}

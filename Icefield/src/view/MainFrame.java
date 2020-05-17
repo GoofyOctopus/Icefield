@@ -107,6 +107,7 @@ public class MainFrame extends JFrame implements IView{
         this.setVisible(true);
         
 	}
+	
 	public static void createMainFrame(Game mGame) {
 		if(instance==null)
 			instance = new MainFrame(mGame);
@@ -160,7 +161,7 @@ public class MainFrame extends JFrame implements IView{
 	public void blizzSwap() {}
 	public boolean getBlizzard() {return false;}
 	public void changeBlizzard() {}
-	
+	public void close() {}
 
 	
 }

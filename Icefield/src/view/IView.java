@@ -13,6 +13,7 @@ public interface IView {
 	/*
 	 * The following methods are used when adding the listeners(obviously:))
 	 */
+	public void close();
 	public void addBtnListener(ActionListener myListener);
 	public void addKeyListener(KeyListener myListener);
 	public void blizzSwap(); 
