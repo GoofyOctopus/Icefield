@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.util.Date;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -27,16 +28,16 @@ public class GameFrame extends JFrame implements IView{
 	private pStats statsPanel;
 	private pBlizzard blizPanel;
 	private JPanel mainPanel = new JPanel();
-	
+	private JPanel cardPanel = new JPanel();
 	CardLayout cardLayout = new CardLayout();
-	
+	private boolean blizzard = false;
 	public GameFrame(Game mGame, Controller controller) {
 		this.mGame = mGame;
 		this.controller = controller;
 		icefieldPanel = new pIcefield(mGame.icf);
 		statsPanel = new pStats();
 		blizPanel = new pBlizzard();
-		
+		cardPanel.setLayout(cardLayout);
 		//pIceberg p1 = new pIceberg(mGame.icf.getIceberg(1, 0))
 		
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
@@ -45,14 +46,14 @@ public class GameFrame extends JFrame implements IView{
 		
 		//the action has to occure here to switch to the blizpanel?????
 		
-		
-		
+		cardPanel.add(mainPanel,"first");
+		cardPanel.add(blizPanel,"second");
+		cardLayout.show(cardPanel, "first");
+		this.add(cardPanel);
 		this.pack();
 		this.setSize(650,700);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.add(mainPanel);
-
 		this.setVisible(true);
 		//---------------------------
 		icefieldPanel.setFocusable(true);
@@ -61,8 +62,9 @@ public class GameFrame extends JFrame implements IView{
 	
 
 	public void addKeyListener(KeyListener myListener) {
-		System.out.println("Called");
+		
 		this.icefieldPanel.addKeyListener(myListener);
+		this.blizPanel.addKeyListener(myListener);
 	}
 	
 	public void addBtnListener(ActionListener myListener) {};
@@ -76,39 +78,27 @@ public class GameFrame extends JFrame implements IView{
 		
 	}
 	
-	boolean blizzard = true;
+	
 	public void blizzSwap()
 	{
-		if(blizzard)
-		{
-			this.add(blizPanel);
+		if(blizzard) {
+			cardLayout.show(cardPanel, "second");
+			blizPanel.setFocusable(true);
+			blizPanel.requestFocusInWindow();
 			
-			blizPanel.setVisible(true);
-		}
-		else {
-			blizPanel.setVisible(false);
-			this.add(mainPanel);
+		}else {
+			cardLayout.show(cardPanel, "first");
 			icefieldPanel.setFocusable(true);
 			icefieldPanel.requestFocusInWindow();
-			
-			
 		}
-		blizzard = !blizzard ;
-//		java.util.Timer timer = new java.util.Timer();
-//		timer.schedule
-//		(
-//				new java.util.TimerTask()
-//				{
-//					@Override
-//					public void run()
-//					{
-//						mainPanel.setVisible(false);
-//						blizPanel.setVisible(true);
-//					}
-//				}
-//				, 3000);
-//		timer.cancel();
-//		mainPanel.setVisible(true);
+		
+		
+	}
+	public boolean getBlizzard() {
+		return blizzard;
+	}
+	public void changeBlizzard() {
+		blizzard = !blizzard;
 	}
 	
 }

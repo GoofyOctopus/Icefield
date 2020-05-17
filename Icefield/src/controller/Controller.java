@@ -45,7 +45,6 @@ public class Controller {
 	 * sets listeners to the view components
 	 */
 	public void addListeners() {
-		System.out.println("Called");
 		this.view.addBtnListener(new MyBtnListener ());
 		this.view.addKeyListener(new MyKeyListener());	
 	}
@@ -81,15 +80,17 @@ public class Controller {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			/*
-			if(Math.random() > 0.9) {
+			if(view.getBlizzard()) { view.changeBlizzard(); view.blizzSwap(); return;}
+			double rand = Math.random();
+			if(rand > 0.9) {
 				//add the following method to the interface
 				System.out.println("Generating blizaard");
+				view.changeBlizzard();
 				view.blizzSwap(); 
 				for(int i=0; i < 10; i++)
 					for(int j = 0; j < 10; j++)
 						mGame.icf.generateBlizzards(i, j);
-			}*/
+			}
 			int code = e.getKeyCode();
 			System.out.println("   Code: " + KeyEvent.getKeyText(code));
 			/*
