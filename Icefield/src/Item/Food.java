@@ -13,6 +13,7 @@ public class Food extends Item
 	{
 		System.out.println("Ate food");
 		figure.increaseHeatUnit();//increasing the body heat unit of the figure by 1
+		System.out.println("Destroying food");
 		destroy();
 	}
 	

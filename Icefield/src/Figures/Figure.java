@@ -67,6 +67,7 @@ public abstract class Figure{
 	 * Increase body heat unit of figure, if it eats food.
 	 */
 	public void increaseHeatUnit() {
+		System.out.println("increasing heat unit");
 		bodyHeatUnit++;
 	}
 	/*

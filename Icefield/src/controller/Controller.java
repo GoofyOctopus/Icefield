@@ -210,6 +210,7 @@ public class Controller {
 			
 			if(new Random().nextInt(100) > 80) {
 				//add the following method to the interface
+				System.out.println("Generating blizaard");
 				view.blizzSwap(); 
 				for(int i=0; i < 10; i++)
 					for(int j = 0; j < 10; j++)
