@@ -157,7 +157,8 @@ public class Controller {
 	        }
 
 	        if(e.getKeyCode() == KeyEvent.VK_R) {
-	            mGame.madeMove("ri");
+	        	if(mGame.figures.get(mGame.currentFigure).getIceberg().getSnow() == 0)
+	        		mGame.madeMove("ri");
 	        }
 	        if(e.getKeyCode() == KeyEvent.VK_H) {
 	        	/*

@@ -70,7 +70,7 @@ public class pStats extends JPanel {
 		lName = new JLabel("Name: Figure1             ");
 		lHealth = new JLabel("Body heath:             ");
 		pBottomRight = new JPanel();
-		lStats = new JLabel("Stats: move 1  ");
+		lStats = new JLabel("Stats: move 0  ");
 		
 		pBottomRight.add(lStats);
 		scrollPane = new JScrollPane(listBox);
@@ -120,7 +120,6 @@ public class pStats extends JPanel {
 		}		
 		lName.setText("Name: " + figure.getName() + "       ");
 		HealthChange(figure.getBodyHeatUnit());		
-
 		for(int i = 0; i < figure.getInventory().size(); i++)
 		{
 			listModel.addElement(figure.getInventory().get(i).getClass().toString().replaceAll("class Item.", ""));		
