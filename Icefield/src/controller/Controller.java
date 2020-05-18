@@ -22,7 +22,9 @@ import view.MainFrame;
 public class Controller {
 	private Game mGame;
 	private IView view;
-	
+	/*
+	 * Singleton class
+	 */
 	private static Controller instance = null;	
 	protected Controller(Game mGame, MainFrame view) {
 		this.mGame = mGame; this.view=view;

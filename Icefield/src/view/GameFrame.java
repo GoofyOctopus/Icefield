@@ -78,7 +78,10 @@ public class GameFrame extends JFrame implements IView{
 		
 	}
 	
-	
+	/*
+	 * In case of blizzard generation, apart form what happens in the view
+	 * the controller seta new panel that has the blizzard gif to demonstrate it for the user
+	 */
 	public void blizzSwap()
 	{
 		if(blizzard) {
@@ -98,6 +101,9 @@ public class GameFrame extends JFrame implements IView{
 	public void changeBlizzard() {
 		blizzard = !blizzard;
 	}
+	/*
+	 * pStats instance cannot be accessed from outside
+	 */
 	public void showInfo(String info) {
 		statsPanel.showInfo(info);
 	}

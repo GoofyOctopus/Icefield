@@ -29,7 +29,10 @@ public class MainFrame extends JFrame implements IView{
 	pSelect pselect;
 	int numberPlayers;
 	HashMap<String, String> figureNames;
-
+	
+	/*
+	 * Singleton class
+	 */
 	protected MainFrame(Game mGame) {
 		this.mGame = mGame;
 		Controller.createController(mGame, this);
@@ -43,7 +46,9 @@ public class MainFrame extends JFrame implements IView{
 		testPnl.add(testBtn1);
 		testPnl.add(testBtn2);
 		*/
-		
+		/*
+		 * Adding listeners to the buttons to handle number of players, their names and figures
+		 */
 		myPnl.bStart.addActionListener( 
 				ae ->	{
 					if(myPnl.tNumberPlayer.getText().equals("")) {

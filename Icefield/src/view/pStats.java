@@ -98,12 +98,19 @@ public class pStats extends JPanel {
 	public void ShowStats(int move) {
 		lStats.setText("Stats: move " + move);
 	}
+	/*
+	 * Sometimes there are some specific information needs to be sent to the user
+	 * for those kind of cases this method is created
+	 */
 	public void showInfo(String info) {
 		this.info = info;
 		this.flag = true;
 	}
 	private String info = null;
 	private boolean flag = false;
+	/*
+	 * Called when the view is updated, it refreshes the content of the JList and the panel
+	 */
 	public void playerChange(Figure figure){
 		itemPanel.removeAll();
 		listModel.clear();
