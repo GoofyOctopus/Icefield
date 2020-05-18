@@ -17,6 +17,8 @@ import java.awt.FlowLayout;
 import java.rmi.activation.Activator;
 import java.util.ArrayList;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.BorderFactory;
@@ -38,6 +40,7 @@ public class pStats extends JPanel {
 	private JList<String> listBox; 
 	
 	private DefaultListModel<String> listModel;
+	JScrollPane scrollPane;
 	private JPanel itemPanel; 
 	/**
 	 * Create the panel.
@@ -45,7 +48,7 @@ public class pStats extends JPanel {
 	public pStats() {
 		//adding border
 		setLayout(new BorderLayout(0, 0));
-
+		
 		//adding icons to panel
 		lRope = new JLabel(new ImageIcon("Images/rope.png")); 
 		lFood =  new JLabel(new ImageIcon("Images/food.png"));
@@ -63,14 +66,17 @@ public class pStats extends JPanel {
 		//making jlist
 		listModel = new DefaultListModel<>();  
 		listBox = new JList<>(listModel); 
-        
+		
 		lName = new JLabel("Name: Figure1             ");
 		lHealth = new JLabel("Body heath:             ");
 		pBottomRight = new JPanel();
 		lStats = new JLabel("Stats: move 1  ");
-
+		
 		pBottomRight.add(lStats);
-		pBottomRight.add(listBox);
+		scrollPane = new JScrollPane(listBox);
+		scrollPane.setBorder(new EmptyBorder(20, 20, 20, 20));
+		scrollPane.setPreferredSize(new Dimension(200, 90));
+		pBottomRight.add(scrollPane);
 		itemPanel = new JPanel();
 		for(int i = 0; i < items.size(); i++)
 		{
