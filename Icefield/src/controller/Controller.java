@@ -74,7 +74,7 @@ public class Controller {
 		public void keyPressed(KeyEvent e) {
 			if(view.getBlizzard()) { view.changeBlizzard(); view.blizzSwap(); return;}
 			double rand = Math.random();
-			if(rand > 0.9) {
+			if(rand > 0.97) {
 				//add the following method to the interface
 				System.out.println("Generating blizaard");
 				view.changeBlizzard();
