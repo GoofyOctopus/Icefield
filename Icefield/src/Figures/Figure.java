@@ -25,6 +25,7 @@ public abstract class Figure{
 	public boolean isDrowning;
 	public int roundOfDrowning;
 	public int bodyHeatUnit;
+	public int currentRound;
 	public boolean isWearingDivingSuit;
 	String name;
 	Iceberg iceberg;
@@ -36,7 +37,7 @@ public abstract class Figure{
 	 */
 	public Figure(String name) {
 		this.isDrowning = false;
-		this.roundOfDrowning = 0;
+		this.currentRound = 0;
 		this.isWearingDivingSuit = false;
 		this.inventory = new ArrayList<IItem>();
 		this.name = name;
@@ -111,8 +112,10 @@ public abstract class Figure{
 	 * States that figure has started drowning.
 	 */
 	public void drown() {
-		if(!isWearingDivingSuit)
+		if(!isWearingDivingSuit) {
 			isDrowning = true;
+			this.setRoundOfDrowning(currentRound);
+		}
 	}
 	/*
 	 * It is special skill method of figures.
@@ -163,5 +166,8 @@ public abstract class Figure{
 	}
 	public void addToInventory(IItem item) {
 		this.inventory.add(item);
+	}
+	public void setCurrentRound(int num) {
+		this.currentRound = num;
 	}
 }

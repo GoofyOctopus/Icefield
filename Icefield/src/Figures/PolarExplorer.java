@@ -24,10 +24,7 @@ public class PolarExplorer extends Figure{
 	@Override
 	public int useSkill(Direction d) {
 		//if(iceberg.getNeighbor(d) instanceof UnstableIceberg) {
-			System.out.println("X: " + iceberg.getNeighbor(d).getX() 
-								+ " Y: "+ iceberg.getNeighbor(d).getY());
-			
-			return iceberg.getCapacity();
+			return iceberg.getNeighbor(d).getCapacity();
 		//}
 		//return 0;
 	}

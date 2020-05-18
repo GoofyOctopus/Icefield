@@ -96,11 +96,11 @@ public class Controller {
 				}
 				else if(firstinput!=null && firstinput.equalsIgnoreCase("Skill")) {
 					mGame.madeMove("usw");
-//		        	if(mGame.geteSkill()==-1) {
-//		        		view.showInfo("Stable iceberg");
-//		        	}
-//		        	else
-		        		view.showInfo(mGame.geteSkill().toString());
+		        	if(mGame.geteSkill()==-1) {
+		        		view.showInfo("It is Stable iceberg");
+		        	}
+		        	else
+		        		view.showInfo("It has capacity:"+mGame.geteSkill().toString());
 		        	firstinput = null;
 				}
 				
@@ -115,11 +115,11 @@ public class Controller {
 				}
 				else if(firstinput!=null && firstinput.equalsIgnoreCase("Skill")) {
 					mGame.madeMove("uss");
-		        	//if(mGame.geteSkill()==-1) {
-		        	//	view.showInfo("Stable iceberg");
-		        	//}
-		        	//else
-		        		view.showInfo(mGame.geteSkill().toString());
+		        	if(mGame.geteSkill()==-1) {
+		        		view.showInfo("It is Stable iceberg");
+		        	}
+		        	else
+		        		view.showInfo("It has capacity:"+mGame.geteSkill().toString());
 					firstinput = null;
 				}
 				else
@@ -133,11 +133,11 @@ public class Controller {
 				}
 				else if(firstinput!=null && firstinput.equalsIgnoreCase("Skill")) {
 					mGame.madeMove("usd");
-//		        	if(mGame.geteSkill()==-1) {
-//		        		view.showInfo("Stable iceberg");
-//		        	}
-//		        	else
-		        		view.showInfo(mGame.geteSkill().toString());
+		        	if(mGame.geteSkill()==-1) {
+		        		view.showInfo("It is Stable iceberg");
+		        	}
+		        	else
+		        		view.showInfo("It has capacity:"+mGame.geteSkill().toString());
 					firstinput = null;
 				}
 				else
@@ -151,11 +151,11 @@ public class Controller {
 				}
 				else if(firstinput!=null && firstinput.equalsIgnoreCase("Skill")) {
 					mGame.madeMove("usa");
-//		        	if(mGame.geteSkill()==-1) {
-//		        		view.showInfo("Stable iceberg");
-//		        	}
-//		        	else
-		        		view.showInfo(mGame.geteSkill().toString());
+		        	if(mGame.geteSkill()==-1) {
+		        		view.showInfo("It is Stable iceberg");
+		        	}
+		        	else
+		        		view.showInfo("It has capacity:"+mGame.geteSkill().toString());
 					firstinput = null;
 				}
 				else

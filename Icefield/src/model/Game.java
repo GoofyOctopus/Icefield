@@ -66,7 +66,7 @@ public class Game{
     		numberOfMoves=0;
     	}
     	if(currentFigure>=numberOfFigures) {
-    		roundCounter++;
+    		roundIncrement();
     		currentFigure = currentFigure % numberOfFigures;
     	}
     	
@@ -74,16 +74,25 @@ public class Game{
     		currentFigure++;
     		if(currentFigure >= figures.size()) {
     			currentFigure = currentFigure % numberOfFigures;
-    			roundCounter++;
+    			roundIncrement();
     		}
     		numberOfMoves = 0;
     	}
     	
     	Figure currPl = figures.get(currentFigure);
     	for(int i=0 ; i<figures.size();i++) {
-    		if(figures.get(i).isDrowning() && figures.get(i).getRoundOfDrowning()+1 < roundCounter ) {
-    			finished = true;
-    			return;
+    		if(i!=figures.size()-1) {
+    			if(figures.get(i).isDrowning() && figures.get(i).getRoundOfDrowning() < roundCounter && currentFigure > i ) {
+    				finished = true;
+    				return;
+    			}
+    		}
+    		else {
+    			System.out.println("last figure drowning!");
+    			if(figures.get(i).isDrowning() && figures.get(i).getRoundOfDrowning() + 1 < roundCounter) {
+    				finished = true;
+    				return;
+    			}
     		}
     	}
     	System.out.println("Current figure "+currentFigure);
@@ -118,7 +127,12 @@ public class Game{
 //        }
         figures = new ArrayList<Figure>();
     }
-    
+    public void roundIncrement() {
+    	roundCounter++;
+    	for(int i=0;i<figures.size();i++) {
+    		figures.get(i).setCurrentRound(roundCounter);
+    	}
+    }
     public void addFigure(HashMap<String, String> figureNames) {
     	/*
     	 * Method that creates figures on icefield and generate it.    
@@ -261,30 +275,28 @@ public class Game{
 	    	break;
 	    case USW:
 	    		if(currPl instanceof PolarExplorer) {
-	    			System.out.println(eSkill.toString());
 	    			eSkill = currPl.useSkill(Direction.LEFT);
-	    			System.out.println(eSkill.toString());
 	    		}
 	    		else
 	    			numberOfMoves--;
 	    	break;
 	    case USS:
-    		if(currPl instanceof PolarExplorer) {	    			System.out.println(eSkill.toString());
-    			eSkill = currPl.useSkill(Direction.RIGHT);	    			System.out.println(eSkill.toString());
+    		if(currPl instanceof PolarExplorer) {	    			
+    			eSkill = currPl.useSkill(Direction.RIGHT);	    			
     		}
     		else
     			numberOfMoves--;
     	break;
 	    case USD:
-    		if(currPl instanceof PolarExplorer) {	    			System.out.println(eSkill.toString());
-    			eSkill = currPl.useSkill(Direction.DOWN);	    			System.out.println(eSkill.toString());
+    		if(currPl instanceof PolarExplorer) {	    			
+    			eSkill = currPl.useSkill(Direction.DOWN);	    			
     		}
     		else
     			numberOfMoves--;
     	break;
 	    case USA:
-    		if(currPl instanceof PolarExplorer) {	    			System.out.println(eSkill.toString());
-    			eSkill = currPl.useSkill(Direction.UP);	    			System.out.println(eSkill.toString());
+    		if(currPl instanceof PolarExplorer) {	    		
+    			eSkill = currPl.useSkill(Direction.UP);	    			
     		}
     		else
     			numberOfMoves--;
@@ -301,9 +313,11 @@ public class Game{
     		finished = true;
     	}
     	//Ends game if player died
-    	if(currPl.getBodyHeatUnit() == 0) {
-    		finished = true;
-    		return false;
+    	for(int i = 0;i < figures.size();i++) {
+    		if(figures.get(i).getBodyHeatUnit() == 0) {
+    			finished = true;
+    			return false;
+    		}
     	}
     	
     	return true;
