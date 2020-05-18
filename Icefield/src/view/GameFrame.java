@@ -38,13 +38,10 @@ public class GameFrame extends JFrame implements IView{
 		statsPanel = new pStats();
 		blizPanel = new pBlizzard();
 		cardPanel.setLayout(cardLayout);
-		//pIceberg p1 = new pIceberg(mGame.icf.getIceberg(1, 0))
 		
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 		mainPanel.add(icefieldPanel);
 		mainPanel.add(statsPanel);
-		
-		//the action has to occure here to switch to the blizpanel?????
 		
 		cardPanel.add(mainPanel,"first");
 		cardPanel.add(blizPanel,"second");
@@ -56,8 +53,8 @@ public class GameFrame extends JFrame implements IView{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 		//---------------------------
-		icefieldPanel.setFocusable(true);
-		icefieldPanel.requestFocusInWindow();
+		mainPanel.setFocusable(true);
+		mainPanel.requestFocusInWindow();
 	}
 	public void close() {
 		this.setVisible(false);
@@ -66,7 +63,7 @@ public class GameFrame extends JFrame implements IView{
 
 	public void addKeyListener(KeyListener myListener) {
 		
-		this.icefieldPanel.addKeyListener(myListener);
+		this.mainPanel.addKeyListener(myListener);
 		this.blizPanel.addKeyListener(myListener);
 	}
 	
@@ -91,11 +88,9 @@ public class GameFrame extends JFrame implements IView{
 			
 		}else {
 			cardLayout.show(cardPanel, "first");
-			icefieldPanel.setFocusable(true);
-			icefieldPanel.requestFocusInWindow();
+			mainPanel.setFocusable(true);
+			mainPanel.requestFocusInWindow();
 		}
-		
-		
 	}
 	public boolean getBlizzard() {
 		return blizzard;
@@ -103,5 +98,7 @@ public class GameFrame extends JFrame implements IView{
 	public void changeBlizzard() {
 		blizzard = !blizzard;
 	}
-	
+	public void showInfo(String info) {
+		statsPanel.showInfo(info);
+	}
 }

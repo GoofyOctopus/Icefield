@@ -19,4 +19,5 @@ public interface IView {
 	public void blizzSwap(); 
 	public boolean getBlizzard();
 	public void changeBlizzard();
+	public void showInfo(String info);
 }

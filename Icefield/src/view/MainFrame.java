@@ -162,6 +162,7 @@ public class MainFrame extends JFrame implements IView{
 	public boolean getBlizzard() {return false;}
 	public void changeBlizzard() {}
 	public void close() {}
+	public void showInfo(String info) {}
 
 	
 }

@@ -59,17 +59,7 @@ public class Controller {
 			JButton button = (JButton)e.getSource();
 			System.out.println("Button Clicked!");
 			System.out.println(button.getText());
-			
-//			if(e.getActionCommand().equalsIgnoreCase("Eskimo")) {
-//				mGame.addFigure("Eskimo");
-//			}
-//			if(e.getActionCommand().equalsIgnoreCase("Explorer")) {
-//				mGame.addFigure("Explorer");
-//			}
-			/*
-			 * edit the model from here!
-			 * after that ask the view to update
-			 */
+			//the model edited then update the view
 			update();
 		}
 	}
@@ -160,6 +150,7 @@ public class Controller {
 	        	/*
 	        	 * Tell the user that "Please select the direction to check Capacity"
 	        	 */
+	        	view.showInfo("Choose direction");
 	        	firstinput = "Skill";
 	        }
 
@@ -170,6 +161,7 @@ public class Controller {
 	        	/*
 	        	 * Tell the user that "Please select the direction to use rope"
 	        	 */
+	        	view.showInfo("Choose direction");
 	        	firstinput = "Help";
 	        }
 
@@ -177,6 +169,7 @@ public class Controller {
 	        	/*
 	        	 * Tell the user that "Please select which item to use"
 	        	 */
+	        	view.showInfo("Choose item(number)");
 	        	firstinput = "Use";
 	        }
 	        

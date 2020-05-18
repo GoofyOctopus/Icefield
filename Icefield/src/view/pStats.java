@@ -98,11 +98,19 @@ public class pStats extends JPanel {
 	public void ShowStats(int move) {
 		lStats.setText("Stats: move " + move);
 	}
-	
+	public void showInfo(String info) {
+		this.info = info;
+		this.flag = true;
+	}
+	private String info = null;
+	private boolean flag = false;
 	public void playerChange(Figure figure){
 		itemPanel.removeAll();
 		listModel.clear();
-		
+		if(flag) {
+			listModel.addElement(info);
+			flag = false;
+		}		
 		lName.setText("Name: " + figure.getName() + "       ");
 		HealthChange(figure.getBodyHeatUnit());		
 
