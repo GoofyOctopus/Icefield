@@ -13,7 +13,7 @@ import javax.swing.*;
 public class pStart extends JPanel
 {
 	public int numberPlayers = 0;
-	private static final String IMG_PATH = "Images\\newIce.jpg";
+	private static final String IMG_PATH = "Images\\newIce.jpg";//adding the picture of the background
 	ImageIcon img= new ImageIcon(IMG_PATH);
 
 	JLabel backGround, title, string;
@@ -62,7 +62,7 @@ public class pStart extends JPanel
 		
 		bExit = new JButton("EXIT");
 		bExit.setAlignmentX(Component.CENTER_ALIGNMENT);
-		bExit.setMaximumSize(new Dimension(60,40));
+		bExit.setMaximumSize(new Dimension(80,60));
 		bExit.setBackground(Color.cyan);
 		
 		tNumberPlayer = new JTextField();
@@ -71,7 +71,7 @@ public class pStart extends JPanel
 		
 		//Adding the components to the JPanel
 		backGround.add(title);
-		backGround.add(Box.createRigidArea(new Dimension(0,165)));
+		backGround.add(Box.createRigidArea(new Dimension(0,165)));//creating some empty space between the components
 		backGround.add(bStart);
 		backGround.add(Box.createRigidArea(new Dimension(0,40)));
 		backGround.add(string);
@@ -80,16 +80,9 @@ public class pStart extends JPanel
 		backGround.add(Box.createRigidArea(new Dimension(0,40)));
 		backGround.add(bExit);		
 
-		
-		//numberPlayers = Integer.parseInt(tNumberPlayer.getText());
-		
-		//adding the action listeners for the buttons
-		//bStart.addActionListener(this);
-		//bExit.addActionListener(this);
+
 		
 		this.add(backGround);
-		//frame.setSize(600, 600);
-		//frame.setVisible(true);
 		
 		
 	}
