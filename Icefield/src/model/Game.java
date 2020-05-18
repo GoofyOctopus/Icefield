@@ -24,6 +24,8 @@ public class Game{
     public ArrayList<Figure> figures;
     public Icefield icf;
     private boolean test;
+    private Integer eSkill;
+    public Integer geteSkill() { return eSkill; }
     /*
      * Shortcuts for possible moves:
      */
@@ -44,6 +46,7 @@ public class Game{
     public Game(boolean testCases) {
     	test = testCases;
     	startGame();
+    	eSkill = -100;
     }
     /*
      * Method that makes change to Game class when user give input
@@ -258,28 +261,30 @@ public class Game{
 	    	break;
 	    case USW:
 	    		if(currPl instanceof PolarExplorer) {
-	    			currPl.useSkill(Direction.LEFT);
+	    			System.out.println(eSkill.toString());
+	    			eSkill = currPl.useSkill(Direction.LEFT);
+	    			System.out.println(eSkill.toString());
 	    		}
 	    		else
 	    			numberOfMoves--;
 	    	break;
 	    case USS:
-    		if(currPl instanceof PolarExplorer) {
-    			currPl.useSkill(Direction.RIGHT);
+    		if(currPl instanceof PolarExplorer) {	    			System.out.println(eSkill.toString());
+    			eSkill = currPl.useSkill(Direction.RIGHT);	    			System.out.println(eSkill.toString());
     		}
     		else
     			numberOfMoves--;
     	break;
 	    case USD:
-    		if(currPl instanceof PolarExplorer) {
-    			currPl.useSkill(Direction.DOWN);
+    		if(currPl instanceof PolarExplorer) {	    			System.out.println(eSkill.toString());
+    			eSkill = currPl.useSkill(Direction.DOWN);	    			System.out.println(eSkill.toString());
     		}
     		else
     			numberOfMoves--;
     	break;
 	    case USA:
-    		if(currPl instanceof PolarExplorer) {
-    			currPl.useSkill(Direction.UP);
+    		if(currPl instanceof PolarExplorer) {	    			System.out.println(eSkill.toString());
+    			eSkill = currPl.useSkill(Direction.UP);	    			System.out.println(eSkill.toString());
     		}
     		else
     			numberOfMoves--;

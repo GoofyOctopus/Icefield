@@ -74,7 +74,7 @@ public class Controller {
 		public void keyPressed(KeyEvent e) {
 			if(view.getBlizzard()) { view.changeBlizzard(); view.blizzSwap(); return;}
 			double rand = Math.random();
-			if(rand > 0.97) {
+			if(rand > 0.95) {
 				//add the following method to the interface
 				System.out.println("Generating blizaard");
 				view.changeBlizzard();
@@ -96,8 +96,14 @@ public class Controller {
 				}
 				else if(firstinput!=null && firstinput.equalsIgnoreCase("Skill")) {
 					mGame.madeMove("usw");
-					firstinput = null;
+//		        	if(mGame.geteSkill()==-1) {
+//		        		view.showInfo("Stable iceberg");
+//		        	}
+//		        	else
+		        		view.showInfo(mGame.geteSkill().toString());
+		        	firstinput = null;
 				}
+				
 				else
 					mGame.madeMove("w");
 	        }
@@ -109,6 +115,11 @@ public class Controller {
 				}
 				else if(firstinput!=null && firstinput.equalsIgnoreCase("Skill")) {
 					mGame.madeMove("uss");
+		        	//if(mGame.geteSkill()==-1) {
+		        	//	view.showInfo("Stable iceberg");
+		        	//}
+		        	//else
+		        		view.showInfo(mGame.geteSkill().toString());
 					firstinput = null;
 				}
 				else
@@ -122,6 +133,11 @@ public class Controller {
 				}
 				else if(firstinput!=null && firstinput.equalsIgnoreCase("Skill")) {
 					mGame.madeMove("usd");
+//		        	if(mGame.geteSkill()==-1) {
+//		        		view.showInfo("Stable iceberg");
+//		        	}
+//		        	else
+		        		view.showInfo(mGame.geteSkill().toString());
 					firstinput = null;
 				}
 				else
@@ -135,6 +151,11 @@ public class Controller {
 				}
 				else if(firstinput!=null && firstinput.equalsIgnoreCase("Skill")) {
 					mGame.madeMove("usa");
+//		        	if(mGame.geteSkill()==-1) {
+//		        		view.showInfo("Stable iceberg");
+//		        	}
+//		        	else
+		        		view.showInfo(mGame.geteSkill().toString());
 					firstinput = null;
 				}
 				else

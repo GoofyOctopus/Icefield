@@ -62,7 +62,7 @@ public class GameFrame extends JFrame implements IView{
 	}
 
 	public void addKeyListener(KeyListener myListener) {
-		
+		this.statsPanel.addKeyListener(myListener);
 		this.mainPanel.addKeyListener(myListener);
 		this.blizPanel.addKeyListener(myListener);
 	}

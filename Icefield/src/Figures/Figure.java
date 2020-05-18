@@ -40,6 +40,7 @@ public abstract class Figure{
 		this.isWearingDivingSuit = false;
 		this.inventory = new ArrayList<IItem>();
 		this.name = name;
+		//****add items here for testing purposes****
 	}
 	/*
 	 * Stepping method for figure which will call the remove method of 
