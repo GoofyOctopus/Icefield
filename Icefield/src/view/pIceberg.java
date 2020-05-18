@@ -21,6 +21,16 @@ public class pIceberg extends JPanel{
 	Iceberg iceberg; //Iceberg to be drawn
 	Figure currPl; //Current player
 	public JLabel background, figureLabel;
+	ImageIcon waterimg= new ImageIcon(getClass().getClassLoader().getResource("water.png"));
+	ImageIcon iglooimg= new ImageIcon(getClass().getClassLoader().getResource("igloo.png"));
+	ImageIcon iceimg= new ImageIcon(getClass().getClassLoader().getResource("ice.png"));
+	ImageIcon snowimg= new ImageIcon(getClass().getClassLoader().getResource("snow.png"));
+	ImageIcon eskiandexplor40x40img= new ImageIcon(getClass().getClassLoader().getResource("40x40 eskimo and explorer.png"));
+	ImageIcon explorer2img= new ImageIcon(getClass().getClassLoader().getResource("2 explorer.png"));
+	ImageIcon eskimo2img= new ImageIcon(getClass().getClassLoader().getResource("2 eskimo.png"));
+	ImageIcon explorerimg= new ImageIcon(getClass().getClassLoader().getResource("explorer.png"));
+	ImageIcon eskimoimg= new ImageIcon(getClass().getClassLoader().getResource("eskimo.png"));
+	
 	
 	public pIceberg(Iceberg i) {
 		figureLabel = new JLabel();
@@ -49,13 +59,13 @@ public class pIceberg extends JPanel{
 	 * */
 	void createBackground() {
 		if(iceberg.getWater() || (iceberg.getCapacity() == 0 && iceberg.getHoleDiscovered())||(iceberg.isCollapsed()))
-			background.setIcon(new ImageIcon("Images/water.png"));
+			background.setIcon(waterimg);
 		else if(iceberg.ishasIgloos())
-			background.setIcon(new ImageIcon("Images/igloo.png"));
+			background.setIcon(iglooimg);
 		else if(iceberg.getSnow() == 0)
-			background.setIcon(new ImageIcon("Images/ice.png"));
+			background.setIcon(iceimg);
 		else
-			background.setIcon(new ImageIcon("Images/snow.png"));
+			background.setIcon(snowimg);
 		
         
 	}
@@ -72,15 +82,15 @@ public class pIceberg extends JPanel{
         		ex = true;
         }
         if(es && ex)
-        	this.figureLabel.setIcon(new ImageIcon("Images/40x40 eskimo and explorer.png"));
+        	this.figureLabel.setIcon(eskiandexplor40x40img);
         else if(ex && iceberg.getFigures().size() > 1)
-        	this.figureLabel.setIcon(new ImageIcon("Images/2 explorer.png"));
+        	this.figureLabel.setIcon(explorer2img);
         else if(ex)
-        	this.figureLabel.setIcon(new ImageIcon("Images/explorer.png"));
+        	this.figureLabel.setIcon(explorerimg);
         else if(es && iceberg.getFigures().size() > 1)
-        	this.figureLabel.setIcon(new ImageIcon("Images/2 eskimo.png"));
+        	this.figureLabel.setIcon(eskimo2img);
         else if(es)
-        	this.figureLabel.setIcon(new ImageIcon("Images/eskimo.png"));
+        	this.figureLabel.setIcon(eskimoimg);
 	}
 //	
 //	/*

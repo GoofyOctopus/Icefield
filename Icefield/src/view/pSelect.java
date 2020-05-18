@@ -14,8 +14,7 @@ import jdk.dynalink.beans.StaticClass;
 public class pSelect extends JPanel
 {
 	
-	private static final String IMG_PATH = "Images/newIce.jpg";
-	ImageIcon img= new ImageIcon(IMG_PATH);
+	ImageIcon img= new ImageIcon(getClass().getClassLoader().getResource("newIce.jpg"));
 	JLabel backGround,title, select;
 	public JTextField tName;
 	public JButton bEskimoo, bExplorer;
@@ -54,14 +53,15 @@ public class pSelect extends JPanel
 		tName.setMaximumSize(new Dimension(80,20));
 		
 		bEskimoo = new JButton();
-		bEskimoo.setIcon(new ImageIcon("Images/eskimoButton.jpg"));
+		ImageIcon eskimoButton= new ImageIcon(getClass().getClassLoader().getResource("eskimoButton.jpg"));
+		bEskimoo.setIcon(eskimoButton);
 		bEskimoo.setAlignmentX(Component.CENTER_ALIGNMENT);
 		bEskimoo.setPreferredSize(new Dimension(100,100));
 		validate();
 	
 		bExplorer = new JButton();
-
-		bExplorer.setIcon(new ImageIcon("Images/explorerButton.jpg"));
+		ImageIcon explorerButton= new ImageIcon(getClass().getClassLoader().getResource("explorerButton.jpg"));
+		bExplorer.setIcon(explorerButton);
 		bExplorer.setAlignmentX(Component.CENTER_ALIGNMENT);
 		bExplorer.setPreferredSize(new Dimension(100, 100));
 		validate();

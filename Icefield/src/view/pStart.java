@@ -13,8 +13,9 @@ import javax.swing.*;
 public class pStart extends JPanel
 {
 	public int numberPlayers = 0;
-	private static final String IMG_PATH = "Images\\newIce.jpg";//adding the picture of the background
-	ImageIcon img= new ImageIcon(IMG_PATH);
+	//private static final String IMG_PATH = "Images\\newIce.jpg";//adding the picture of the background
+	ImageIcon img= new ImageIcon(getClass().getClassLoader().getResource("newIce.jpg"));
+	
 
 	JLabel backGround, title, string;
 	public JButton bStart, bExit;

@@ -6,7 +6,7 @@ import java.awt.*;
 public class pBlizzard extends JPanel 
 {
 	private JPanel blizPanel = new JPanel();//blizzard panel
-	private JLabel blizLable = new JLabel(new ImageIcon("Images/Blizzard650x700.gif"));
+	private JLabel blizLable = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("Blizzard650x700.gif")));
 	private JLabel blizHappen = new JLabel("BLIZZARD IS HAPPENING");
 	private JPanel blizH = new JPanel();
 	
