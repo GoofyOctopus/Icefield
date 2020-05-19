@@ -35,6 +35,13 @@ public class pStats extends JPanel {
 	private JPanel pBottomRight;
 	private JLabel lStats;
 	private JLabel lRope, lFood, lSuit, lShovel, lGun, lFlare, lCharge;
+	ImageIcon ropeimg= new ImageIcon(getClass().getClassLoader().getResource("rope.png"));
+	ImageIcon foodimg= new ImageIcon(getClass().getClassLoader().getResource("food.png"));
+	ImageIcon suitimg= new ImageIcon(getClass().getClassLoader().getResource("diving suit.png"));
+	ImageIcon shovelimg= new ImageIcon(getClass().getClassLoader().getResource("shovel.png"));
+	ImageIcon gunimg= new ImageIcon(getClass().getClassLoader().getResource("gun.png"));
+	ImageIcon flareimg= new ImageIcon(getClass().getClassLoader().getResource("flare.png"));
+	ImageIcon chargeimg= new ImageIcon(getClass().getClassLoader().getResource("charge.png"));
 	
 	private ArrayList<JLabel> items;
 	private JList<String> listBox; 
@@ -50,13 +57,13 @@ public class pStats extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		//adding icons to panel
-		lRope = new JLabel(new ImageIcon("Images/rope.png")); 
-		lFood =  new JLabel(new ImageIcon("Images/food.png"));
-		lSuit = new JLabel(new ImageIcon("Images/diving suit.png"));
-		lShovel = new JLabel(new ImageIcon("Images/shovel.png"));
-		lGun = new JLabel(new ImageIcon("Images/gun.png"));
-		lFlare = new JLabel(new ImageIcon("Images/flare.png"));
-		lCharge = new JLabel(new ImageIcon("Images/charge.png"));
+		lRope = new JLabel(ropeimg); 
+		lFood =  new JLabel(foodimg);
+		lSuit = new JLabel(suitimg);
+		lShovel = new JLabel(shovelimg);
+		lGun = new JLabel(gunimg);
+		lFlare = new JLabel(flareimg);
+		lCharge = new JLabel(chargeimg);
 		
 		setBorder(new EmptyBorder(10, 10, 10, 10));
 		pBottom = new JPanel();
